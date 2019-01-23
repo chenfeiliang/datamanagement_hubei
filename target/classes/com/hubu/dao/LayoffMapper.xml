@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hubu.dao.LayoffMapper" >
+  <resultMap id="BaseResultMap" type="com.hubu.pojo.Layoff" >
+    <id column="machine_no" property="machineNo" jdbcType="VARCHAR" />
+    <result column="pile_no" property="pileNo" jdbcType="VARCHAR" />
+    <result column="first_weight" property="firstWeight" jdbcType="REAL" />
+    <result column="second_weight" property="secondWeight" jdbcType="REAL" />
+    <result column="first_depth" property="firstDepth" jdbcType="REAL" />
+    <result column="second_depth" property="secondDepth" jdbcType="REAL" />
+    <result column="sum_depth" property="sumDepth" jdbcType="REAL" />
+    <result column="begin_time" property="beginTime" jdbcType="VARCHAR" />
+    <result column="end_time" property="endTime" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    machine_no, pile_no, first_weight, second_weight, first_depth, second_depth, sum_depth, 
+    begin_time, end_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hubu.pojo.LayoffExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from layoff
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from layoff
+    where machine_no = #{machineNo,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from layoff
+    where machine_no = #{machineNo,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.hubu.pojo.LayoffExample" >
+    delete from layoff
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.hubu.pojo.Layoff" >
+    insert into layoff (machine_no, pile_no, first_weight, 
+      second_weight, first_depth, second_depth, 
+      sum_depth, begin_time, end_time
+      )
+    values (#{machineNo,jdbcType=VARCHAR}, #{pileNo,jdbcType=VARCHAR}, #{firstWeight,jdbcType=REAL}, 
+      #{secondWeight,jdbcType=REAL}, #{firstDepth,jdbcType=REAL}, #{secondDepth,jdbcType=REAL}, 
+      #{sumDepth,jdbcType=REAL}, #{beginTime,jdbcType=VARCHAR}, #{endTime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.hubu.pojo.Layoff" >
+    insert into layoff
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="machineNo != null" >
+        machine_no,
+      </if>
+      <if test="pileNo != null" >
+        pile_no,
+      </if>
+      <if test="firstWeight != null" >
+        first_weight,
+      </if>
+      <if test="secondWeight != null" >
+        second_weight,
+      </if>
+      <if test="firstDepth != null" >
+        first_depth,
+      </if>
+      <if test="secondDepth != null" >
+        second_depth,
+      </if>
+      <if test="sumDepth != null" >
+        sum_depth,
+      </if>
+      <if test="beginTime != null" >
+        begin_time,
+      </if>
+      <if test="endTime != null" >
+        end_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="machineNo != null" >
+        #{machineNo,jdbcType=VARCHAR},
+      </if>
+      <if test="pileNo != null" >
+        #{pileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="firstWeight != null" >
+        #{firstWeight,jdbcType=REAL},
+      </if>
+      <if test="secondWeight != null" >
+        #{secondWeight,jdbcType=REAL},
+      </if>
+      <if test="firstDepth != null" >
+        #{firstDepth,jdbcType=REAL},
+      </if>
+      <if test="secondDepth != null" >
+        #{secondDepth,jdbcType=REAL},
+      </if>
+      <if test="sumDepth != null" >
+        #{sumDepth,jdbcType=REAL},
+      </if>
+      <if test="beginTime != null" >
+        #{beginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null" >
+        #{endTime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.hubu.pojo.LayoffExample" resultType="java.lang.Integer" >
+    select count(*) from layoff
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update layoff
+    <set >
+      <if test="record.machineNo != null" >
+        machine_no = #{record.machineNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pileNo != null" >
+        pile_no = #{record.pileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.firstWeight != null" >
+        first_weight = #{record.firstWeight,jdbcType=REAL},
+      </if>
+      <if test="record.secondWeight != null" >
+        second_weight = #{record.secondWeight,jdbcType=REAL},
+      </if>
+      <if test="record.firstDepth != null" >
+        first_depth = #{record.firstDepth,jdbcType=REAL},
+      </if>
+      <if test="record.secondDepth != null" >
+        second_depth = #{record.secondDepth,jdbcType=REAL},
+      </if>
+      <if test="record.sumDepth != null" >
+        sum_depth = #{record.sumDepth,jdbcType=REAL},
+      </if>
+      <if test="record.beginTime != null" >
+        begin_time = #{record.beginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="record.endTime != null" >
+        end_time = #{record.endTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update layoff
+    set machine_no = #{record.machineNo,jdbcType=VARCHAR},
+      pile_no = #{record.pileNo,jdbcType=VARCHAR},
+      first_weight = #{record.firstWeight,jdbcType=REAL},
+      second_weight = #{record.secondWeight,jdbcType=REAL},
+      first_depth = #{record.firstDepth,jdbcType=REAL},
+      second_depth = #{record.secondDepth,jdbcType=REAL},
+      sum_depth = #{record.sumDepth,jdbcType=REAL},
+      begin_time = #{record.beginTime,jdbcType=VARCHAR},
+      end_time = #{record.endTime,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.hubu.pojo.Layoff" >
+    update layoff
+    <set >
+      <if test="pileNo != null" >
+        pile_no = #{pileNo,jdbcType=VARCHAR},
+      </if>
+      <if test="firstWeight != null" >
+        first_weight = #{firstWeight,jdbcType=REAL},
+      </if>
+      <if test="secondWeight != null" >
+        second_weight = #{secondWeight,jdbcType=REAL},
+      </if>
+      <if test="firstDepth != null" >
+        first_depth = #{firstDepth,jdbcType=REAL},
+      </if>
+      <if test="secondDepth != null" >
+        second_depth = #{secondDepth,jdbcType=REAL},
+      </if>
+      <if test="sumDepth != null" >
+        sum_depth = #{sumDepth,jdbcType=REAL},
+      </if>
+      <if test="beginTime != null" >
+        begin_time = #{beginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null" >
+        end_time = #{endTime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where machine_no = #{machineNo,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.hubu.pojo.Layoff" >
+    update layoff
+    set pile_no = #{pileNo,jdbcType=VARCHAR},
+      first_weight = #{firstWeight,jdbcType=REAL},
+      second_weight = #{secondWeight,jdbcType=REAL},
+      first_depth = #{firstDepth,jdbcType=REAL},
+      second_depth = #{secondDepth,jdbcType=REAL},
+      sum_depth = #{sumDepth,jdbcType=REAL},
+      begin_time = #{beginTime,jdbcType=VARCHAR},
+      end_time = #{endTime,jdbcType=VARCHAR}
+    where machine_no = #{machineNo,jdbcType=VARCHAR}
+  </update>
+</mapper>
