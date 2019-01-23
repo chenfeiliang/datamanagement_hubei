@@ -2,287 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="95fbc36d-2881-46d6-ba08-59ec01cd63bf" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_1_2_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_2_1_2_RELEASE.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hubu/controller/TestHj.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hubu/dao/LayoffMapper.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hubu/pojo/Layoff.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hubu/pojo/LayoffExample.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hubu/service/LayoffService.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/hubu/socket/SocketThread.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/com/hubu/dao/LayoffMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_alibaba_druid_1_1_9.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_3_4.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_4_0.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_6.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_9_8.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_6.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_9_8.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_9_6.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_9_8.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_9_6.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_9_8.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_9_6.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_9_8.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_2_7_9.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_zaxxer_HikariCP_3_2_0.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_46.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_13.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_7_11.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_9_7.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_7_11.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_9_7.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_10_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_api_2_11_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_10_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_logging_log4j_log4j_to_slf4j_2_11_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_5_31.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_14.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_5_31.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_9_0_14.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_5_31.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_14.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_3_9_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_3_11_1.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_10_Final.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_0_14_Final.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_2_15_0.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_2_23_4.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_0_3_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_2_1_2_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_0_3_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_2_1_2_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_devtools_2_0_3_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_devtools_2_1_2_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_0_3_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_2_1_2_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_0_3_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_1_2_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_0_3_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_2_1_2_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_0_3_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_2_1_2_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_2_0_3_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_2_1_2_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_0_3_RELEASE.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_0_3_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_1_2_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_2_0_3_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_2_1_2_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_2_0_3_RELEASE.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_0_7_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_1_4_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_0_7_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_1_4_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_0_7_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_1_4_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_0_7_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_1_4_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_0_7_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_1_4_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_0_7_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_1_4_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_5_0_7_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_5_1_4_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_5_0_7_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_1_4_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_0_7_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_5_1_4_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_0_7_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_1_4_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_0_7_RELEASE.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_1_4_RELEASE.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_5_1.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_xmlunit_xmlunit_core_2_6_2.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_19.xml" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_23.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/TestOnLineSystem.iml" afterPath="$PROJECT_DIR$/TestOnLineSystem.iml" />
-      <change beforePath="$PROJECT_DIR$/jiaoziang/OES后端接口说明文档.md" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/SpringbootApplication.java" afterPath="$PROJECT_DIR$/src/main/java/com/hubu/SpringbootApplication.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/component/LoginInterceptor.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/component/UserInterceptor.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/config/CORSConfiguration.java" afterPath="$PROJECT_DIR$/src/main/java/com/hubu/config/CORSConfiguration.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/config/MVCInterceptorConfig.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/controller/AchievementController.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/controller/AdminController.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/controller/CardController.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/controller/ClassController.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/controller/ExamController.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/controller/HomeController.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/controller/LessonController.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/controller/PaperController.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/controller/QuestionController.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/controller/ScoreController.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/controller/UserController.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/dao/AchievementDAO.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/dao/CardDAO.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/dao/ClassDAO.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/dao/ExamDAO.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/dao/LessonDAO.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/dao/PaperDao.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/dao/QuestionDAO.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/dao/UserDAO.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/dao/WrongDAO.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/dto/AdminDTO.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/dto/QuestionDTO.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/dto/UserDTO.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/pojo/Achievement.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/pojo/Card.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/pojo/Examin.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/pojo/Lesson.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/pojo/MyClass.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/pojo/Paper.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/pojo/Question.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/pojo/User.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/pojo/Wrong.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/service/AchievementService.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/service/AdminService.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/service/CardService.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/service/ClassService.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/service/ExamService.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/service/HomeService.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/service/LessonService.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/service/PageService.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/service/PaperService.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/service/QuestionService.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hubu/service/UserService.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/hubu/dao/AchievementDAO.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/hubu/dao/PageCountDao.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/public/favicon.ico" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/achievement_show.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/aside.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/class_manage.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/examin_add.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/examin_show.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/index.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/lesson_manage.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/login.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/navbar.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/paper_add.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/paper_show.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/password_reset.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/question_add.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/question_show.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/question_up.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/user_add.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/user_up.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin/users.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/css/admin.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/css/style.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/img/default.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/img/logo.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/achievement/achievement_crud.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/achievement/show_class.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/checkbox.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/classes/class_add_dels.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/classes/class_crud.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/classes/class_del_up.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/classes/page.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/config.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/examin/add_user_list.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/examin/byclassid_page.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/examin/examin_add.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/examin/examin_checkbox.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/examin/examin_crud.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/examin/page.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/examin/show_class.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/examin/show_lesson.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/examin/show_paper.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/examin/show_user.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/examin/show_users_account.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/lesson/lesson_add_dels.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/lesson/lesson_crud.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/lesson/lesson_del_up.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/lesson/page.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/page.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/paper/add_list.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/paper/bylessonid_page.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/paper/complete_question.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/paper/list_checkbox.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/paper/page.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/paper/paper_add.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/paper/paper_crud.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/paper/paper_edit.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/paper/paper_sys_add.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/paper/paper_sys_show_lesson.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/paper/question_checkbox.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/paper/show_lesson.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/paper/show_question.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/question/keyword_css.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/question/keyword_page.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/question/page.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/question/question_add.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/question/question_crud.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/question/question_edit.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/question/question_up.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/question/show_lesson.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/user/page.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/user/show_class.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/user/user_crud.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/user/user_edit.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/js/user/user_up.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/animate/animate.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/bootstrap/css/bootstrap-theme.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/bootstrap/css/bootstrap-theme.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/bootstrap/css/bootstrap.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/bootstrap/css/bootstrap.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/bootstrap/js/bootstrap.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/bootstrap/js/bootstrap.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/font-awesome/css/font-awesome.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/font-awesome/css/font-awesome.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/font-awesome/fonts/FontAwesome.otf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/font-awesome/fonts/fontawesome-webfont.eot" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/font-awesome/fonts/fontawesome-webfont.svg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/font-awesome/fonts/fontawesome-webfont.ttf" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/font-awesome/fonts/fontawesome-webfont.woff" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/font-awesome/fonts/fontawesome-webfont.woff2" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/jquery/jquery.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/jquery/jquery.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/jquerysession/jquerysession.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/json-js/json2.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/jsrender/jsrender.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/jsrender/jsrender.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/layer-v3.1.1.zip" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/layer-v3.1.1/layer/layer.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/layer-v3.1.1/layer/mobile/layer.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/layer-v3.1.1/layer/mobile/need/layer.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/layer-v3.1.1/layer/theme/default/icon-ext.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/layer-v3.1.1/layer/theme/default/icon.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/layer-v3.1.1/layer/theme/default/layer.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/layer-v3.1.1/layer/theme/default/loading-0.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/layer-v3.1.1/layer/theme/default/loading-1.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/layer-v3.1.1/layer/theme/default/loading-2.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/layer-v3.1.1/test.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/layer-v3.1.1/文档/jquery下载.url" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/layer-v3.1.1/文档/layer官网.url" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/layer-v3.1.1/文档/layer文档.url" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/layer-v3.1.1/文档/layui社区.url" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/layer-v3.1.1/文档/获得layim.url" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/layer-v3.1.1/更新日志.txt" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/moment/moment-with-locales.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/moment/moment.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/nprogress/nprogress.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/nprogress/nprogress.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/require/require.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/require/require.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/simplemde/simplemde.min.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/simplemde/simplemde.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/swipe/swipe.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/twbs-pagination/jquery.twbsPagination.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/assets/vendors/twbs-pagination/jquery.twbsPagination.min.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/common.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/exam.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/examBefore.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/index.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/style.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/front/exam.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/front/examBefore.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/front/index.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/front/selectScore.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/front/wrong.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/front/wrongBefore.html" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/1.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/dl.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/hj.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/ht_name.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/lgbg.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/loading.gif" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/srbg.png" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/config.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/exam.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/examBefore.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/index.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/login.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/selectScore.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/wrong.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/wrongBefore.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/avatar.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/avatar_1.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/avatar_2.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/hots_1.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/hots_2.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/hots_3.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/hots_4.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/hots_5.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/slide_1.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/slide_2.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/widget_1.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/widget_2.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/widget_3.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/widget_4.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/uploads/widget_5.jpg" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/hubu/SpringbootApplicationTests.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/hubu/controller/UserControllerTest.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/hubu/dao/AchievementDAOTest.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/hubu/dao/CardDAOTest.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/hubu/dao/QuestionDAOTest.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/hubu/dao/UserDAOTest.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/hubu/service/AdminServiceTest.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/hubu/service/ExamServiceTest.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/testOnLine.doc" afterPath="" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/datamanagement_hubei.iml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/springboot.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/TestOnLineSystem.iml" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -297,18 +22,38 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1936">
+            <state relative-caret-position="610">
               <caret line="88" column="8" lean-forward="false" selection-start-line="78" selection-start-column="17" selection-end-line="88" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SocketThread.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SocketThread.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hubu/socket/SocketThread.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="117">
-              <caret line="171" column="44" lean-forward="true" selection-start-line="171" selection-start-column="44" selection-end-line="171" selection-end-column="44" />
+              <caret line="171" column="44" lean-forward="false" selection-start-line="171" selection-start-column="44" selection-end-line="171" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="datamanagement_hubei.iml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/datamanagement_hubei.iml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Test.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hubu/controller/Test.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="44">
+              <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -487,44 +232,44 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
-              <item name="TestOnLineSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestOnLineSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="datamanagement_hubei" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datamanagement_hubei" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="TestOnLineSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestOnLineSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="datamanagement_hubei" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datamanagement_hubei" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="TestOnLineSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestOnLineSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="datamanagement_hubei" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datamanagement_hubei" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="TestOnLineSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestOnLineSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="datamanagement_hubei" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datamanagement_hubei" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="TestOnLineSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestOnLineSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="datamanagement_hubei" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datamanagement_hubei" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="hubu" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="TestOnLineSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestOnLineSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="datamanagement_hubei" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datamanagement_hubei" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
@@ -532,58 +277,29 @@
               <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="TestOnLineSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestOnLineSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="datamanagement_hubei" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datamanagement_hubei" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="hubu" type="462c0819:PsiDirectoryNode" />
-              <item name="socket" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="TestOnLineSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestOnLineSystem" type="462c0819:PsiDirectoryNode" />
+              <item name="datamanagement_hubei" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datamanagement_hubei" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TestOnLineSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestOnLineSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="hubu" type="462c0819:PsiDirectoryNode" />
               <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TestOnLineSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestOnLineSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TestOnLineSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestOnLineSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="TestOnLineSystem" type="b2602c69:ProjectViewProjectNode" />
-              <item name="TestOnLineSystem" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
       <pane id="AndroidView" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -883,6 +599,9 @@
       <workItem from="1547891229046" duration="1255000" />
       <workItem from="1547950138876" duration="77000" />
       <workItem from="1548143215272" duration="3590000" />
+      <workItem from="1548260233854" duration="130000" />
+      <workItem from="1548260461681" duration="108000" />
+      <workItem from="1548261175296" duration="144000" />
     </task>
     <task id="LOCAL-00001" summary="xinde">
       <created>1531473164772</created>
@@ -954,7 +673,14 @@
       <option name="project" value="LOCAL" />
       <updated>1532314986801</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="cfl 2018 7 23">
+      <created>1548261259443</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1548261259443</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -990,10 +716,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156981000" />
+    <option name="totallyTimeSpent" value="157363000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1050,8 +777,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hubu/controller/QuestionController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hubu/dao/AdminDao.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hubu/controller/ChatSever.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hubu/service/AdminService.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hubu/controller/HomeController.java" />
@@ -2059,18 +1784,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hubu/socket/SocketThread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="117">
+          <caret line="171" column="44" lean-forward="false" selection-start-line="171" selection-start-column="44" selection-end-line="171" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1936">
+        <state relative-caret-position="610">
           <caret line="88" column="8" lean-forward="false" selection-start-line="78" selection-start-column="17" selection-end-line="88" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hubu/socket/SocketThread.java">
+    <entry file="file://$PROJECT_DIR$/datamanagement_hubei.iml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="117">
-          <caret line="171" column="44" lean-forward="true" selection-start-line="171" selection-start-column="44" selection-end-line="171" selection-end-column="44" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hubu/controller/Test.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -2118,7 +1859,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.8 (1)</last-edited>
+          <last-edited>1.8</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
