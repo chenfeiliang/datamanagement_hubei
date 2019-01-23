@@ -3,7 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/TestOnLineSystem.iml" filepath="$PROJECT_DIR$/TestOnLineSystem.iml" />
-      <module fileurl="file://$PROJECT_DIR$/springboot.iml" filepath="$PROJECT_DIR$/springboot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/datamanagement_hubei1.0.iml" filepath="$PROJECT_DIR$/datamanagement_hubei1.0.iml" />
     </modules>
   </component>
 </project>

@@ -6,11 +6,13 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="datamanagement_hubei1.0" />
         <module name="springboot" />
         <module name="TestOnLineSystem" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="datamanagement_hubei1.0" target="1.8" />
       <module name="springboot" target="1.8" />
       <module name="TestOnLineSystem" target="1.8" />
     </bytecodeTargetLevel>
