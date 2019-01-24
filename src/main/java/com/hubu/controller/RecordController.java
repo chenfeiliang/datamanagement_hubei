@@ -30,4 +30,14 @@ public class RecordController
         PageInfo<Record> records = recorderService.findRecordWithPage(1,PAGESIZE);
         return new Msg().success().add("result",records);
     }
+/*    @RequestMapping("index")
+    public String  index(){
+        return "index";
+    }
+
+
+    @RequestMapping("hello")
+    public String  hello(){
+        return "hello";
+    }*/
 }

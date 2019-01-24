@@ -9,6 +9,7 @@ public class RecordMapperTest {
 
     @Test
     public void selectByExample() {
-
+        float x = 10.4f;
+        System.out.println((x%1));
     }
 }

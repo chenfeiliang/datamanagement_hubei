@@ -194,11 +194,12 @@ public class SocketThread implements Runnable
 
         //处理打桩记录
         //记录数量
-        float icount = SumDepth/100;
+
+        int icount = (int)SumDepth;
         //加一处理标志位
         char icountFlag = 0;
         System.out.println("记录初值:" + icount);
-        if(SumDepth%100 > 0)
+        if(SumDepth%1 > 0)
         {
             icountFlag = 1;
             icount++;
@@ -228,7 +229,7 @@ public class SocketThread implements Runnable
             {
                 if(icountFlag == 1)
                 {
-                    System.out.println("第 " + i + " 到 " + ((char)(SumDepth/1000 + '0')) + ((char)(SumDepth%1000/100 + '0')) + "." + ((char)(SumDepth%100/10 + '0')) + ((char)(SumDepth%10/1 + '0')) + " 米下料: " + ((char)(KGM[i]%100/10 + '0')) + ((char)(KGM[i]%10/1 + '0')) + " KG");
+                    System.out.println("第 " + i + " 到 " + SumDepth + " 米下料: " + ((char)(KGM[i]%100/10 + '0')) + ((char)(KGM[i]%10/1 + '0')) + " KG");
 
                     tempStr = new StringBuffer(""+((char)(KGM[i]%100/10 + '0')) + ((char)(KGM[i]%10/1 + '0')));
                     if(tempStr.length()<3){

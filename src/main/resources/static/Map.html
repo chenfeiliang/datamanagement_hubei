@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>地图测试</title>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/map.css">
+    <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hwQLSSEWuRivhLgMPF7CbqXFGLXPW6o1"></script>
+</head>
+<body>
+	
+	<!--顶部 start-->
+		<header>
+			<!--logo部分 start-->
+			<div class="logo">
+				<h1>
+					<a href="#" title="学成在线教育平台">学成在线</a>
+				</h1>
+			</div>
+			<!--logo 部分 end-->
+			<!--nav 部分 start-->
+			<nav>
+				<ul>
+					<li><a href="#">数据展示</a></li>
+					<li><a href="#">电子地图</a></li>
+					<li><a href="#">视频监控</a></li>
+					<li><a href="#">联系我们</a></li>
+				</ul>
+			</nav>
+			<!--nav 部分 end-->
+			<!--search 部分 start-->
+			<div class="search">
+				<input type="search" name="" id="" placeholder="请输入关键字"/><button></button>
+			</div>
+			<!--search 部分 end-->
+			<!--个人中心部分 start-->
+			<div class="personal">
+				<dl>
+					<dt>个人中心
+						<dd>
+							<span>
+								<img src="images/people.png" alt="" />刘德华
+							</span>
+						</dd>
+					</dt>
+				</dl>
+			</div>
+			<!--个人中心部分 end-->
+		</header>
+		<!--顶部 end-->
+	
+<div class="data">
+
+    <div class="data-content">
+        <div class="con-left fl">
+            <div class="left-top">
+                <div class="info">
+                    <div class="info-title">实时统计</div>
+                    <img src="img/bj-1.png" alt="" class="bj-1">
+                    <img src="img/bj-2.png" alt="" class="bj-2">
+                    <img src="img/bj-3.png" alt="" class="bj-3">
+                    <img src="img/bj-4.png" alt="" class="bj-4">
+                    <div class="info-main">
+                        <div class="info-1">
+                            <div class="info-img fl">
+                                <img src="img/info-img-1.png" alt="">
+                            </div>
+                            <div class="info-text fl">
+                                <p>车辆总数(辆)</p>
+                                <p>12,457</p>
+                            </div>
+                        </div>
+                        <div class="info-2">
+                            <div class="info-img fl">
+                                <img src="img/info-img-2.png" alt="">
+                            </div>
+                            <div class="info-text fl">
+                                <p>当前在线数(辆)</p>
+                                <p>12,457</p>
+                            </div>
+                        </div>
+                        <div class="info-3">
+                            <div class="info-img fl">
+                                <img src="img/info-img-3.png" alt="">
+                            </div>
+                            <div class="info-text fl">
+                                <p>今日活跃数(辆)</p>
+                                <p>12,457</p>
+                            </div>
+                        </div>
+                        <div class="info-4">
+                            <div class="info-img fl">
+                                <img src="img/info-img-4.png" alt="">
+                            </div>
+                            <div class="info-text fl">
+                                <p>今日活跃率(%)</p>
+                                <p>83</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="top-bottom">
+                    <div class="title">行业分类</div>
+                    <img src="img/bj-1.png" alt="" class="bj-1">
+                    <img src="img/bj-2.png" alt="" class="bj-2">
+                    <img src="img/bj-3.png" alt="" class="bj-3">
+                    <img src="img/bj-4.png" alt="" class="bj-4">
+                    <div id="echarts_1" class="charts"></div>
+                </div>
+            </div>
+            <div class="left-bottom">
+                <div class="title">车型分类</div>
+                <img src="img/bj-1.png" alt="" class="bj-1">
+                <img src="img/bj-2.png" alt="" class="bj-2">
+                <img src="img/bj-3.png" alt="" class="bj-3">
+                <img src="img/bj-4.png" alt="" class="bj-4">
+                <div id="echarts_2" class="charts"></div>
+            </div>
+        </div>
+        <div class="con-center fl">
+            <!--<div class="map-num">
+                <p>实时行驶车辆(辆)</p>
+                <div class="num">
+                    <span>1</span>
+                    <span>,</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>,</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                </div>
+            </div>-->
+            
+            
+            <div class="cen-top" id="map"></div>
+            <div class="cen-top-baidu" id="baidu_map" style="display: none;"></div>
+            
+            
+            
+            <button id="button_change_map" onclick="mapchange()">切换地图</button>
+            
+            <script type="text/javascript">
+            	var flagofmap = 0;
+            	function mapchange(){
+            		if(flagofmap == 0){
+            			document.getElementById('map').style.display='none';
+            			document.getElementById('baidu_map').style.display='block';
+            			flagofmap = 1;
+            		}else if(flagofmap == 1){
+            			document.getElementById('map').style.display='block';
+            			document.getElementById('baidu_map').style.display='none';
+            			flagofmap = 0;
+            		}
+            	}
+				var map = new BMap.Map("baidu_map"); 			//创建地图实例 
+				var point = new BMap.Point(116.404, 39.915); 	//创建点坐标 
+				map.centerAndZoom(point, 15); 					//初始化地图，设置中心点坐标和地图级别  
+				map.enableScrollWheelZoom(true);     			//开启鼠标滚轮缩放  
+				map.addControl(new BMap.NavigationControl());	//添加左侧缩放控件   
+				map.addControl(new BMap.ScaleControl());   		//添加比例尺控件
+				map.addControl(new BMap.OverviewMapControl());  //添加个缩略图控件 
+				map.addControl(new BMap.MapTypeControl());   	//添加地图类型转换控件
+				map.setCurrentCity("北京"); 					//仅当设置城市信息时，MapTypeControl的切换功能才能可用
+			
+	  
+				var marker = new BMap.Marker(point);        // 创建标注   
+				map.addOverlay(marker);                     // 将标注添加到地图
+				var opts = {    
+				width : 250,     // 信息窗口宽度   
+				height: 100,     // 信息窗口高度    
+				title : "Hello"  // 信息窗口标题   
+				}   
+				var infoWindow = new BMap.InfoWindow("World", opts);  // 创建信息窗口对象 
+				marker.addEventListener("click", function(){
+					//alert("您点击了标注"); 
+					map.openInfoWindow(infoWindow, point);      // 打开信息窗口				
+				});   
+				
+				//画折线
+				var polyline = new BMap.Polyline([      
+				new BMap.Point(116.399, 39.910),   
+				new BMap.Point(116.405, 39.920)],{
+				strokeColor:"blue", strokeWeight:6, strokeOpacity:0.5
+				});   
+				map.addOverlay(polyline); 
+			</script> 
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <div class="cen-bottom">
+                <div class="title">车辆充电高峰时间</div>
+                <img src="img/bj-1.png" alt="" class="bj-1">
+                <img src="img/bj-2.png" alt="" class="bj-2">
+                <img src="img/bj-3.png" alt="" class="bj-3">
+                <img src="img/bj-4.png" alt="" class="bj-4">
+                <div id="echarts_3" class="charts"></div>
+            </div>
+        </div>
+        <div class="con-right fr">
+            <div class="right-top">
+                <div class="title">本月行驶里程TOP5</div>
+                <img src="img/bj-1.png" alt="" class="bj-1">
+                <img src="img/bj-2.png" alt="" class="bj-2">
+                <img src="img/bj-3.png" alt="" class="bj-3">
+                <img src="img/bj-4.png" alt="" class="bj-4">
+                <div id="echarts_4" class="charts"></div>
+            </div>
+            <div class="right-center">
+                <div class="title">报警车辆TOP5</div>
+                <img src="img/bj-1.png" alt="" class="bj-1">
+                <img src="img/bj-2.png" alt="" class="bj-2">
+                <img src="img/bj-3.png" alt="" class="bj-3">
+                <img src="img/bj-4.png" alt="" class="bj-4">
+                <div id="echarts_5" class="charts"></div>
+            </div>
+            <div class="right-bottom">
+                <div class="title">电池报警车辆TOP10</div>
+                <img src="img/bj-1.png" alt="" class="bj-1">
+                <img src="img/bj-2.png" alt="" class="bj-2">
+                <img src="img/bj-3.png" alt="" class="bj-3">
+                <img src="img/bj-4.png" alt="" class="bj-4">
+                <div id="echarts_6" class="charts"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script src="js/echarts.min.js"></script>
+<script src="js/china.js"></script>
+<script src="js/Map_echarts.js"></script>
+</html>

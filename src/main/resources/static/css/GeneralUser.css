@@ -1,0 +1,802 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+html,
+body {
+	width: 100%;
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+body {
+	background-color: #F3F5F7;
+	background-image: url(../images/map_bg.png);
+}
+/*顶部 start*/
+header {
+	width: 100%;
+	height: 58px;
+	margin: 0 auto;
+	padding-top: 10px;
+	padding-right: 13px;
+	border-bottom: 1px solid #0D48E0;
+	background: rgba(0,24,106,0.5);
+}
+/*logo 部分 start*/
+.logo {
+	width: 136px;
+	height: 33px;
+	float: left;
+}
+.logo a {
+	display: block;
+	width: 250px;
+	height: 50px;
+	background: url("../images/logo.png") no-repeat;
+	text-indent: -666px;  /*隐藏链接里面的文字*/
+	overflow: hidden;
+	margin-top: -4.4px;
+	margin-left: 5px;
+}
+/*logo 部分 end*/
+/*nav 部分 start*/
+nav {
+	float: left;
+	margin-left: 47px;
+	margin-top: 4.6px;
+}
+nav li {
+	float: left;
+	height: 26.6px;
+	line-height: 26.6px;
+	margin-right: 30px;
+}
+nav li a {
+	display: block;
+	height: 26.6px;
+	font-size: 20px;
+	padding: 0 44.6px;
+	color: #00f6ff;
+	margin-left: 77px;
+}
+nav li a:hover {
+	color: #F10215;
+}
+/*nav 部分 end*/
+/*搜索部分 start*/
+.search {
+	width: 340px;
+	height: 26.6px;
+	float: left;
+	margin-left: 4.6px;
+}
+.search input {
+	width: 300px;
+	height: 33.3px;
+	border: 1px solid #00A4FF;
+	outline: line;   /*轮廓线*/
+	padding-left: 6.6px;
+	float: left;
+	font-size: 13.3px;
+}
+.search button {
+	width: 40px;
+	height: 33.3px;
+	border: 0;
+	float: left;
+	background-color: #00A4FF;
+	background: url("../images/search.png");
+	outline: none;
+	background-size: 40px 35.3px;
+}
+/*搜索部分 end*/
+/*个人中心部分 start*/
+.personal {
+	float: right;
+	height: 40px;
+	line-height: 32px;
+	font-size: 18.6px;
+	color: #18F9F3;
+}
+.personal dt,
+.personal dd {
+	float: left;
+}
+.personal dt {
+	margin-right: 20px;
+	color: #18F9F3;
+}
+.personal span img {
+	border-radius: 50%;
+	vertical-align: middle;
+	margin-right: 20px;
+	width: 26.6px;
+	margin-bottom: 2.6px;
+}
+/*个人中心部分 end*/
+
+
+/*顶部 end*/
+.banner-left{
+	height: calc(100% - 58px);
+	float: left;
+	width: 10%;
+}
+.banner-left .title {
+	width: 100%;
+	height: 35px;
+	background: rgba(0,24,106,0.5);
+	position: relative;
+	border-bottom: 1px solid #0D48E0;
+    border-right: 1px solid #0D48E0;
+    border-left: 1px solid #0D48E0;
+    border-top: 1px solid #0D48E0;
+}
+.banner-left .title .left-title {
+	position: absolute;
+	left: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-size: 16px;
+	color: #00F6F4;
+	
+}
+.banner-left .title .right-title {
+	position: absolute;
+	right: 14px;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 40px;
+	height: 25px;
+	font-size: 13px;
+	background: #2897c4;
+	color: #fff;
+	border: 0;
+	outline: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-weight: bold;
+}
+.banner-left .title .right-title:hover {
+	color: #ff0000;
+}
+.banner-left .body {
+	height: calc(100% - 58px);
+	width: 100%;
+}
+.banner-left .body ul li {
+	list-style: none;
+	color: red;
+	border: 1px solid blue;
+	font-size: 20px;
+	text-align: center;
+}
+.banner {
+	height: calc(100% - 58px);
+	float: right;
+	width: 100%;
+}
+.banner .form-data {
+	width: 100%;
+	height: 53%;
+}
+.banner .form-data .form-data-left {
+	width: 85%;
+	height: 100%;
+	float: left;
+}
+.banner .form-data .form-data-left .top {
+	width: 98%;
+	height: 60px;
+	border-bottom: 1px solid #0D48E0;
+	border-right: 1px solid #0D48E0;
+	border-left: 1px solid #0D48E0;
+	border-top: 1px solid #0D48E0;
+	margin: 1% auto;
+	line-height: 60px;
+	padding-left: 50px;
+	position: relative;
+	background: rgba(0,24,106,0.5);
+}
+.banner .form-data .form-data-left .top .bj-1 {
+	position: absolute;
+    left: -1px;
+    top: -1px;
+}
+.banner .form-data .form-data-left .top .bj-2 {
+	position: absolute;
+    right: -1px;
+    top: -1px;
+}
+.banner .form-data .form-data-left .top .bj-3 {
+	position: absolute;
+    right: -1px;
+    bottom: -1px;
+}
+.banner .form-data .form-data-left .top .bj-4 {
+	position: absolute;
+    left: -1px;
+    bottom: -1px;
+}
+.banner .form-data .form-data-left .top form {
+	height: 100%;
+	width: 275px;
+	float: left;
+	line-height: 40px;
+	margin-left: 4.5px;
+}
+.banner .form-data .form-data-left .top button {
+	width: 90px;
+	height: 30px;
+	font-size: 16.6px;
+	margin-top: 15.6px;
+	margin-left: 38.3px;
+	background: rgba(255,255,255,0);
+	border: 0;
+	color: #fff;
+	font-weight: bold;
+	cursor: pointer;
+	border-radius: 10px;
+}
+.banner .form-data .form-data-left .top button:first-child {
+	background: #FF0000;
+}
+.banner .form-data .form-data-left .top button:hover {
+	/*background: #00FCFF;*/
+	color: orange;
+}
+.banner .form-data .form-data-left .top form:first-child {
+	width: 180px;
+}
+.banner .form-data .form-data-left .top form:nth-child(2) {
+	width: 220px;
+}
+.banner .form-data .form-data-left .top form:nth-child(5) {
+	width: 190px;
+}
+.banner .form-data .form-data-left .top form label {
+	display: inline-block;
+	font-size: 18px;
+	height: 100%;
+	line-height: 60px;
+	font-weight: bold;
+	color: purple;
+}
+.banner .form-data .form-data-left .top form:first-child label {
+	color: orange;
+}
+.banner .form-data .form-data-left .top form:nth-child(2) label {
+	color: red;
+}
+.banner .form-data .form-data-left .top form:nth-child(3) label {
+	color: green;
+}
+.banner .form-data .form-data-left .top form:nth-child(4) label {
+	color: yellow;
+}
+.banner .form-data .form-data-left .top form input {
+	width: 166.6px;
+	height: 29.3px;
+	font-size: 16.6px;
+	text-align: center;
+    color: #fff;    
+    background: none;
+    border: 1px solid #0D48E0;
+}
+.banner .form-data .form-data-left .top form #pileNo {
+	width: 53.3px;
+}
+.banner .form-data .form-data-left .top form #machineNo {
+	width: 120px;
+}
+.banner .form-data .form-data-left .top form #team {
+	width: 100px;
+}
+
+
+.banner .form-data .form-data-left .middle {
+	width: 98%;
+	height: 330px;
+	/*overflow: auto;*/
+	overflow: hidden;
+	border-top: 1px solid #0D48E0;
+	border-right: 1px solid #0D48E0;
+	margin: 20px auto 10px auto;
+}
+.banner .form-data .form-data-left .middle table {
+	width: 100%;
+	height: 100%;
+	border: 1px solid #000;
+	border-right: 0;
+	background: rgba(0,24,106,0.5);
+}
+.banner .form-data .form-data-left .middle table td {
+	text-align: center;
+	border-bottom: 1px solid #0D48E0;
+	border-left: 1px solid #0D48E0;
+	font-size: 16.6px;
+	color: #ccc;
+}
+.banner .form-data .form-data-left .middle table th {
+	text-align: center;
+	border-bottom: 1px solid #0D48E0;
+	border-left: 1px solid #0D48E0;
+	height: 26px;
+	font-weight: bold;
+	font-size: 18px;
+	color: rgb(0, 252, 255);
+}
+.banner .form-data .form-data-left .bottom {
+	width: 100%;
+	height: calc(100% - 460px);
+	position: relative;
+}
+.banner .form-data .form-data-left .bottom p {
+	font-size: 21px;
+	padding-left: 44px;
+	padding-top: 6.6px;
+	box-sizing: border-box;
+	color: rgb(0, 252, 255);
+}
+
+.banner .form-data .form-data-left .bottom p i {
+	color: red;
+}
+.banner .form-data .form-data-left .bottom span {
+	font-size: 21px;
+	position: absolute; 
+	right: 45px;
+	top: 6.6px;
+	color: #fff;
+}
+
+.banner .form-data .form-data-left .bottom .bt1{
+	width: 60px;
+    height: 30px;
+    float: left;
+    font-size: 16.6px;
+    margin-top: -30px;
+    margin-left: 500px;
+    font-size: 10.6px;
+    padding-left: 0px;
+    background: 0;
+    color:#fff;
+    font-size: 16px;
+    font-weight:bold;
+    border: 0;
+    cursor: pointer;
+    background: #FF0000;
+    border-radius: 5px;
+    outline: none;
+}
+.banner .form-data .form-data-left .bottom .bt1:hover{
+	color: #2897C4;
+}
+.banner .form-data .form-data-left .bottom .bt2{
+	width: 60px;
+    height: 30px;
+    float: left;
+    font-size: 16.6px;
+    margin-top: -31px;
+    margin-left: 600px;
+    font-size: 10.6px;
+    padding-left: 0px;
+    padding-top: 2.6px;
+    background: 0;
+    color:#fff;
+    font-size: 16px;
+    font-weight:bold;
+    border: 0;
+    cursor: pointer;
+    background: #36791A;
+    border-radius: 5px;
+    outline: none;
+}
+.banner .form-data .form-data-left .bottom .bt2:hover{
+	color: #FF0000;
+}
+.banner .form-data .form-data-left .bottom input{
+	width: 60px;
+    height: 31px;
+    border: 0;
+    border: 1px solid orange;
+    outline: none;
+    font-size: 14px;
+    text-align: center;
+    background: 0;
+    color: #fff;
+    float: left;
+    margin-top: -32px;
+    margin-left: 722px;
+}
+.banner .form-data .form-data-left .bottom .bt3{
+	width: 60px;
+    height: 30px;
+    float: left;
+    font-size: 16.6px;
+    margin-top: -31px;
+    margin-left: 792px;
+    font-size: 10.6px;
+    padding-left: 0px;
+    padding-top: 2.6px;
+    background: 0;
+    color:#fff;
+    font-size: 16px;
+    font-weight:bold;
+    border: 0;
+    cursor: pointer;
+    background: orange;
+    border-radius: 5px;
+    outline: none;
+}
+.banner .form-data .form-data-left .bottom .bt3:hover{
+	color: #FF0000;
+}
+.banner .form-data .form-data-left .bottom .bt4{
+	width: 60px;
+    height: 30px;
+    float: left;
+    font-size: 16.6px;
+    margin-top: -31px;
+    margin-left: 900px;
+    font-size: 10.6px;
+    padding-left: 0px;
+    padding-top: 2.6px;
+    background: 0;
+    color:#fff;
+    font-size: 16px;
+    font-weight:bold;
+    border: 0;
+    cursor: pointer;
+    background: #36791A;
+    border-radius: 5px;
+    outline: none;
+}
+.banner .form-data .form-data-left .bottom .bt4:hover{
+	color: #FF0000;
+}
+.banner .form-data .form-data-left .bottom .bt5{
+	width: 60px;
+    height: 30px;
+    float: left;
+    font-size: 16.6px;
+    margin-top: -30px;
+    margin-left: 1000px;
+    font-size: 10.6px;
+    padding-left: 0px;
+    background: 0;
+    color:#fff;
+    font-size: 16px;
+    font-weight:bold;
+    border: 0;
+    cursor: pointer;
+    background: #FF0000;
+    border-radius: 5px;
+    outline: none;
+}
+.banner .form-data .form-data-left .bottom .bt5:hover{
+	color: #2897C4;
+}
+
+.banner .form-data .form-data-right {
+	width: 15%;
+	height: calc(100% - 1px);
+	float: left;
+}
+.banner .form-data .form-data-right .tick-top {
+	width: 95%;
+	height: 56%;
+	border-right: 1px solid #0D48E0;
+	box-sizing: border-box;
+	color: #18F9F3;
+	border-bottom: 1px solid #0D48E0;
+	border-left: 1px solid #0D48E0;
+	border-top: 1px solid #0D48E0;
+	margin-top: 2%;
+	position: relative;
+	background: rgba(0,24,106,0.5);
+	
+}
+.banner .form-data .form-data-right .tick-top .bj-1 {
+	position: absolute;
+    left: -1px;
+    top: -1px;
+}
+.banner .form-data .form-data-right .tick-top .bj-2 {
+	position: absolute;
+    right: -1px;
+    top: -1px;
+}
+.banner .form-data .form-data-right .tick-top .bj-3 {
+	position: absolute;
+    right: -1px;
+    bottom: -1px;
+}
+.banner .form-data .form-data-right .tick-top .bj-4 {
+	position: absolute;
+    left: -1px;
+    bottom: -1px;
+}
+.banner .form-data .form-data-right .tick-top p {
+	width: 100%;
+	height: 24px;
+	font-size: 17px;
+	padding-left: 13.3px;
+	box-sizing: border-box;
+}
+.banner .form-data .form-data-right .tick-top p:first-child {
+	text-align: center;
+}
+.banner .form-data .form-data-right .tick-bottom {
+	width: 95%;
+	height: calc(41% - 10px);
+	box-sizing: border-box;
+	overflow: auto;
+	margin-top: 7px;
+	background: rgba(0,24,106,0.5);
+}
+.banner .form-data .form-data-right .tick-bottom table {
+	width: 100%;
+	height: 100%;
+	color: #ccc;
+	border-left: 1px solid #0D48E0;
+}
+.banner .form-data .form-data-right .tick-bottom table th {
+	border-bottom: 1px solid #0D48E0;
+	border-right: 1px solid #0D48E0;
+	border-top: 1px solid #0D48E0;
+	font-size: 18px;
+	box-sizing: border-box;
+	color: rgb(0, 252, 255);
+}
+.banner .form-data .form-data-right .tick-bottom table td {
+	text-align: center;
+	border-bottom: 1px solid #0D48E0;
+	border-right: 1px solid #0D48E0;
+	font-size: 15px;
+	box-sizing: border-box;
+}
+.banner .chart {
+	width: 98%;
+	height: 45%;
+	margin: 0 auto;
+}
+.banner .chart .bj-1 {
+	position: absolute;
+    left: -1px;
+    top: -1px;
+}
+.banner .chart .bj-2 {
+	position: absolute;
+    right: -1px;
+    top: -1px;
+}
+.banner .chart .bj-3 {
+	position: absolute;
+    right: -1px;
+    bottom: -1px;
+}
+.banner .chart .bj-4 {
+	position: absolute;
+    left: -1px;
+    bottom: -1px;
+}
+.banner  .chart .left{
+	width: 30%;
+	height: 100%;
+	float: left;
+	background: rgba(0,24,106,0.5);
+	border: 1px solid #20558b;
+	position: relative;
+}
+.banner  .chart .left .left-chart {
+	width: 100%;
+	height: 100%;
+}
+.banner  .chart .left .left-data-box{
+	width: 100%;
+	height: 90%;
+	background: #fff;
+}
+.banner  .chart .mid{
+	width: 32%;
+	height: 100%;
+	float: left;
+	background: rgba(0,24,106,0.5);
+	border: 1px solid #20558b;
+	position: relative;
+	margin-left: 4%;
+}
+.banner  .chart .mid .img {
+	width: 100%;
+	height: 80%;
+	background-size: 100% 100%;
+}
+.banner  .chart .mid .team-data {
+	width: 100%;
+	height: 20%;
+}
+.banner  .chart .mid .team-data p {
+	width: 100%;
+	height: 50%;
+}
+.banner  .chart .mid .team-data p span {
+	display: inline-block;
+	width: 20%;
+	font-size: 16px;
+	margin-left: 18px;
+	color: #18F9F3;
+}
+.banner  .chart .mid .team-data p input {
+	width: 98.3px;
+	height: 23.3px;
+	border: 0;
+	border-bottom: 1px solid #0D48E0;
+	outline: none;
+	font-size: 14px;
+	text-align: center;
+	background: 0;
+	color: #fff;
+}
+.banner  .chart .right{
+	width: 30%;
+	height: 100%;
+	float: left;
+	background: rgba(0,24,106,0.5);
+	border: 1px solid #20558b;
+	position: relative;
+	margin-left: 4%;
+}
+.banner  .chart .right .right-chart {
+	width: 100%;
+	height: 100%;
+}
+
+/*media 查询  适配1366×768屏幕得电脑*/
+@media screen and (max-width: 1366px) {
+	html,
+	body {
+		width: 100%;
+		height: 100%;
+	}
+	header {
+		height: 50px;
+	}
+	nav li {
+	    margin-right: -23px;
+	}
+	nav li a {
+		font-size: 15px;
+		padding: 0 56px;
+	}
+	.logo a {
+		height: 40px;
+	}
+	.personal dt, 
+	.personal dd {
+		font-size: 15px;
+	}
+	.banner .form-data .form-data-left .top form {
+		width: 200px;
+	}
+	.banner .form-data .form-data-left .top form:first-child {
+		width: 140px;
+	}
+	.banner .form-data .form-data-left .top {
+		padding-left: 0;
+		position: relative;
+	}
+	.banner .form-data .form-data-left .top form label {
+		font-size: 15px;
+		line-height: 45px;
+	}
+	.banner .form-data .form-data-left .top form input {
+		width: 125px;
+		font-size: 15px;
+	}
+	.banner .form-data .form-data-left .top button {
+		position: absolute;
+		width: 80px;
+		font-size: 15px;
+		margin-left: 15px;
+		top: -8px;
+		right: 0;
+		outline: none;
+	}
+	.banner .form-data .form-data-left .top .button-one {
+		right: 115px;
+	}
+	.banner .form-data .form-data-left .top .button-two {
+		right: 15px;
+	}
+	.banner .form-data .form-data-left .top form:nth-child(2) {
+		width: 192px;
+	}
+	.banner .form-data .form-data-left .top form:nth-child(5) {
+		width: 176px;
+	}
+	.banner .form-data .form-data-left .middle table th {
+		font-size: 13px;
+	}
+	.banner .form-data .form-data-left .middle table td {
+		font-size: 14px;
+	}
+	.banner .form-data .form-data-right .tick-top p {
+		height: 16px;
+		font-size: 13px;
+	}
+	.banner .form-data .form-data-right .tick-bottom table th {
+		font-size: 14px;
+	}
+	.banner .form-data .form-data-right .tick-bottom table td {
+		font-size: 13px;
+	}
+	.banner .form-data .form-data-left .middle {
+		height: 280px;
+		margin: 10px auto;
+	}
+	.banner .form-data .form-data-left .bottom span {
+		font-size: 15px;
+		right: 370px;
+		top: 0;
+	}
+	.banner .form-data .form-data-left .bottom p {
+		font-size: 15px;
+		padding-top: 0;
+	}
+	.banner .form-data .form-data-left .top {
+		height: 45px;
+	}
+	.banner .chart {
+		height: 37%;
+		margin-top: 65px;
+	}
+	.banner .form-data .form-data-left .bottom button:nth-child(3) {
+		width: 120px;
+		height: 30px;
+		font-size: 14px;
+		margin-right: 230px;
+		margin-top: -30px;
+	}
+	.banner .form-data .form-data-left .bottom button:nth-child(2) {
+		width: 120px;
+		height: 30px;
+		font-size: 14px;
+		margin-left: 880px;
+		margin-top: -25px;
+	}
+	.banner  .chart .mid .team-data p span {
+		font-size: 14px;
+	}
+	.banner-left .body ul li {
+		font-size: 15px;
+	}
+	.banner  .chart .left {
+		width: 31%;
+	}
+	.banner  .chart .mid {
+		margin-left: 3%;
+	}
+	.banner  .chart .right {
+		margin-left: 3%;
+		width: 31%;
+	}
+	.banner  .chart .mid .team-data p input {
+		width: 83px;
+		height: 10px;
+	}
+	.banner .form-data .form-data-right .tick-bottom {
+		height: calc(41% + 27px);
+	}
+}
+
+#weight_record{
+	overflow-y: scroll;
+}
+
+#recordNoTd{
+	display: none;
+}
+
+
