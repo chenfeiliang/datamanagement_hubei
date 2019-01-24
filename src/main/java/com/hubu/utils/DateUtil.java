@@ -8,7 +8,7 @@ import java.util.Date;
 public class DateUtil {
     public static String DateToString(Date date) {
 
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
         String dateString = formatter.format(date);
 
@@ -27,7 +27,7 @@ public class DateUtil {
 
     public static Date StringToDate(String dt) {
 
-        DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        DateFormat format1 = new SimpleDateFormat("yyyy/MM/dd/HH:mm");
 
         Date date = null;
 

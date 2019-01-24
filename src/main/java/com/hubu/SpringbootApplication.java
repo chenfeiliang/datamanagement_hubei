@@ -2,6 +2,7 @@ package com.hubu;
 
 import com.hubu.socket.SocketThread;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -18,9 +19,15 @@ public class  SpringbootApplication {
 
 	static SocketThread socketThread;
 
+	@Value("${sorcketPort}")
+	String sorcketPortTmep;
+
+	static String sorcketPort;
+
 	@PostConstruct
 	public void init(){
 		socketThread = socketThreadTemp;
+		sorcketPort = sorcketPortTmep;
 	}
 
 	public SocketThread getSocketThread() {
@@ -39,7 +46,7 @@ public class  SpringbootApplication {
 
 		try
 		{
-			ServerSocket serverSocket = new ServerSocket(5566);
+			ServerSocket serverSocket = new ServerSocket(Integer.parseInt(sorcketPort));
 			System.out.println("等待。。。");
 
 			while (true)

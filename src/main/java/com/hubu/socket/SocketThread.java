@@ -1,6 +1,7 @@
 package com.hubu.socket;
-import com.hubu.dao.LayoffMapper;
-import com.hubu.pojo.Layoff;
+import com.hubu.dao.RecordMapper;
+import com.hubu.pojo.Record;
+import com.hubu.utils.DateUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,16 +10,17 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
+import java.util.Date;
 
 @Component
 public class SocketThread implements Runnable
 {
 
-   /* @Autowired(required = false)*/
+    /* @Autowired(required = false)*/
     @Autowired
-    LayoffMapper layoffMapper;
+    RecordMapper recordMapper;
 
-/*    @Autowired(required = false)*/
+    /*    @Autowired(required = false)*/
     private Socket socket;
 
     public SocketThread(){
@@ -46,9 +48,10 @@ public class SocketThread implements Runnable
                 {
                     System.out.print((char)ReceiveDataTemp[iprint]);
                 }
-                System.out.print(",本地端口：" + socket.getLocalPort() + ",远程端口：" + socket.getPort() + ",远程IP地址：" + socket.getInetAddress() + "数据信息解析如下：\n");                Layoff layoff = byteToLayoff(ReceiveDataTemp);
-                System.out.println(layoff.toString());
-                layoffMapper.insertSelective(layoff);
+                System.out.print(",本地端口：" + socket.getLocalPort() + ",远程端口：" + socket.getPort() + ",远程IP地址：" + socket.getInetAddress() + "数据信息解析如下：\n");
+                Record record = byteToRecord(ReceiveDataTemp);
+                System.out.println(record.toString());
+                recordMapper.insertSelective(record);
 
             }
             // 关闭相对应的资源
@@ -69,9 +72,14 @@ public class SocketThread implements Runnable
         return "hi";
     }
     //数据解析处理成Layoff对象
-    Layoff byteToLayoff(byte []temp)
+    Record byteToRecord(byte []temp)
     {
-        Layoff  layoff = new Layoff();
+        Record record = new Record();
+
+        String collect_data = new String(temp);
+
+        record.setCollectData(collect_data);
+
         char[] NO = new char[3];
         //char[] BH = new char[10];
         String BH = null;
@@ -121,32 +129,32 @@ public class SocketThread implements Runnable
         NO[0] = (char)(tempNO%1000/100 + '0');
         NO[1] = (char)(tempNO%100/10 + '0');
         NO[2] = (char)(tempNO%10/1 + '0');
-        layoff.setPileNo("" + NO[0] + NO[1] + NO[2]);
+        record.setPileNo("" + NO[0] + NO[1] + NO[2]);
         System.out.println("桩机流水号:" + NO[0] + NO[1] + NO[2]);
 
         //处理第一次下料重量
         FirstWeight = data[4] + data[5]*256;
-        layoff.setFirstWeight((float)FirstWeight);
+        record.setFirstWeight(FirstWeight);
         System.out.println("第一次下料重量:" + FirstWeight);
 
         //处理第二次下料重量
         SecondWeight = data[8] + data[9]*256;
-        layoff.setSecondWeight((float)SecondWeight);
+        record.setSecondWeight(SecondWeight);
         System.out.println("第二次下料重量:" + SecondWeight);
 
         //处理第一次下料深度
         FirstDepth =Float.valueOf((data[10] + data[11]*256))/100;
-        layoff.setFirstDepth((float)FirstDepth);
+        record.setFirstDepth((float)FirstDepth);
         System.out.println("第一次下料深度:" + FirstDepth);
 
         //处理第二次下料深度
         SecondDepth = Float.valueOf(data[12] + data[13]*256)/100;
-        layoff.setSecondDepth((float)SecondDepth);
+        record.setSecondDepth((float)SecondDepth);
         System.out.println("第二次下料深度:" + SecondDepth);
 
         //处理总深度
         SumDepth = Float.valueOf(data[16] + data[17]*256)/100;
-        layoff.setSumDepth((float)SumDepth);
+        record.setSumDepth((float)SumDepth);
         System.out.println("下料总深度:" + SumDepth);
 
         //处理开始时间
@@ -160,7 +168,10 @@ public class SocketThread implements Runnable
         BT[12] = (char)(data[21]%10/1 + '0');
         BT[14] = (char)(data[22]%100/10 + '0');
         BT[15] = (char)(data[22]%10/1 + '0');
-        layoff.setBeginTime("" + BT[0] + BT[1] + BT[2] + BT[3] + BT[4] + BT[5] + BT[6] + BT[7] + BT[8] + BT[9] + BT[10] + BT[11] + BT[12] + BT[13] + BT[14] + BT[15]);
+        String beginTime = "" + BT[0] + BT[1] + BT[2] + BT[3] + BT[4] + BT[5] + BT[6] + BT[7] + BT[8] + BT[9] + BT[10] + BT[11] + BT[12] + BT[13] + BT[14] + BT[15];
+
+        record.setBeginTime(DateUtil.StringToDate(beginTime));
+
         System.out.println("开始时间:" + BT[0] + BT[1] + BT[2] + BT[3] + BT[4] + BT[5] + BT[6] + BT[7] + BT[8] + BT[9] + BT[10] + BT[11] + BT[12] + BT[13] + BT[14] + BT[15]);
 
         //处理结束时间
@@ -174,7 +185,11 @@ public class SocketThread implements Runnable
         ET[12] = (char)(data[26]%10/1 + '0');
         ET[14] = (char)(data[27]%100/10 + '0');
         ET[15] = (char)(data[27]%10/1 + '0');
-        layoff.setEndTime("" + ET[0] + ET[1] + ET[2] + ET[3] + ET[4] + ET[5] + ET[6] + ET[7] + ET[8] + ET[9] + ET[10] + ET[11] + ET[12] + ET[13] + ET[14] + ET[15]);
+
+        String endTime = "" + ET[0] + ET[1] + ET[2] + ET[3] + ET[4] + ET[5] + ET[6] + ET[7] + ET[8] + ET[9] + ET[10] + ET[11] + ET[12] + ET[13] + ET[14] + ET[15];
+
+        record.setEndTime(DateUtil.StringToDate(endTime));
+
         System.out.println("结束时间:" + ET[0] + ET[1] + ET[2] + ET[3] + ET[4] + ET[5] + ET[6] + ET[7] + ET[8] + ET[9] + ET[10] + ET[11] + ET[12] + ET[13] + ET[14] + ET[15]);
 
         //处理打桩记录
@@ -189,25 +204,59 @@ public class SocketThread implements Runnable
             icount++;
         }
         System.out.println("记录终值:" + icount);
+
+        StringBuffer weight_record = new StringBuffer("");
+        StringBuffer tempStr = new StringBuffer("");
+
         for(int i=0; i<icount; i++)
         {
             KGM[i] = data[28+i]&0xFF;
             if(i < icount-1)
             {
                 System.out.println("第 " + i + " 到 " + (i+1) + " 米下料: " + ((char)(KGM[i]%100/10 + '0')) + ((char)(KGM[i]%10/1 + '0')) + " KG");
+
+                tempStr = new StringBuffer(""+((char)(KGM[i]%100/10 + '0')) + ((char)(KGM[i]%10/1 + '0')));
+                if(tempStr.length()<3){
+                    for (int j = 0;j<3-tempStr.length();j++){
+                        tempStr = new StringBuffer("0").append(tempStr);
+                    }
+                }
+
+                weight_record.append( tempStr.append("#"));
             }
             else
             {
                 if(icountFlag == 1)
                 {
                     System.out.println("第 " + i + " 到 " + ((char)(SumDepth/1000 + '0')) + ((char)(SumDepth%1000/100 + '0')) + "." + ((char)(SumDepth%100/10 + '0')) + ((char)(SumDepth%10/1 + '0')) + " 米下料: " + ((char)(KGM[i]%100/10 + '0')) + ((char)(KGM[i]%10/1 + '0')) + " KG");
+
+                    tempStr = new StringBuffer(""+((char)(KGM[i]%100/10 + '0')) + ((char)(KGM[i]%10/1 + '0')));
+                    if(tempStr.length()<3){
+                        for (int j = 0;j<3-tempStr.length();j++){
+                            tempStr = new StringBuffer("0").append(tempStr);
+                        }
+                    }
+
+                    weight_record.append( tempStr.append("#"));
                 }
                 else
                 {
                     System.out.println("第 " + i + " 到 " + (i+1) + " 米下料: " + ((char)(KGM[i]%100/10 + '0')) + ((char)(KGM[i]%10/1 + '0')) + " KG");
+
+                    tempStr = new StringBuffer(""+((char)(KGM[i]%100/10 + '0')) + ((char)(KGM[i]%10/1 + '0')));
+                    if(tempStr.length()<3){
+                        for (int j = 0;j<3-tempStr.length();j++){
+                            tempStr = new StringBuffer("0").append(tempStr);
+                        }
+                    }
+
+                    weight_record.append( tempStr.append("#"));
                 }
             }
         }
+
+        record.setWeightRecord(String.valueOf(weight_record));
+
         //标志位清零
         icountFlag = 0;
 
@@ -243,15 +292,17 @@ public class SocketThread implements Runnable
             BHtemp4 = String.valueOf(data[75]%1000/100) + String.valueOf(data[75]%100/10) + String.valueOf(data[75]%10/1);
         }
         BH = BHtemp2 + BHtemp3 + BHtemp4 + BHtemp1;
-        layoff.setMachineNo(BH);
+        record.setMachineNo(BH);
         System.out.println("机台编号为：" + BH);
 
-        return layoff;
+        record.setGatherTime(new Date());
+
+        return record;
     }
 
 
     //字节码转16进制
-     byte char2hex(char chr)
+    byte char2hex(char chr)
     {
         if(chr>='0'&&chr<='9')
             return (byte)((chr-'0')&0x00ff);

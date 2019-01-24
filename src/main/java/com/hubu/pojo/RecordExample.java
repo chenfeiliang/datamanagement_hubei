@@ -1,16 +1,17 @@
 package com.hubu.pojo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
-public class LayoffExample {
+public class RecordExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public LayoffExample() {
+    public RecordExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -102,6 +103,66 @@ public class LayoffExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
+        }
+
+        public Criteria andRecordNoIsNull() {
+            addCriterion("record_no is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecordNoIsNotNull() {
+            addCriterion("record_no is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecordNoEqualTo(Integer value) {
+            addCriterion("record_no =", value, "recordNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecordNoNotEqualTo(Integer value) {
+            addCriterion("record_no <>", value, "recordNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecordNoGreaterThan(Integer value) {
+            addCriterion("record_no >", value, "recordNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecordNoGreaterThanOrEqualTo(Integer value) {
+            addCriterion("record_no >=", value, "recordNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecordNoLessThan(Integer value) {
+            addCriterion("record_no <", value, "recordNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecordNoLessThanOrEqualTo(Integer value) {
+            addCriterion("record_no <=", value, "recordNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecordNoIn(List<Integer> values) {
+            addCriterion("record_no in", values, "recordNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecordNoNotIn(List<Integer> values) {
+            addCriterion("record_no not in", values, "recordNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecordNoBetween(Integer value1, Integer value2) {
+            addCriterion("record_no between", value1, value2, "recordNo");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecordNoNotBetween(Integer value1, Integer value2) {
+            addCriterion("record_no not between", value1, value2, "recordNo");
+            return (Criteria) this;
         }
 
         public Criteria andMachineNoIsNull() {
@@ -254,52 +315,52 @@ public class LayoffExample {
             return (Criteria) this;
         }
 
-        public Criteria andFirstWeightEqualTo(Float value) {
+        public Criteria andFirstWeightEqualTo(Integer value) {
             addCriterion("first_weight =", value, "firstWeight");
             return (Criteria) this;
         }
 
-        public Criteria andFirstWeightNotEqualTo(Float value) {
+        public Criteria andFirstWeightNotEqualTo(Integer value) {
             addCriterion("first_weight <>", value, "firstWeight");
             return (Criteria) this;
         }
 
-        public Criteria andFirstWeightGreaterThan(Float value) {
+        public Criteria andFirstWeightGreaterThan(Integer value) {
             addCriterion("first_weight >", value, "firstWeight");
             return (Criteria) this;
         }
 
-        public Criteria andFirstWeightGreaterThanOrEqualTo(Float value) {
+        public Criteria andFirstWeightGreaterThanOrEqualTo(Integer value) {
             addCriterion("first_weight >=", value, "firstWeight");
             return (Criteria) this;
         }
 
-        public Criteria andFirstWeightLessThan(Float value) {
+        public Criteria andFirstWeightLessThan(Integer value) {
             addCriterion("first_weight <", value, "firstWeight");
             return (Criteria) this;
         }
 
-        public Criteria andFirstWeightLessThanOrEqualTo(Float value) {
+        public Criteria andFirstWeightLessThanOrEqualTo(Integer value) {
             addCriterion("first_weight <=", value, "firstWeight");
             return (Criteria) this;
         }
 
-        public Criteria andFirstWeightIn(List<Float> values) {
+        public Criteria andFirstWeightIn(List<Integer> values) {
             addCriterion("first_weight in", values, "firstWeight");
             return (Criteria) this;
         }
 
-        public Criteria andFirstWeightNotIn(List<Float> values) {
+        public Criteria andFirstWeightNotIn(List<Integer> values) {
             addCriterion("first_weight not in", values, "firstWeight");
             return (Criteria) this;
         }
 
-        public Criteria andFirstWeightBetween(Float value1, Float value2) {
+        public Criteria andFirstWeightBetween(Integer value1, Integer value2) {
             addCriterion("first_weight between", value1, value2, "firstWeight");
             return (Criteria) this;
         }
 
-        public Criteria andFirstWeightNotBetween(Float value1, Float value2) {
+        public Criteria andFirstWeightNotBetween(Integer value1, Integer value2) {
             addCriterion("first_weight not between", value1, value2, "firstWeight");
             return (Criteria) this;
         }
@@ -314,52 +375,52 @@ public class LayoffExample {
             return (Criteria) this;
         }
 
-        public Criteria andSecondWeightEqualTo(Float value) {
+        public Criteria andSecondWeightEqualTo(Integer value) {
             addCriterion("second_weight =", value, "secondWeight");
             return (Criteria) this;
         }
 
-        public Criteria andSecondWeightNotEqualTo(Float value) {
+        public Criteria andSecondWeightNotEqualTo(Integer value) {
             addCriterion("second_weight <>", value, "secondWeight");
             return (Criteria) this;
         }
 
-        public Criteria andSecondWeightGreaterThan(Float value) {
+        public Criteria andSecondWeightGreaterThan(Integer value) {
             addCriterion("second_weight >", value, "secondWeight");
             return (Criteria) this;
         }
 
-        public Criteria andSecondWeightGreaterThanOrEqualTo(Float value) {
+        public Criteria andSecondWeightGreaterThanOrEqualTo(Integer value) {
             addCriterion("second_weight >=", value, "secondWeight");
             return (Criteria) this;
         }
 
-        public Criteria andSecondWeightLessThan(Float value) {
+        public Criteria andSecondWeightLessThan(Integer value) {
             addCriterion("second_weight <", value, "secondWeight");
             return (Criteria) this;
         }
 
-        public Criteria andSecondWeightLessThanOrEqualTo(Float value) {
+        public Criteria andSecondWeightLessThanOrEqualTo(Integer value) {
             addCriterion("second_weight <=", value, "secondWeight");
             return (Criteria) this;
         }
 
-        public Criteria andSecondWeightIn(List<Float> values) {
+        public Criteria andSecondWeightIn(List<Integer> values) {
             addCriterion("second_weight in", values, "secondWeight");
             return (Criteria) this;
         }
 
-        public Criteria andSecondWeightNotIn(List<Float> values) {
+        public Criteria andSecondWeightNotIn(List<Integer> values) {
             addCriterion("second_weight not in", values, "secondWeight");
             return (Criteria) this;
         }
 
-        public Criteria andSecondWeightBetween(Float value1, Float value2) {
+        public Criteria andSecondWeightBetween(Integer value1, Integer value2) {
             addCriterion("second_weight between", value1, value2, "secondWeight");
             return (Criteria) this;
         }
 
-        public Criteria andSecondWeightNotBetween(Float value1, Float value2) {
+        public Criteria andSecondWeightNotBetween(Integer value1, Integer value2) {
             addCriterion("second_weight not between", value1, value2, "secondWeight");
             return (Criteria) this;
         }
@@ -544,6 +605,136 @@ public class LayoffExample {
             return (Criteria) this;
         }
 
+        public Criteria andCollectDataIsNull() {
+            addCriterion("collect_data is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectDataIsNotNull() {
+            addCriterion("collect_data is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectDataEqualTo(String value) {
+            addCriterion("collect_data =", value, "collectData");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectDataNotEqualTo(String value) {
+            addCriterion("collect_data <>", value, "collectData");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectDataGreaterThan(String value) {
+            addCriterion("collect_data >", value, "collectData");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectDataGreaterThanOrEqualTo(String value) {
+            addCriterion("collect_data >=", value, "collectData");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectDataLessThan(String value) {
+            addCriterion("collect_data <", value, "collectData");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectDataLessThanOrEqualTo(String value) {
+            addCriterion("collect_data <=", value, "collectData");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectDataLike(String value) {
+            addCriterion("collect_data like", value, "collectData");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectDataNotLike(String value) {
+            addCriterion("collect_data not like", value, "collectData");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectDataIn(List<String> values) {
+            addCriterion("collect_data in", values, "collectData");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectDataNotIn(List<String> values) {
+            addCriterion("collect_data not in", values, "collectData");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectDataBetween(String value1, String value2) {
+            addCriterion("collect_data between", value1, value2, "collectData");
+            return (Criteria) this;
+        }
+
+        public Criteria andCollectDataNotBetween(String value1, String value2) {
+            addCriterion("collect_data not between", value1, value2, "collectData");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatherTimeIsNull() {
+            addCriterion("gather_time is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatherTimeIsNotNull() {
+            addCriterion("gather_time is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatherTimeEqualTo(Date value) {
+            addCriterion("gather_time =", value, "gatherTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatherTimeNotEqualTo(Date value) {
+            addCriterion("gather_time <>", value, "gatherTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatherTimeGreaterThan(Date value) {
+            addCriterion("gather_time >", value, "gatherTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatherTimeGreaterThanOrEqualTo(Date value) {
+            addCriterion("gather_time >=", value, "gatherTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatherTimeLessThan(Date value) {
+            addCriterion("gather_time <", value, "gatherTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatherTimeLessThanOrEqualTo(Date value) {
+            addCriterion("gather_time <=", value, "gatherTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatherTimeIn(List<Date> values) {
+            addCriterion("gather_time in", values, "gatherTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatherTimeNotIn(List<Date> values) {
+            addCriterion("gather_time not in", values, "gatherTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatherTimeBetween(Date value1, Date value2) {
+            addCriterion("gather_time between", value1, value2, "gatherTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andGatherTimeNotBetween(Date value1, Date value2) {
+            addCriterion("gather_time not between", value1, value2, "gatherTime");
+            return (Criteria) this;
+        }
+
         public Criteria andBeginTimeIsNull() {
             addCriterion("begin_time is null");
             return (Criteria) this;
@@ -554,62 +745,52 @@ public class LayoffExample {
             return (Criteria) this;
         }
 
-        public Criteria andBeginTimeEqualTo(String value) {
+        public Criteria andBeginTimeEqualTo(Date value) {
             addCriterion("begin_time =", value, "beginTime");
             return (Criteria) this;
         }
 
-        public Criteria andBeginTimeNotEqualTo(String value) {
+        public Criteria andBeginTimeNotEqualTo(Date value) {
             addCriterion("begin_time <>", value, "beginTime");
             return (Criteria) this;
         }
 
-        public Criteria andBeginTimeGreaterThan(String value) {
+        public Criteria andBeginTimeGreaterThan(Date value) {
             addCriterion("begin_time >", value, "beginTime");
             return (Criteria) this;
         }
 
-        public Criteria andBeginTimeGreaterThanOrEqualTo(String value) {
+        public Criteria andBeginTimeGreaterThanOrEqualTo(Date value) {
             addCriterion("begin_time >=", value, "beginTime");
             return (Criteria) this;
         }
 
-        public Criteria andBeginTimeLessThan(String value) {
+        public Criteria andBeginTimeLessThan(Date value) {
             addCriterion("begin_time <", value, "beginTime");
             return (Criteria) this;
         }
 
-        public Criteria andBeginTimeLessThanOrEqualTo(String value) {
+        public Criteria andBeginTimeLessThanOrEqualTo(Date value) {
             addCriterion("begin_time <=", value, "beginTime");
             return (Criteria) this;
         }
 
-        public Criteria andBeginTimeLike(String value) {
-            addCriterion("begin_time like", value, "beginTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andBeginTimeNotLike(String value) {
-            addCriterion("begin_time not like", value, "beginTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andBeginTimeIn(List<String> values) {
+        public Criteria andBeginTimeIn(List<Date> values) {
             addCriterion("begin_time in", values, "beginTime");
             return (Criteria) this;
         }
 
-        public Criteria andBeginTimeNotIn(List<String> values) {
+        public Criteria andBeginTimeNotIn(List<Date> values) {
             addCriterion("begin_time not in", values, "beginTime");
             return (Criteria) this;
         }
 
-        public Criteria andBeginTimeBetween(String value1, String value2) {
+        public Criteria andBeginTimeBetween(Date value1, Date value2) {
             addCriterion("begin_time between", value1, value2, "beginTime");
             return (Criteria) this;
         }
 
-        public Criteria andBeginTimeNotBetween(String value1, String value2) {
+        public Criteria andBeginTimeNotBetween(Date value1, Date value2) {
             addCriterion("begin_time not between", value1, value2, "beginTime");
             return (Criteria) this;
         }
@@ -624,62 +805,52 @@ public class LayoffExample {
             return (Criteria) this;
         }
 
-        public Criteria andEndTimeEqualTo(String value) {
+        public Criteria andEndTimeEqualTo(Date value) {
             addCriterion("end_time =", value, "endTime");
             return (Criteria) this;
         }
 
-        public Criteria andEndTimeNotEqualTo(String value) {
+        public Criteria andEndTimeNotEqualTo(Date value) {
             addCriterion("end_time <>", value, "endTime");
             return (Criteria) this;
         }
 
-        public Criteria andEndTimeGreaterThan(String value) {
+        public Criteria andEndTimeGreaterThan(Date value) {
             addCriterion("end_time >", value, "endTime");
             return (Criteria) this;
         }
 
-        public Criteria andEndTimeGreaterThanOrEqualTo(String value) {
+        public Criteria andEndTimeGreaterThanOrEqualTo(Date value) {
             addCriterion("end_time >=", value, "endTime");
             return (Criteria) this;
         }
 
-        public Criteria andEndTimeLessThan(String value) {
+        public Criteria andEndTimeLessThan(Date value) {
             addCriterion("end_time <", value, "endTime");
             return (Criteria) this;
         }
 
-        public Criteria andEndTimeLessThanOrEqualTo(String value) {
+        public Criteria andEndTimeLessThanOrEqualTo(Date value) {
             addCriterion("end_time <=", value, "endTime");
             return (Criteria) this;
         }
 
-        public Criteria andEndTimeLike(String value) {
-            addCriterion("end_time like", value, "endTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andEndTimeNotLike(String value) {
-            addCriterion("end_time not like", value, "endTime");
-            return (Criteria) this;
-        }
-
-        public Criteria andEndTimeIn(List<String> values) {
+        public Criteria andEndTimeIn(List<Date> values) {
             addCriterion("end_time in", values, "endTime");
             return (Criteria) this;
         }
 
-        public Criteria andEndTimeNotIn(List<String> values) {
+        public Criteria andEndTimeNotIn(List<Date> values) {
             addCriterion("end_time not in", values, "endTime");
             return (Criteria) this;
         }
 
-        public Criteria andEndTimeBetween(String value1, String value2) {
+        public Criteria andEndTimeBetween(Date value1, Date value2) {
             addCriterion("end_time between", value1, value2, "endTime");
             return (Criteria) this;
         }
 
-        public Criteria andEndTimeNotBetween(String value1, String value2) {
+        public Criteria andEndTimeNotBetween(Date value1, Date value2) {
             addCriterion("end_time not between", value1, value2, "endTime");
             return (Criteria) this;
         }
