@@ -659,7 +659,7 @@
       <workItem from="1548260461681" duration="108000" />
       <workItem from="1548261175296" duration="595000" />
       <workItem from="1548261809465" duration="7805000" />
-      <workItem from="1548302143743" duration="2485000" />
+      <workItem from="1548302143743" duration="2558000" />
     </task>
     <task id="LOCAL-00001" summary="xinde">
       <created>1531473164772</created>
@@ -773,7 +773,14 @@
       <option name="project" value="LOCAL" />
       <updated>1548304629968</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="cfl 2019 1 24">
+      <created>1548304649760</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1548304649760</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -809,7 +816,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="168104000" />
+    <option name="totallyTimeSpent" value="168177000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -860,7 +867,8 @@
     <MESSAGE value="cfl 2018 7 20" />
     <MESSAGE value="cfl 2018 7 22" />
     <MESSAGE value="cfl 2018 7 23" />
-    <option name="LAST_COMMIT_MESSAGE" value="cfl 2018 7 23" />
+    <MESSAGE value="cfl 2019 1 24" />
+    <option name="LAST_COMMIT_MESSAGE" value="cfl 2019 1 24" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
