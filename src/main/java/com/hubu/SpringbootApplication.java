@@ -19,7 +19,7 @@ public class  SpringbootApplication {
 
 	static SocketThread socketThread;
 
-	@Value("${sorcketPort}")
+	@Value("${sorcket.port}")
 	String sorcketPortTmep;
 
 	static String sorcketPort;

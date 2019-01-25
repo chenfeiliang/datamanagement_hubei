@@ -1,0 +1,163 @@
+
+/*打桩记录*/
+
+CREATE TABLE record (
+  record_no INT PRIMARY KEY NOT NULL AUTO_INCREMENT COMMENT '序号',
+  machine_no VARCHAR(255) NOT NULL COMMENT '桩机编号',
+  pile_no VARCHAR(255) DEFAULT NULL COMMENT '桩基号',
+  first_weight INT(10) DEFAULT NULL COMMENT '第一次下料重量,精确到千克',
+  second_weight INT(10) DEFAULT NULL COMMENT '第二次下料重量,精确到千克',
+  first_depth FLOAT(10) DEFAULT NULL COMMENT '第一次下料深度，精确到米',
+  second_depth FLOAT(10) DEFAULT NULL COMMENT '第二次下料深度，精确到米',
+  sum_depth FLOAT(10) DEFAULT NULL COMMENT '总深度，精确到米',
+  collect_data VARCHAR(255) DEFAULT NULL COMMENT '实际采集数据,即机器上报的数据，也就是解析之前的数据,#号分隔',
+  weight_record text DEFAULT NULL '共25列，精确到米',
+  gather_time DATETIME DEFAULT NULL COMMENT '数据入库时的时间',
+  begin_time DATETIME DEFAULT NULL COMMENT '开始时间',
+  end_time DATETIME DEFAULT NULL COMMENT '结束时间',
+  isdeleted int default 0 COMMENT '0表示没有未删除，1表示已删除',
+  var1 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段1',
+  var2 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段2',
+  var3 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段3',
+  var4 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段4',
+  var5 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段5'
+) ENGINE=MYISAM DEFAULT CHARSET=utf8；
+
+/*用户表*/
+
+CREATE TABLE USER (
+  user_no INT PRIMARY KEY NOT NULL AUTO_INCREMENT COMMENT '序号',
+  username VARCHAR(50) NOT NULL COMMENT '用户名' UNIQUE,
+  PASSWORD VARCHAR(50) NOT NULL COMMENT '密码',
+  phone VARCHAR(20) NOT NULL  COMMENT '手机号',
+  user_power INT(10) NOT NULL COMMENT '用户权限',
+  salt VARCHAR(50) DEFAULT NULL COMMENT 'MD5加盐存储',
+  var1 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段1',
+  var2 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段2',
+  var3 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段3',
+  var4 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段4',
+  var5 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段5'
+) ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+/*桩机表*/
+
+CREATE TABLE machine (
+  machine_no VARCHAR(255) PRIMARY KEY NOT NULL  COMMENT '桩机编号',
+  design_length FLOAT(10) DEFAULT NULL COMMENT '设计桩长,精确到米',
+  real_length FLOAT(10) DEFAULT NULL COMMENT '实际桩长,精确到米',
+  longitude FLOAT(10) NOT NULL  COMMENT '经度',
+  latitude FLOAT(10) NOT NULL COMMENT '纬度',
+  var1 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段1',
+  var2 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段2',
+  var3 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段3',
+  var4 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段4',
+  var5 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段5'
+) ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+/*队伍表*/
+
+CREATE TABLE team (
+  team_no INT PRIMARY KEY NOT NULL AUTO_INCREMENT COMMENT '队伍id ',
+  name VARCHAR(255) NOT NULL  COMMENT '队伍名称',
+  var1 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段1',
+  var2 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段2',
+  var3 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段3',
+  var4 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段4',
+  var5 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段5'
+) ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+/*桩机_队伍表，记录队伍有哪些打桩机*/
+
+CREATE TABLE machine_team (
+  machine_team_no INT PRIMARY KEY NOT NULL AUTO_INCREMENT COMMENT '序号',
+  team_no INT NOT NULL  COMMENT '队伍id',
+  machine_no VARCHAR(255) NOT NULL  COMMENT '桩机编号',
+  var1 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段1',
+  var2 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段2',
+  var3 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段3',
+  var4 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段4',
+  var5 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段5'
+) ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+/*项目表*/
+
+CREATE TABLE project(
+  project_no INT PRIMARY KEY NOT NULL AUTO_INCREMENT COMMENT '项目id，主键',
+  NAME VARCHAR(255) NOT NULL  COMMENT '项目名称',
+  plan_meters FLOAT(10) DEFAULT NULL COMMENT '计划米数',
+  plan_stakes FLOAT(10) DEFAULT NULL COMMENT '计划根数',
+  price VARCHAR(255) DEFAULT NULL COMMENT '每米的单价',
+  begin_time DATE DEFAULT NULL COMMENT '开始时间',
+  end_time  DATE DEFAULT NULL COMMENT '结束时间',
+  var1 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段1',
+  var2 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段2',
+  var3 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段3',
+  var4 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段4',
+  var5 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段5'
+) ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+/*项目_队伍表 记录项目里有哪些队伍，以及每个队伍在本项目中的计划工作*/
+
+CREATE TABLE project_team(
+  project_team_no INT PRIMARY KEY NOT NULL AUTO_INCREMENT COMMENT '主键',
+  project_no INT  NOT NULL  COMMENT '项目id',
+  team_no INT  NOT NULL  COMMENT '队伍id',
+  team_plan_meters FLOAT(10) DEFAULT NULL COMMENT '队伍计划米数',
+  team_plan_stakes FLOAT(10) DEFAULT NULL COMMENT '队伍计划根数',
+  var1 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段1',
+  var2 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段2',
+  var3 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段3',
+  var4 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段4',
+  var5 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段5'
+) ENGINE=MYISAM DEFAULT CHARSET=utf8;
+
+/* 记录项目是那个用户创建*/
+
+CREATE TABLE project_user(
+  project_user_no INT PRIMARY KEY NOT NULL AUTO_INCREMENT COMMENT '主键',
+  user_no    INT NOT NULL  COMMENT '用户id',
+  project_no INT  NOT NULL  COMMENT '项目id',
+  begin_time DATE DEFAULT NULL COMMENT '开始时间',
+  end_time  DATE DEFAULT NULL COMMENT '结束时间',
+  var1 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段1',
+  var2 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段2',
+  var3 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段3',
+  var4 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段4',
+  var5 VARCHAR(255) DEFAULT NULL COMMENT '拓展字段5'
+) ENGINE=MYISAM DEFAULT CHARSET=utf8;
+/*
+
+分析项目中的某个队伍的完成情况
+
+项目_队伍_完成情况 视图   有以下字段
+	项目id    int  
+	队伍 id   int  
+	项目名
+	队伍名      
+	计划根数
+	计划米数
+	已完成根数
+	已完成米数
+	水泥用量
+	平均用量
+	完成率
+	开始时间
+	结束时间	
+
+分析项目的整体完成情况	 
+	
+项目_完成情况视图  有以下字段
+	项目id
+	项目名称
+	计划根数
+	计划米数
+	每米的单价 
+	已完成根数
+	已完成米数
+	已完成产值
+	总产值
+	完成率
+	开始时间
+	结束时间		
+*/
+
