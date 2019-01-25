@@ -1,6 +1,7 @@
 package com.hubu.utils;
 
 import com.hubu.pojo.Record;
+import com.hubu.pojo.RecordExample;
 
 import java.util.List;
 
@@ -14,4 +15,6 @@ public class RecordHelper {
         }
         return records;
     }
+
+
 }
