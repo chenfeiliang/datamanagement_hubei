@@ -17,6 +17,9 @@
         <setting name="useGeneratedKeys" value="true"/>
     </settings>
 
+    <typeAliases>
+        <package name="com.hubu.pojo"/>
+    </typeAliases>
     <!-- Continue going here -->
 
 </configuration>

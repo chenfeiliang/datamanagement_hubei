@@ -12,6 +12,7 @@ import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 
 
@@ -30,42 +31,86 @@ public class ExcelExport {
 
         // 第二步，在webbook中添加一个sheet,对应Excel文件中的sheet
         HSSFSheet sheet = wb.createSheet(sheetName);
+
+        sheet.setHorizontallyCenter(true);
+
         // 第三步，在sheet中添加表头第0行,注意老版本poi对Excel的行数列数有限制short
         HSSFRow row = sheet.createRow(0);
         // 第四步，创建单元格，并设置值表头 设置表头居中
         HSSFCellStyle style = wb.createCellStyle();
 
+
         style.setAlignment(HorizontalAlignment.CENTER); // 创建一个居中格式
 
         //设置表头字段名
         HSSFCell cell;
-        int m=0;
-        for(String fieldName:fields){
-            cell = row.createCell(m);
-            cell.setCellValue(fieldName);
-            cell.setCellStyle(style);
 
-            m++;
+        for(int i = 0 ;i<fields.length;i++){
+            cell = row.createCell(i);
+            cell.setCellValue(fields[i]);
+            cell.setCellStyle(style);
+            sheet.setColumnWidth(i,7000);
         }
+
 
         for (int i = 0; i < list.size(); i++)
         {
             row = sheet.createRow(i + 1);
             Record data = list.get(i);
-            System.out.println(data.toString());
+
             // 第五步，创建单元格，并设置值
-            row.createCell(0).setCellValue(i+1);
-            row.createCell(1).setCellValue(data.getMachineNo());
-            row.createCell(2).setCellValue(data.getPileNo());
-            row.createCell(3).setCellValue(data.getFirstWeight());
-            row.createCell(4).setCellValue(data.getSecondWeight());
-            row.createCell(5).setCellValue(data.getFirstDepth());
-            row.createCell(6).setCellValue(data.getSecondDepth());
-            row.createCell(7).setCellValue(data.getSumDepth());
-            row.createCell(8).setCellValue(data.getWeightRecord());
-            row.createCell(9).setCellValue(data.getStr_gatherTime());
-            row.createCell(10).setCellValue(data.getStr_beginTime());
-            row.createCell(11).setCellValue(data.getStr_endTime());
+
+            cell =  row.createCell(0);
+            cell.setCellStyle(style);
+            cell.setCellValue(i+1);
+
+            cell =  row.createCell(1);
+            cell.setCellStyle(style);
+            cell.setCellValue(data.getMachineNo());
+
+            cell =  row.createCell(2);
+            cell.setCellStyle(style);
+            cell.setCellValue(data.getPileNo());
+
+            cell =  row.createCell(3);
+            cell.setCellStyle(style);
+            cell.setCellValue(data.getFirstWeight());
+
+            cell =  row.createCell(4);
+            cell.setCellStyle(style);
+            cell.setCellValue(data.getSecondWeight());
+
+            cell =  row.createCell(5);
+            cell.setCellStyle(style);
+            cell.setCellValue(data.getFirstDepth());
+
+            cell =  row.createCell(6);
+            cell.setCellStyle(style);
+            cell.setCellValue(data.getSecondDepth());
+
+            cell =  row.createCell(7);
+            cell.setCellStyle(style);
+            cell.setCellValue(data.getSumDepth());
+
+            cell =  row.createCell(8);
+            cell.setCellStyle(style);
+            cell.setCellValue(data.getWeightRecord());
+
+            cell =  row.createCell(9);
+            cell.setCellStyle(style);
+            cell.setCellValue(data.getStr_gatherTime());
+
+            cell =  row.createCell(10);
+            cell.setCellStyle(style);
+            cell.setCellValue(data.getStr_beginTime());
+
+            cell =  row.createCell(11);
+            cell.setCellStyle(style);
+            cell.setCellValue(data.getStr_endTime());
+
+            cell =  row.createCell(12);
+            cell.setCellStyle(style);
+            cell.setCellValue(data.getCollectData());
         }
 
         return wb;

@@ -5,7 +5,8 @@ import com.github.pagehelper.PageInfo;
 import com.hubu.dao.RecordMapper;
 import com.hubu.pojo.Record;
 import com.hubu.pojo.RecordExample;
-import com.hubu.utils.RecordHelper;
+import com.hubu.utils.JsonListUtil;
+import com.hubu.utils.PojoHelper;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,7 +30,7 @@ public class RecorderService {
         List<Record> records = recordMapper.selectByExampleWithBLOBs(null);
 
         //把Record里的Date类型日期 如 beginTime，赋值到String 类型 的str_beginTime 方便前台显示
-        records = RecordHelper.setRecordDateString(records);
+        records = PojoHelper.setRecordDateString(records);
 
         PageInfo<Record> pageInfo = new PageInfo<>(records);
 
@@ -43,7 +44,7 @@ public class RecorderService {
             List<Record> list = recordMapper.selectByExampleWithBLOBs(null);
 
             //把Record里的Date类型日期 如 beginTime，赋值到String 类型 的str_beginTime 方便前台显示
-            list = RecordHelper.setRecordDateString(list);
+            list = PojoHelper.setRecordDateString(list);
 
             String[] fields = {"序号","机台编号","桩基号","第一次下料重量","第二次下料重量"
                     ,"第一次下料深度","第二次下料深度","总深度","每米下料,#分隔"
@@ -62,6 +63,12 @@ public class RecorderService {
         }
     }*/
 
+    public boolean exportAllRecord(HttpServletResponse response,String dataJson){
+        List<Record> records = JsonListUtil.jsonToList(dataJson,Record.class);
+        records.get(0).toString();
+        return true;
+    }
+
     public boolean exportAllRecordByCriteria(
             HttpServletResponse response,
             String machine_no,
@@ -77,15 +84,15 @@ public class RecorderService {
             List<Record> list = recordMapper.selectByExampleWithBLOBs(recordExample);
 
             //把Record里的Date类型日期 如 beginTime，赋值到String 类型 的str_beginTime 方便前台显示
-            list = RecordHelper.setRecordDateString(list);
+            list = PojoHelper.setRecordDateString(list);
 
 
             //把Record里的Date类型日期 如 beginTime，赋值到String 类型 的str_beginTime 方便前台显示
-            list = RecordHelper.setRecordDateString(list);
+            list = PojoHelper.setRecordDateString(list);
 
             String[] fields = {"序号","机台编号","桩基号","第一次下料重量","第二次下料重量"
                     ,"第一次下料深度","第二次下料深度","总深度","每米下料,#分隔"
-                    ,"数据入库时的时间","开始时间","结束时间"
+                    ,"数据入库时的时间","开始时间","结束时间","源数据"
             };
             ExcelExport export = new ExcelExport();
             HSSFWorkbook wb = export.generateExcel();
@@ -118,11 +125,11 @@ public class RecorderService {
             List<Record> list = recordMapper.selectByExampleWithBLOBs(recordExample);
 
             //把Record里的Date类型日期 如 beginTime，赋值到String 类型 的str_beginTime 方便前台显示
-            list = RecordHelper.setRecordDateString(list);
+            list = PojoHelper.setRecordDateString(list);
 
 
             //把Record里的Date类型日期 如 beginTime，赋值到String 类型 的str_beginTime 方便前台显示
-            list = RecordHelper.setRecordDateString(list);
+            list = PojoHelper.setRecordDateString(list);
 
             String[] fields = {"序号","机台编号","桩基号","第一次下料重量","第二次下料重量"
                     ,"第一次下料深度","第二次下料深度","总深度","每米下料,#分隔"
@@ -157,7 +164,7 @@ public class RecorderService {
         List<Record> records = recordMapper.selectByExampleWithBLOBs(recordExample);
 
         //把Record里的Date类型日期 如 beginTime，赋值到String 类型 的str_beginTime 方便前台显示
-        records = RecordHelper.setRecordDateString(records);
+        records = PojoHelper.setRecordDateString(records);
 
         PageInfo<Record> pageInfo = new PageInfo<>(records);
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.hubu.dao.RecordMapper" >
-  <resultMap id="BaseResultMap" type="com.hubu.pojo.Record" >
+  <resultMap id="BaseResultMap" type="Record" >
     <id column="record_no" property="recordNo" jdbcType="INTEGER" />
     <result column="machine_no" property="machineNo" jdbcType="VARCHAR" />
     <result column="pile_no" property="pileNo" jdbcType="VARCHAR" />
@@ -15,7 +15,7 @@
     <result column="begin_time" property="beginTime" jdbcType="TIMESTAMP" />
     <result column="end_time" property="endTime" jdbcType="TIMESTAMP" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.hubu.pojo.Record" extends="BaseResultMap" >
+  <resultMap id="ResultMapWithBLOBs" type="Record" extends="BaseResultMap" >
     <result column="weight_record" property="weightRecord" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
@@ -45,6 +45,7 @@
           </trim>
         </if>
       </foreach>
+      and isdeleted = 0
     </where>
   </sql>
   <sql id="Update_By_Example_Where_Clause" >
@@ -83,7 +84,7 @@
   <sql id="Blob_Column_List" >
     weight_record
   </sql>
-  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.hubu.pojo.RecordExample" >
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="RecordExample" >
     select
     <if test="distinct" >
       distinct
@@ -99,7 +100,7 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.hubu.pojo.RecordExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="RecordExample" >
     select
     <if test="distinct" >
       distinct
@@ -125,13 +126,13 @@
     delete from record
     where record_no = #{recordNo,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.hubu.pojo.RecordExample" >
+  <delete id="deleteByExample" parameterType="RecordExample" >
     delete from record
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.hubu.pojo.Record" >
+  <insert id="insert" parameterType="Record" >
     insert into record (record_no, machine_no, pile_no, 
       first_weight, second_weight, first_depth, 
       second_depth, sum_depth, collect_data, 
@@ -143,7 +144,7 @@
       #{gatherTime,jdbcType=TIMESTAMP}, #{beginTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
       #{weightRecord,jdbcType=LONGVARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.hubu.pojo.Record" >
+  <insert id="insertSelective" parameterType="Record" >
     insert into record
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="recordNo != null" >
@@ -228,7 +229,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.hubu.pojo.RecordExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="RecordExample" resultType="java.lang.Integer" >
     select count(*) from record
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -318,7 +319,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hubu.pojo.Record" >
+  <update id="updateByPrimaryKeySelective" parameterType="Record" >
     update record
     <set >
       <if test="machineNo != null" >
@@ -360,7 +361,7 @@
     </set>
     where record_no = #{recordNo,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.hubu.pojo.Record" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="Record" >
     update record
     set machine_no = #{machineNo,jdbcType=VARCHAR},
       pile_no = #{pileNo,jdbcType=VARCHAR},
@@ -376,7 +377,7 @@
       weight_record = #{weightRecord,jdbcType=LONGVARCHAR}
     where record_no = #{recordNo,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hubu.pojo.Record" >
+  <update id="updateByPrimaryKey" parameterType="Record" >
     update record
     set machine_no = #{machineNo,jdbcType=VARCHAR},
       pile_no = #{pileNo,jdbcType=VARCHAR},
@@ -391,4 +392,52 @@
       end_time = #{endTime,jdbcType=TIMESTAMP}
     where record_no = #{recordNo,jdbcType=INTEGER}
   </update>
+
+
+
+  <parameterMap id="analyzeProjectTeamPM" type="java.util.Map">
+    <parameter property="projectNo" jdbcType="INTEGER" mode="IN"></parameter>
+    <parameter property="teamNo" jdbcType="INTEGER" mode="IN"></parameter>
+  </parameterMap>
+
+  <resultMap id="ProjectTeamFinishedCompletionResultMap" type="ProjectTeamFinishedCompletion" >
+    <result column="project_no" property="projectNo" jdbcType="INTEGER" />
+    <result column="team_no" property="teamNo" jdbcType="INTEGER" />
+    <result column="project_name" property="projectName" jdbcType="VARCHAR" />
+    <result column="team_name" property="teamName" jdbcType="VARCHAR" />
+    <result column="team_plan_stakes" property="teamPlanStakes" jdbcType="INTEGER" />
+    <result column="team_plan_meters" property="teamPlanMeters" jdbcType="FLOAT" />
+    <result column="finished_stakes" property="finishedStakes" jdbcType="INTEGER" />
+    <result column="finished_meters" property="finishedMeters" jdbcType="FLOAT" />
+    <result column="totalWeight" property="totalWeight" jdbcType="INTEGER" />
+    <result column="averWeight" property="averWeight" jdbcType="FLOAT" />
+    <result column="completion_rate" property="completionRate" jdbcType="VARCHAR" />
+    <result column="begin_time" property="beginTime" jdbcType="DATE" />
+    <result column="end_time" property="endTime" jdbcType="DATE" />
+  </resultMap>
+
+    <select id="analyzeProjectTeamFinishedCompletion" resultMap="ProjectTeamFinishedCompletionResultMap" parameterMap="analyzeProjectTeamPM" statementType="CALLABLE">
+    CALL analyzeProjectTeamFinishedCompletion(#{projectNo,mode=IN},#{teamNo,mode=IN});
+  </select>
+
+
+  <resultMap id="ProjectFinishedCompletionResultMap" type="ProjectFinishedCompletion" >
+    <result column="project_no" property="projectNo" jdbcType="INTEGER" />
+    <result column="project_name" property="projectName" jdbcType="VARCHAR" />
+    <result column="plan_stakes" property="planStakes" jdbcType="INTEGER" />
+    <result column="plan_meters" property="planMeters" jdbcType="FLOAT" />
+    <result column="price" property="price" jdbcType="FLOAT" />
+    <result column="finished_stakes" property="finishedStakes" jdbcType="INTEGER" />
+    <result column="finished_meters" property="finishedMeters" jdbcType="FLOAT" />
+    <result column="finished_value" property="finishedValue" jdbcType="VARCHAR" />
+    <result column="total_value" property="totalValue" jdbcType="FLOAT" />
+    <result column="finished_meters" property="finishedMeters" jdbcType="FLOAT" />
+    <result column="completion_rate" property="completionRate" jdbcType="VARCHAR" />
+    <result column="begin_time" property="beginTime" jdbcType="DATE" />
+    <result column="end_time" property="endTime" jdbcType="DATE" />
+  </resultMap>
+
+  <select id="analyzeProjectFinishedCompletion" resultMap="ProjectFinishedCompletionResultMap" parameterType="java.lang.Integer" statementType="CALLABLE">
+    CALL analyzeProjectFinishedCompletion(#{projectNo,mode=IN});
+  </select>
 </mapper>

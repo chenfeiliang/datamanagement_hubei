@@ -35,6 +35,16 @@ public class Record {
 
     private String weightRecord;
 
+    private int isdeleted;
+
+    public int getIsdeleted() {
+        return isdeleted;
+    }
+
+    public void setIsdeleted(int isdeleted) {
+        this.isdeleted = isdeleted;
+    }
+
     public Integer getRecordNo() {
         return recordNo;
     }

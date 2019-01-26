@@ -1,11 +1,14 @@
 package com.hubu.dao;
 
+import com.hubu.pojo.ProjectFinishedCompletion;
+import com.hubu.pojo.ProjectTeamFinishedCompletion;
 import com.hubu.pojo.Record;
 import com.hubu.pojo.RecordExample;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface RecordMapper {
@@ -22,6 +25,10 @@ public interface RecordMapper {
     List<Record> selectByExampleWithBLOBs(RecordExample example);
 
     List<Record> selectByExample(RecordExample example);
+
+    List<ProjectTeamFinishedCompletion> analyzeProjectTeamFinishedCompletion(Map map);
+
+    List<ProjectFinishedCompletion> analyzeProjectFinishedCompletion(Integer projectNo);
 
     Record selectByPrimaryKey(Integer recordNo);
 
