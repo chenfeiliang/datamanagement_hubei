@@ -24,6 +24,8 @@ public class DateUtil {
         return dateString;
     }
 
+
+
     public static Date StringToDate(String dt) {
 
         DateFormat format1 = new SimpleDateFormat("yyyy/MM/dd/HH:mm");
@@ -39,6 +41,23 @@ public class DateUtil {
         }
 
         return date;
-
     }
+
+    public static Date StringToDate2(String dt) {
+
+        DateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+
+        Date date = null;
+
+        try {
+
+            date = format1.parse(dt);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        return date;
+    }
+
 }

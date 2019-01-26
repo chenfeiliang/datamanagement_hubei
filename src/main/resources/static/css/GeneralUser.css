@@ -11,7 +11,7 @@ body {
 }
 body {
 	background-color: #F3F5F7;
-	background-image: url(../images/map_bg.png);
+	background-image: url(../img/map_bg.png);
 }
 /*顶部 start*/
 header {
@@ -33,7 +33,7 @@ header {
 	display: block;
 	width: 250px;
 	height: 50px;
-	background: url("../images/logo.png") no-repeat;
+	background: url("../img/logo.png") no-repeat;
 	text-indent: -666px;  /*隐藏链接里面的文字*/
 	overflow: hidden;
 	margin-top: -4.4px;
@@ -86,7 +86,7 @@ nav li a:hover {
 	border: 0;
 	float: left;
 	background-color: #00A4FF;
-	background: url("../images/search.png");
+	background: url("../img/search.png");
 	outline: none;
 	background-size: 40px 35.3px;
 }
@@ -226,12 +226,38 @@ nav li a:hover {
 	line-height: 40px;
 	margin-left: 4.5px;
 }
-.banner .form-data .form-data-left .top button {
-	width: 90px;
+.banner .form-data .form-data-left .top .button-one{
+	width: 55px;
 	height: 30px;
 	font-size: 16.6px;
 	margin-top: 15.6px;
-	margin-left: 38.3px;
+	margin-left: 25px;
+	background: rgba(255,255,255,0);
+	border: 0;
+	color: #fff;
+	font-weight: bold;
+	cursor: pointer;
+	border-radius: 10px;
+}
+.banner .form-data .form-data-left .top .button-two{
+	width:115px;
+	height: 30px;
+	font-size: 16.6px;
+	margin-top: 15.6px;
+	margin-left: 12px;
+	background: rgba(255,255,255,0);
+	border: 0;
+	color: #fff;
+	font-weight: bold;
+	cursor: pointer;
+	border-radius: 10px;
+}
+.banner .form-data .form-data-left .top .button-three{
+	width: 115px;
+	height: 30px;
+	font-size: 16.6px;
+	margin-top: 15.6px;
+	margin-left: 12px;
 	background: rgba(255,255,255,0);
 	border: 0;
 	color: #fff;
@@ -246,6 +272,7 @@ nav li a:hover {
 	/*background: #00FCFF;*/
 	color: orange;
 }
+
 .banner .form-data .form-data-left .top form:first-child {
 	width: 180px;
 }
@@ -311,6 +338,9 @@ nav li a:hover {
 	border-right: 0;
 	background: rgba(0,24,106,0.5);
 }
+.banner .form-data .form-data-left .middle .tr{
+	height: 30px;
+}
 .banner .form-data .form-data-left .middle table td {
 	text-align: center;
 	border-bottom: 1px solid #0D48E0;
@@ -333,6 +363,7 @@ nav li a:hover {
 	position: relative;
 }
 .banner .form-data .form-data-left .bottom p {
+	float: left;
 	font-size: 21px;
 	padding-left: 44px;
 	padding-top: 6.6px;
@@ -344,6 +375,7 @@ nav li a:hover {
 	color: red;
 }
 .banner .form-data .form-data-left .bottom span {
+	float: left;
 	font-size: 21px;
 	position: absolute; 
 	right: 45px;
@@ -356,8 +388,8 @@ nav li a:hover {
     height: 30px;
     float: left;
     font-size: 16.6px;
-    margin-top: -30px;
-    margin-left: 500px;
+    margin-top: 6px;
+    margin-left: 30px;
     font-size: 10.6px;
     padding-left: 0px;
     background: 0;
@@ -378,8 +410,8 @@ nav li a:hover {
     height: 30px;
     float: left;
     font-size: 16.6px;
-    margin-top: -31px;
-    margin-left: 600px;
+    margin-top: 6px;
+    margin-left: 30px;
     font-size: 10.6px;
     padding-left: 0px;
     padding-top: 2.6px;
@@ -407,16 +439,16 @@ nav li a:hover {
     background: 0;
     color: #fff;
     float: left;
-    margin-top: -32px;
-    margin-left: 722px;
+    margin-top: 6px;
+    margin-left: 30px;
 }
 .banner .form-data .form-data-left .bottom .bt3{
 	width: 60px;
     height: 30px;
     float: left;
     font-size: 16.6px;
-    margin-top: -31px;
-    margin-left: 792px;
+    margin-top: 6px;
+    margin-left: 12px;
     font-size: 10.6px;
     padding-left: 0px;
     padding-top: 2.6px;
@@ -438,8 +470,8 @@ nav li a:hover {
     height: 30px;
     float: left;
     font-size: 16.6px;
-    margin-top: -31px;
-    margin-left: 900px;
+    margin-top: 6px;
+    margin-left: 30px;
     font-size: 10.6px;
     padding-left: 0px;
     padding-top: 2.6px;
@@ -461,8 +493,8 @@ nav li a:hover {
     height: 30px;
     float: left;
     font-size: 16.6px;
-    margin-top: -30px;
-    margin-left: 1000px;
+    margin-top: 6px;
+    margin-left: 30px;
     font-size: 10.6px;
     padding-left: 0px;
     background: 0;
@@ -791,18 +823,7 @@ nav li a:hover {
 	}
 }
 
-#weight_record{
-	overflow-y: scroll;
-}
 
-#recordNoTd{
-	display: none;
-}
 
-/*.recordTd{
-	height: 10px;
-}
-.recordTr
-{
-	height: 10px;
-}*/
+
+

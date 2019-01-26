@@ -1,1 +1,1 @@
-var AJAXURL = "http://47.107.156.106:8081";
+var AJAXURL = "http://localhost:8080";

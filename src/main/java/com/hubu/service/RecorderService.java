@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.hubu.dao.RecordMapper;
 import com.hubu.pojo.Record;
 import com.hubu.pojo.RecordExample;
+import com.hubu.utils.DateUtil;
 import com.hubu.utils.JsonListUtil;
 import com.hubu.utils.PojoHelper;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -79,7 +81,7 @@ public class RecorderService {
     {
         try {
 
-            RecordExample recordExample = getRecordByCriteria(machine_no,pile_no);
+            RecordExample recordExample = getRecordByCriteria(machine_no,pile_no,beginTime,endTime);
 
             List<Record> list = recordMapper.selectByExampleWithBLOBs(recordExample);
 
@@ -118,7 +120,7 @@ public class RecorderService {
     {
         try {
 
-            RecordExample recordExample = getRecordByCriteria(machine_no,pile_no);
+            RecordExample recordExample = getRecordByCriteria(machine_no,pile_no,beginTime,endTime);
 
             //分页
             PageHelper.startPage(currentPage,PAGESIZE);
@@ -157,7 +159,7 @@ public class RecorderService {
                                                         String endTime,
                                                         String team)
     {
-        RecordExample recordExample = getRecordByCriteria(machine_no,pile_no);
+        RecordExample recordExample = getRecordByCriteria(machine_no,pile_no,beginTime,endTime);
 
         //分页
         PageHelper.startPage(currentPage,PAGESIZE);
@@ -171,11 +173,10 @@ public class RecorderService {
         return pageInfo;
     }
 
-    public RecordExample getRecordByCriteria(String machine_no ,String pile_no){
+    public RecordExample getRecordByCriteria(String machine_no ,String pile_no,String beginTime,String endTime){
         RecordExample recordExample = new RecordExample();
 
         RecordExample.Criteria criteria = recordExample.createCriteria();
-
 
         if(machine_no!=null){
             if(!(machine_no.trim()).equals("")){
@@ -186,6 +187,20 @@ public class RecorderService {
         if(pile_no!=null){
             if(!(pile_no.trim()).equals("")){
                 criteria.andPileNoEqualTo(pile_no);
+            }
+        }
+
+        if(beginTime!=null){
+            if(!(beginTime.trim()).equals("")){
+                Date beginTimeDate =  DateUtil.StringToDate2(beginTime);
+                criteria.andBeginTimeGreaterThanOrEqualTo(beginTimeDate);
+            }
+        }
+
+        if(endTime!=null){
+            if(!(endTime.trim()).equals("")){
+                Date endTimeDate =  DateUtil.StringToDate2(endTime);
+                criteria.andEndTimeLessThanOrEqualTo(endTimeDate);
             }
         }
 

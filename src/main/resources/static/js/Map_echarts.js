@@ -14,11 +14,11 @@ $(function () {
         var myChart = echarts.init(document.getElementById('echarts_1'));
 
         var data = [
-            {value: 12,name: '行业一'},
-            {value: 13,name: '行业二'},
-            {value: 70,name: '行业三'},
-            {value: 52,name: '行业四'},
-            {value: 35,name: '行业五'}
+            {value: 12,name: '综合一队'},
+            {value: 13,name: '综合二队'},
+            {value: 70,name: '综合三队'},
+            {value: 52,name: '综合四队'},
+            {value: 35,name: '综合五队'}
         ];
 
         option = {
@@ -36,7 +36,7 @@ $(function () {
                 itemWidth: 10,
                 itemHeight: 10,
                 icon: 'rect',
-                data: ['行业一', '行业二', '行业三', '行业四', '行业五'],
+                data: ['综合一队', '综合二队', '综合三队', '综合四队', '综合五队'],
                 textStyle: {
                     color: [],
                     fontStyle: 'normal',
@@ -113,12 +113,12 @@ $(function () {
             backgroundColor: 'rgba(0,0,0,0)',
             tooltip: {
                 trigger: 'item',
-                formatter: "{b}  <br/>{c}辆"
+                formatter: "{b}  <br/>{c}个"
             },
             legend: {
                 x: 'center',
                 y: '2%',
-                data: ['车型一', '车型二', '车型三', '车型四', '车型五'],
+                data: ['综合一队', '综合二队', '综合三队', '综合四队', '综合五队'],
                 icon: 'circle',
                 textStyle: {
                     color: '#fff',
@@ -126,7 +126,7 @@ $(function () {
             },
             calculable: true,
             series: [{
-                name: '车型',
+                name: '队伍',
                 type: 'pie',
                 //起始角度，支持范围[0, 360]
                 startAngle: 0,
@@ -143,7 +143,7 @@ $(function () {
                 label: {
                     normal: {
                         show: true,
-                        formatter: '{c}辆'
+                        formatter: '{c}个'
                     },
                     emphasis: {
                         show: true
@@ -159,8 +159,8 @@ $(function () {
                     }
                 },
                 data: [{
-                    value: 600,
-                    name: '车型一',
+                    value: 6,
+                    name: '综合一队',
                     itemStyle: {
                         normal: {
                             color: '#f845f1'
@@ -168,8 +168,8 @@ $(function () {
                     }
                 },
                     {
-                        value: 1100,
-                        name: '车型二',
+                        value: 11,
+                        name: '综合二队',
                         itemStyle: {
                             normal: {
                                 color: '#ad46f3'
@@ -177,8 +177,8 @@ $(function () {
                         }
                     },
                     {
-                        value: 1200,
-                        name: '车型三',
+                        value: 12,
+                        name: '综合三队',
                         itemStyle: {
                             normal: {
                                 color: '#5045f6'
@@ -186,8 +186,8 @@ $(function () {
                         }
                     },
                     {
-                        value: 1300,
-                        name: '车型四',
+                        value: 13,
+                        name: '综合四队',
                         itemStyle: {
                             normal: {
                                 color: '#4777f5'
@@ -195,8 +195,8 @@ $(function () {
                         }
                     },
                     {
-                        value: 1400,
-                        name: '车型五',
+                        value: 14,
+                        name: '综合五队',
                         itemStyle: {
                             normal: {
                                 color: '#44aff0'

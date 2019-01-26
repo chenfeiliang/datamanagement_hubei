@@ -7,16 +7,13 @@
 		<link rel="stylesheet" href="css/base.css" />
 		<link rel="stylesheet" href="css/GeneralUser.css" />
 		<link rel="shortcut icon" href="favicon.ico" />
-		<script src="js/echarts.js"></script>
+		<script src="js/echarts.min.js"></script>
 		<script src="js/jquery-3.1.0.min.js"></script>
 		<script type="text/javascript" src="js/config.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>	
 		<script type="text/javascript" src="js/vue.min.js"></script>
-		<script type="text/javascript" src="js/times.js"></script>
 		<script type="text/javascript" src="js/online.js"></script>
-		<script type="text/javascript" src="js/data.js"></script>
 		<script type="text/javascript" src="js/index.js"></script>
-		<script type="text/javascript" src="js/base.js"></script>
 		<script type="text/javascript" src="js/GeneralUser.js"></script>
 		
 	</head>
@@ -51,7 +48,7 @@
 					<dt>个人中心
 						<dd>
 							<span>
-								<img src="images/people.png" alt="" />刘德华
+								<img src="img/people.png" alt="" />刘德华
 							</span>
 						</dd>
 					</dt>
@@ -86,12 +83,15 @@
 							<input type="text" id="team"/>
 						</form>
 						<button style="background: #ff0000;" class="button-one" onclick="showRecord(1)">查询</button>
-						<button style="background: #36791A;width: 150px;" onclick="exportThisPage()" class="button-two" >导出本页数据</button>
-						<button style="background: #36791A;width: 150px;" class="button-three" onclick="exportAll()">导出所有数据</button>
-						<img src="images/bj-1.png" alt="" class="bj-1">
-	                    <img src="images/bj-2.png" alt="" class="bj-2">
-	                    <img src="images/bj-3.png" alt="" class="bj-3">
-	                    <img src="images/bj-4.png" alt="" class="bj-4">
+						<button style="background: #36791A;" class="button-two"  onclick="exportThisPage()">导出本页数据</button>
+						<button style="background: #36791A;" class="button-three" onclick="exportAll()">导出所有数据</button>
+						<form id="form1" style="display: none;" >
+							<input hidden="" value="" id = "dataJsonInput" name="dataJson" />
+						</form>
+						<img src="img/bj-1.png" alt="" class="bj-1">
+	                    <img src="img/bj-2.png" alt="" class="bj-2">
+	                    <img src="img/bj-3.png" alt="" class="bj-3">
+	                    <img src="img/bj-4.png" alt="" class="bj-4">
 					</div>
 					<div class="middle">
 						
@@ -149,7 +149,15 @@
 						</table>
 					</div>
 					<div class="bottom" id="pageInfoDiv">
-						<p>共<i id = "bian">1616</i>页记录，已加载<i>10</i>条</p>
+						<!-- <p>共<i id = "bian">1616</i>页记录，已加载<i>10</i>条</p>
+						<button class="bt1">首页</button>
+						<button class="bt2">上一页</button>
+						<input class="page-in" type="text" placeholder="页码">
+						<button class="bt3">跳转</button>
+						<button class="bt4">下一页</button>
+						<button class="bt5">尾页</button>
+						<span id="localtime"></span> -->
+						<p>查询到<i id = "record">XXXXX</i>条记录，共<i id = "sum-page">XXX</i>页，当前为第<i id = "current-page">X</i>页</p>
 						<button class="bt1">首页</button>
 						<button class="bt2">上一页</button>
 						<input class="page-in" type="text" placeholder="页码">
@@ -162,10 +170,10 @@
 				
 				<div class="form-data-right">
 					<div class="tick-top">
-						<img src="images/bj-1.png" alt="" class="bj-1">
-	                    <img src="images/bj-2.png" alt="" class="bj-2">
-	                    <img src="images/bj-3.png" alt="" class="bj-3">
-	                    <img src="images/bj-4.png" alt="" class="bj-4">
+						<img src="img/bj-1.png" alt="" class="bj-1">
+	                    <img src="img/bj-2.png" alt="" class="bj-2">
+	                    <img src="img/bj-3.png" alt="" class="bj-3">
+	                    <img src="img/bj-4.png" alt="" class="bj-4">
 						<p>双向喷粉搅拌桩</p>
 						<p>BH:<span id="BH"></span> Z:<span id="Z"></span></p>
 						<p><span id="beginTimeRright"></span></p>
@@ -200,17 +208,17 @@
 			</div>
 			<div class="chart">
 				<div class="left">
-					<img src="images/bj-1.png" alt="" class="bj-1">
-                    <img src="images/bj-2.png" alt="" class="bj-2">
-                    <img src="images/bj-3.png" alt="" class="bj-3">
-                    <img src="images/bj-4.png" alt="" class="bj-4">
+					<img src="img/bj-1.png" alt="" class="bj-1">
+                    <img src="img/bj-2.png" alt="" class="bj-2">
+                    <img src="img/bj-3.png" alt="" class="bj-3">
+                    <img src="img/bj-4.png" alt="" class="bj-4">
 					<div class="left-chart" id="main"></div>
 				</div>
 				<div class="mid">
-					<img src="images/bj-1.png" alt="" class="bj-1">
-                    <img src="images/bj-2.png" alt="" class="bj-2">
-                    <img src="images/bj-3.png" alt="" class="bj-3">
-                    <img src="images/bj-4.png" alt="" class="bj-4">
+					<img src="img/bj-1.png" alt="" class="bj-1">
+                    <img src="img/bj-2.png" alt="" class="bj-2">
+                    <img src="img/bj-3.png" alt="" class="bj-3">
+                    <img src="img/bj-4.png" alt="" class="bj-4">
 					<div class="img" id="img-chart"></div>
 					<div class="team-data">
 						<p><span>机台编号:</span><input type="text" /><span>部门队伍:</span><input type="text" /></p>
@@ -218,10 +226,10 @@
 					</div>
 				</div>
 				<div class="right">
-					<img src="images/bj-1.png" alt="" class="bj-1">
-                    <img src="images/bj-2.png" alt="" class="bj-2">
-                    <img src="images/bj-3.png" alt="" class="bj-3">
-                    <img src="images/bj-4.png" alt="" class="bj-4">
+					<img src="img/bj-1.png" alt="" class="bj-1">
+                    <img src="img/bj-2.png" alt="" class="bj-2">
+                    <img src="img/bj-3.png" alt="" class="bj-3">
+                    <img src="img/bj-4.png" alt="" class="bj-4">
 					<div class="right-chart" id="main-two"></div>
 				</div>
 			</div>
@@ -275,271 +283,16 @@
 	        pieMyChart.resize();
 	    });
 	</script>
+	
 	<script type="text/javascript">
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('main'));
-
-        // 指定图表的配置项和数据
-		option = {
-			backgroundColor: 'transparent',
-		    tooltip : {
-		        trigger: 'axis'
-		    },
-		    toolbox: {
-		    	right: 5,
-		    	top: 5,
-		        show : true,
-		        feature : {
-		            magicType: {
-		            	show: true,
-		            	type: ['line', 'bar'],
-		            	iconStyle: {
-		            		borderColor: 'green'
-		            	}
-		            },
-		            restore : {
-		            	show: true,
-		            	iconStyle: {
-		            		borderColor: 'orange'
-		            	}
-		            },
-		            saveAsImage : {
-		            	show: true,
-		            	iconStyle: {
-		            		borderColor: 'yellow'
-		            	}
-		            }
-		        }
-		    },
-		    calculable : true,
-		    legend: {
-		        data:['蒸发量','降水量','平均温度'],
-		        textStyle: {
-		        	color:['red','orange','green']
-		        },
-		    	left: 20,
-		    	top: 10
-		    },
-		    xAxis : [
-		        {
-		            type : 'category',
-		            data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
-		        	axisLabel: {
-                            textStyle: {
-                                color: 'yellow'
-                            }
-                      },
-                    splitLine:{
-						show:false
-					}
-		        },
-		        
-		    ],
-		    yAxis : [
-		        {
-		            type : 'value',
-		            name : '下料重量（kg）',
-		            nameTextStyle: {
-		            	color: 'rgb(0, 252, 255)'
-		            },
-		            axisLabel : {
-		                formatter: '{value} kg',
-		                textStyle: {
-		                	color: 'orange'
-		                }
-		            },
-		            splitLine:{
-						show:false
-					}
-		        },
-		        {
-		            type : 'value',
-		            name : '温度',
-		            nameTextStyle: {
-		            	color: 'yellow'
-		            },
-		            axisLabel : {
-		                formatter: '{value} °C',
-		                textStyle: {
-		                	color: 'red'
-		                }
-		            },
-		            splitLine:{
-						show:false
-					}
-		        }
-		    ],
-		    series : [
-		        {
-		            name:'蒸发量',
-		            type:'bar',
-		            data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
-		        },
-		        {
-		            name:'降水量',
-		            type:'bar',
-		            data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
-		        },
-		        {
-		            name:'平均温度',
-		            type:'line',
-		            yAxisIndex: 1,
-		            data:[2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
-		        }
-		    ]
-		};
-		
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-        //echart自适应
-        var worldMapContainer = document.getElementById('main');
-		//用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
-	     var resizeWorldMapContainer = function () {
-	          var owidth=window.innerWidth*0.8;
-	         worldMapContainer.style.width = window.innerWidth-owidth+'px';
-	     };
-	     //设置容器高宽
-	     resizeWorldMapContainer();
-		dayGaugeMyChart.setOption(dayGaugeOption, true);
-		//浏览器大小改变时重置大小
-	    window.addEventListener("resize",function(){
-	        //重置容器高宽
-	        resizeWorldMapContainer();
-	        dayGaugeMyChart.resize();
-	    });
+        
 	</script>
+	
+	
 	<script type="text/javascript">
-        // 基于准备好的dom，初始化echarts实例
-        var myChart = echarts.init(document.getElementById('main-two'));
 
-        // 指定图表的配置项和数据
-		option = {
-			backgroundColor: 'transparent',
-		    tooltip : {
-		        trigger: 'axis'
-		    },
-		    toolbox: {
-		    	right: 5,
-		    	top: 5,
-		        show : true,
-		        feature : {
-		            magicType: {
-		            	show: true,
-		            	type: ['line', 'bar'],
-		            	iconStyle: {
-		            		borderColor: 'green'
-		            	}
-		            },
-		            restore : {
-		            	show: true,
-		            	iconStyle: {
-		            		borderColor: 'orange'
-		            	}
-		            },
-		            saveAsImage : {
-		            	show: true,
-		            	iconStyle: {
-		            		borderColor: 'yellow'
-		            	}
-		            }
-		        }
-		    },
-		    calculable : true,
-		    legend: {
-		        data:['蒸发量','降水量','平均温度'],
-		        textStyle: {
-		        	color:['red','orange','green']
-		        },
-		    	left: 20,
-		    	top: 10
-		    },
-		    xAxis : [
-		        {
-		            type : 'category',
-		            data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'],
-		        	axisLabel: {
-                            textStyle: {
-                                color: 'yellow'
-                            }
-                        }
-		        },
-		        
-		        	
-		        
-		    ],
-		    yAxis : [
-		        {
-		            type : 'value',
-		            name : '水量',
-		            nameTextStyle: {
-		            	color: 'green'
-		            },
-		            axisLabel : {
-		                formatter: '{value} ml',
-		                textStyle: {
-		                	color: 'orange'
-		                }
-		            },
-		            splitLine:{
-						show:false
-					}
-		        },
-		        {
-		            type : 'value',
-		            name : '温度',
-		            nameTextStyle: {
-		            	color: 'purple'
-		            },
-		            axisLabel : {
-		                formatter: '{value} °C',
-		                textStyle: {
-		                	color: 'red'
-		                }
-		            },
-		            splitLine:{
-						show:false
-					}
-		        }
-		    ],
-		    series : [
-		        {
-		            name:'蒸发量',
-		            type:'bar',
-		            data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3]
-		        },
-		        {
-		            name:'降水量',
-		            type:'bar',
-		            data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3]
-		        },
-		        {
-		            name:'平均温度',
-		            type:'line',
-		            yAxisIndex: 1,
-		            data:[2.0, 2.2, 3.3, 4.5, 6.3, 10.2, 20.3, 23.4, 23.0, 16.5, 12.0, 6.2]
-		        }
-		    ]
-		};
-		
-        // 使用刚指定的配置项和数据显示图表。
-        myChart.setOption(option);
-        //echart自适应
-        var worldMapContainer = document.getElementById('main-two');
-		//用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
-	     var resizeWorldMapContainer = function () {
-	          var owidth=window.innerWidth*0.8;
-	         worldMapContainer.style.width = window.innerWidth-owidth+'px';
-	     };
-	     //设置容器高宽
-	     resizeWorldMapContainer();
-		dayGaugeMyChart.setOption(dayGaugeOption, true);
-		//浏览器大小改变时重置大小
-	    window.addEventListener("resize",function(){
-	        //重置容器高宽
-	        resizeWorldMapContainer();
-	        dayGaugeMyChart.resize();
-	    });
 	</script>
+
 	<script>
 		function showLocale(objD){
 			var str,colorhead,colorfoot;

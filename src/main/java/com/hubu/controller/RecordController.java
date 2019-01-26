@@ -80,6 +80,9 @@ public class RecordController
                                               @RequestParam(value = "endTime",required=false)String endTime,
                                               @RequestParam(value = "team",required=false)String team
     ){
+        System.out.println(machine_no);
+        System.out.println(pile_no);
+        System.out.println(beginTime);
         PageInfo<Record> records = recorderService.findRecordWithPageByCriteria(currentPage,machine_no,pile_no,beginTime,endTime,team);
         return new Msg().success().add("result",records);
     }
