@@ -8,6 +8,9 @@
         <outputRelativeToContentRoot value="true" />
         <module name="datamanagement_hubei1.0" />
         <module name="datamanagement_hubei1.1" />
+        <module name="datamanagement_hubei1.2" />
+        <module name="datamanagement_hubei1.3" />
+        <module name="datamanagement_hubei1.4" />
         <module name="springboot" />
         <module name="TestOnLineSystem" />
       </profile>
@@ -15,6 +18,9 @@
     <bytecodeTargetLevel>
       <module name="datamanagement_hubei1.0" target="1.8" />
       <module name="datamanagement_hubei1.1" target="1.8" />
+      <module name="datamanagement_hubei1.2" target="1.8" />
+      <module name="datamanagement_hubei1.3" target="1.8" />
+      <module name="datamanagement_hubei1.4" target="1.8" />
       <module name="springboot" target="1.8" />
       <module name="TestOnLineSystem" target="1.8" />
     </bytecodeTargetLevel>

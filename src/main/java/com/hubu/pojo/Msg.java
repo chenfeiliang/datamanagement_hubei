@@ -5,14 +5,21 @@ import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
 import java.util.Map;
-@Component
-@Scope("prototype")
+
+
+/*
+ * Author:   chenfeiliang
+ * Description: Msg 数据返回模板
+ */
+
 public class Msg {
     private int code;
 
     private String msg;
 
     private Map<String,Object> extend = new HashMap<String,Object>();
+
+    public static final String RESULT = "result";
 
     public int getCode() {
         return code;

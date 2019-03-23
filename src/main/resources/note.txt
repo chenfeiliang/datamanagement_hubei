@@ -1,0 +1,59 @@
+
+一.
+spring注入默认单例，变多例需要
+
+(1) 首先加注解 @Scope("prototype")
+(2)
+
+方案1.
+
+@Controller
+public class ExampleService{
+
+	@Autowired
+	private org.springframework.beans.factory.BeanFactory beanFactory;
+
+	@RequestMapping("test")
+	public void test(){
+		ExampleService exampleService = beanFactory.getBean(ExampleService.class);
+		exampleService.test();
+	}
+}
+
+方案2.
+
+@Autowired
+ private ApplicationContext context;
+
+
+ @Bean
+    public WebSocketHandler websocketBHandler() {
+        PerConnectionWebSocketHandler perConnectionHandler = new PerConnectionWebSocketHandler(WebSocketBHandler.class);
+        perConnectionHandler.setBeanFactory(context.getAutowireCapableBeanFactory());
+        //设置bean工厂，否则bean工厂WebSocketBHandler将不会自动连接
+        return perConnectionHandler;
+    }
+
+二.
+
+java.net.SocketException: Connection reset  异常
+
+经查阅问题描述如下：
+
+1，如果一端的Socket被关闭（或主动关闭，或因为异常退出而 引起的关闭），另一端仍发送数据，发送的第一个数据包引发该异常(Connect reset by peer)。
+
+2，一端退出，但退出时并未关闭该连接，另一端如果在从连接中读数据则抛出该异常（Connection reset）。简单的说就是在连接断开后的读和写操作引起的。
+
+我这里是客户端，socket最后关闭，原因只能是2。说明对方在把数据返回后，就把socket关闭了，而客户端还在读数据。所以就connection reset。
+
+解决方案；
+
+1 问题的 解决方案  使用InputStream.available判定是否还有可读字节
+2 问题的 解决方案  
+
+
+
+
+
+
+

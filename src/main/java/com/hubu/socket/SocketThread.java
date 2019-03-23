@@ -1,27 +1,46 @@
 package com.hubu.socket;
-import com.hubu.dao.RecordMapper;
+
+import com.hubu.mapper.RecordMapper;
 import com.hubu.pojo.Record;
-import com.hubu.utils.DateUtil;
+import com.hubu.utils.RecordUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.Socket;
-import java.util.Date;
 
+/**
+ * 功能描述:  将数据插入到数据库的线程类。
+ *
+ *  Author:   chenfeiliang
+ */
 @Component
-public class SocketThread implements Runnable
+@Scope("prototype")
+public class SocketThread extends Thread
 {
 
-    /* @Autowired(required = false)*/
     @Autowired
-    RecordMapper recordMapper;
+    RecordMapper recordMapper;  //操作数据库的接口，实现插入
 
-    /*    @Autowired(required = false)*/
+    private Logger logger = LoggerFactory.getLogger(this.getClass());  //日志类
+
     private Socket socket;
+
+/*
+    private int clientNo;    核对执行次数，看看数据是否遗漏
+
+    public int getClientNo() {
+        return clientNo;
+    }
+
+    public void setClientNo(int clientNo) {
+        this.clientNo = clientNo;
+    }
+*/
 
     public SocketThread(){
 
@@ -33,286 +52,44 @@ public class SocketThread implements Runnable
 
     public void run()
     {
-
+        InputStream inputStream = null;
         // 根据输入输出流和客户端连接
         try
         {
-            InputStream inputStream = socket.getInputStream();
+            inputStream = socket.getInputStream();
             //从输入流得到客户端传递的字节流（长度最大160）
             byte[] ReceiveDataTemp = new byte[160];
             int len = -1;
-            while ((len  = inputStream.read(ReceiveDataTemp)) != -1)
+            while ((len  = inputStream.read(ReceiveDataTemp)) != -1) //((len  = inputStream.read(ReceiveDataTemp)) != -1) &&
             {
-                System.out.print("\\n接收客户端信息:");
-                for(int iprint=0; iprint<160; iprint++)
-                {
-                    System.out.print((char)ReceiveDataTemp[iprint]);
-                }
-                System.out.print(",本地端口：" + socket.getLocalPort() + ",远程端口：" + socket.getPort() + ",远程IP地址：" + socket.getInetAddress() + "数据信息解析如下：\n");
-                Record record = byteToRecord(ReceiveDataTemp);
-                System.out.println(record.toString());
+                Record record = RecordUtil.byteToRecord(ReceiveDataTemp);
+/*                logger.info("线程" + clientNo + "正在执行");*/
                 recordMapper.insertSelective(record);
-
+/*                logger.info("线程" + clientNo + "执行完毕");*/
             }
-            // 关闭相对应的资源
-            //bufferedReader.close();
-            inputStream.close();
-            //PrintWriter.close();
-            //outputStream.close();
         }
         catch (IOException e)
         {
-            e.printStackTrace();
+            logger.error(e.getMessage());
         }
-    }
-
-    @RequestMapping("/hi")
-    @ResponseBody
-    public String hi(){
-        return "hi";
-    }
-    //数据解析处理成Layoff对象
-    Record byteToRecord(byte []temp)
-    {
-        Record record = new Record();
-
-        String collect_data = new String(temp);
-
-        record.setCollectData(collect_data);
-
-        char[] NO = new char[3];
-        //char[] BH = new char[10];
-        String BH = null;
-        int FirstWeight = 0;
-        int SecondWeight = 0;
-        float FirstDepth = 0;
-        float SecondDepth = 0;
-        float SumDepth = 0;
-        char[] BT = new char[16];
-        char[] ET = new char[16];
-        int []KGM = new int[100];
-        //时间格式初始化
-        BT[0] = ET[0] = '2';
-        BT[1] = ET[1] = '0';
-        BT[4] = BT[7] = BT[10] = '/';
-        ET[4] = ET[7] = ET[10] = '/';
-        BT[13] = ET[13] = ':';
-
-        int[] data = new int[80];
-
-        int itemp = 0;
-        for(int idata=0; idata<data.length; idata++)
-        {
-            //将明码转为16进制的字节码再进行数据解析处理
-            data[idata] = (((char2hex((char)(temp[itemp]&0x00ff)))&0x0f)<<4) + ((char2hex((char)(temp[itemp+1]&0x00ff)))&0x0f);
-            itemp = itemp + 2;
-			/*
-			//字节数组转存为int数组，为了解决非明码传输时ASCII码值大于127的字节解析出错的问题，协议明码传输无需考虑该问题
-            if(temp[itemp]<0)
-            {
-                data[itemp]=temp[itemp]&0xff;
-            }
-            else
-            {
-                data[itemp]=temp[itemp];
-            }
-			*/
-        }
-        itemp = 0;
-
-        //数据解析处理
-        //明码：    04000000130000001600D10200000000D102120C161100120C161104040302020503030000000000000000000000000000000000000000000000000000000000000000000000000005120C09
-        //16进制码：04 00 00 00 13 00 00 00 16 00 D1 02 00 00 00 00 D1 02 12 0C 16 11 00 12 0C 16 11 04 04 03 02 02 05 03 03 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 05 12 0C 09
-
-        //处理桩机流水号
-        int tempNO = data[0] + data[1]*256;
-        NO[0] = (char)(tempNO%1000/100 + '0');
-        NO[1] = (char)(tempNO%100/10 + '0');
-        NO[2] = (char)(tempNO%10/1 + '0');
-        record.setPileNo("" + NO[0] + NO[1] + NO[2]);
-        System.out.println("桩机流水号:" + NO[0] + NO[1] + NO[2]);
-
-        //处理第一次下料重量
-        FirstWeight = data[4] + data[5]*256;
-        record.setFirstWeight(FirstWeight);
-        System.out.println("第一次下料重量:" + FirstWeight);
-
-        //处理第二次下料重量
-        SecondWeight = data[8] + data[9]*256;
-        record.setSecondWeight(SecondWeight);
-        System.out.println("第二次下料重量:" + SecondWeight);
-
-        //处理第一次下料深度
-        FirstDepth =Float.valueOf((data[10] + data[11]*256))/100;
-        record.setFirstDepth((float)FirstDepth);
-        System.out.println("第一次下料深度:" + FirstDepth);
-
-        //处理第二次下料深度
-        SecondDepth = Float.valueOf(data[12] + data[13]*256)/100;
-        record.setSecondDepth((float)SecondDepth);
-        System.out.println("第二次下料深度:" + SecondDepth);
-
-        //处理总深度
-        SumDepth = Float.valueOf(data[16] + data[17]*256)/100;
-        record.setSumDepth((float)SumDepth);
-        System.out.println("下料总深度:" + SumDepth);
-
-        //处理开始时间
-        BT[2] = (char)(data[18]%100/10 + '0');
-        BT[3] = (char)(data[18]%10/1 + '0');
-        BT[5] = (char)(data[19]%100/10 + '0');
-        BT[6] = (char)(data[19]%10/1 + '0');
-        BT[8] = (char)(data[20]%100/10 + '0');
-        BT[9] = (char)(data[20]%10/1 + '0');
-        BT[11] = (char)(data[21]%100/10 + '0');
-        BT[12] = (char)(data[21]%10/1 + '0');
-        BT[14] = (char)(data[22]%100/10 + '0');
-        BT[15] = (char)(data[22]%10/1 + '0');
-        String beginTime = "" + BT[0] + BT[1] + BT[2] + BT[3] + BT[4] + BT[5] + BT[6] + BT[7] + BT[8] + BT[9] + BT[10] + BT[11] + BT[12] + BT[13] + BT[14] + BT[15];
-
-        record.setBeginTime(DateUtil.StringToDate(beginTime));
-
-        System.out.println("开始时间:" + BT[0] + BT[1] + BT[2] + BT[3] + BT[4] + BT[5] + BT[6] + BT[7] + BT[8] + BT[9] + BT[10] + BT[11] + BT[12] + BT[13] + BT[14] + BT[15]);
-
-        //处理结束时间
-        ET[2] = (char)(data[23]%100/10 + '0');
-        ET[3] = (char)(data[23]%10/1 + '0');
-        ET[5] = (char)(data[24]%100/10 + '0');
-        ET[6] = (char)(data[24]%10/1 + '0');
-        ET[8] = (char)(data[25]%100/10 + '0');
-        ET[9] = (char)(data[25]%10/1 + '0');
-        ET[11] = (char)(data[26]%100/10 + '0');
-        ET[12] = (char)(data[26]%10/1 + '0');
-        ET[14] = (char)(data[27]%100/10 + '0');
-        ET[15] = (char)(data[27]%10/1 + '0');
-
-        String endTime = "" + ET[0] + ET[1] + ET[2] + ET[3] + ET[4] + ET[5] + ET[6] + ET[7] + ET[8] + ET[9] + ET[10] + ET[11] + ET[12] + ET[13] + ET[14] + ET[15];
-
-        record.setEndTime(DateUtil.StringToDate(endTime));
-
-        System.out.println("结束时间:" + ET[0] + ET[1] + ET[2] + ET[3] + ET[4] + ET[5] + ET[6] + ET[7] + ET[8] + ET[9] + ET[10] + ET[11] + ET[12] + ET[13] + ET[14] + ET[15]);
-
-        //处理打桩记录
-        //记录数量
-
-        int icount = (int)SumDepth;
-        //加一处理标志位
-        char icountFlag = 0;
-        System.out.println("记录初值:" + icount);
-        if(SumDepth%1 > 0)
-        {
-            icountFlag = 1;
-            icount++;
-        }
-        System.out.println("记录终值:" + icount);
-
-        StringBuffer weight_record = new StringBuffer("");
-        StringBuffer tempStr = new StringBuffer("");
-
-        for(int i=0; i<icount; i++)
-        {
-            KGM[i] = data[28+i]&0xFF;
-            if(i < icount-1)
-            {
-                System.out.println("第 " + i + " 到 " + (i+1) + " 米下料: " + ((char)(KGM[i]%100/10 + '0')) + ((char)(KGM[i]%10/1 + '0')) + " KG");
-
-                tempStr = new StringBuffer(""+((char)(KGM[i]%100/10 + '0')) + ((char)(KGM[i]%10/1 + '0')));
-                if(tempStr.length()<3){
-                    for (int j = 0;j<3-tempStr.length();j++){
-                        tempStr = new StringBuffer("0").append(tempStr);
-                    }
+        finally {
+            // 关闭相对应的资源
+            try {
+                if(inputStream!=null) {
+                    inputStream.close();
+                }
+                if(socket!=null){
+                    socket.close();
                 }
 
-                weight_record.append( tempStr.append("#"));
-            }
-            else
-            {
-                if(icountFlag == 1)
-                {
-                    System.out.println("第 " + i + " 到 " + SumDepth + " 米下料: " + ((char)(KGM[i]%100/10 + '0')) + ((char)(KGM[i]%10/1 + '0')) + " KG");
-
-                    tempStr = new StringBuffer(""+((char)(KGM[i]%100/10 + '0')) + ((char)(KGM[i]%10/1 + '0')));
-                    if(tempStr.length()<3){
-                        for (int j = 0;j<3-tempStr.length();j++){
-                            tempStr = new StringBuffer("0").append(tempStr);
-                        }
-                    }
-
-                    weight_record.append( tempStr.append("#"));
-                }
-                else
-                {
-                    System.out.println("第 " + i + " 到 " + (i+1) + " 米下料: " + ((char)(KGM[i]%100/10 + '0')) + ((char)(KGM[i]%10/1 + '0')) + " KG");
-
-                    tempStr = new StringBuffer(""+((char)(KGM[i]%100/10 + '0')) + ((char)(KGM[i]%10/1 + '0')));
-                    if(tempStr.length()<3){
-                        for (int j = 0;j<3-tempStr.length();j++){
-                            tempStr = new StringBuffer("0").append(tempStr);
-                        }
-                    }
-
-                    weight_record.append( tempStr.append("#"));
-                }
+            } catch (IOException e) {
+                logger.error(e.getMessage());
             }
         }
-
-        record.setWeightRecord(String.valueOf(weight_record));
-
-        //标志位清零
-        icountFlag = 0;
-
-        //处理机台编号
-        String BHtemp1 = null;
-        String BHtemp2 = null;
-        String BHtemp3 = null;
-        String BHtemp4 = null;
-        //机台编号拼接处理
-        BHtemp1 = String.valueOf(data[72]%10/1);
-        if(data[73]/100 == 0)
-        {
-            BHtemp2 = String.valueOf(data[73]%100/10) + String.valueOf(data[73]%10/1);
-        }
-        else
-        {
-            BHtemp2 = String.valueOf(data[73]%1000/100) + String.valueOf(data[73]%100/10) + String.valueOf(data[73]%10/1);
-        }
-        if(data[74]/100 == 0)
-        {
-            BHtemp3 = String.valueOf(data[74]%100/10) + String.valueOf(data[74]%10/1);
-        }
-        else
-        {
-            BHtemp3 = String.valueOf(data[74]%1000/100) + String.valueOf(data[74]%100/10) + String.valueOf(data[74]%10/1);
-        }
-        if(data[75]/100 == 0)
-        {
-            BHtemp4 = String.valueOf(data[75]%100/10) + String.valueOf(data[75]%10/1);
-        }
-        else
-        {
-            BHtemp4 = String.valueOf(data[75]%1000/100) + String.valueOf(data[75]%100/10) + String.valueOf(data[75]%10/1);
-        }
-        BH = BHtemp2 + BHtemp3 + BHtemp4 + BHtemp1;
-        record.setMachineNo(BH);
-        System.out.println("机台编号为：" + BH);
-
-        record.setGatherTime(new Date());
-
-        return record;
     }
 
 
-    //字节码转16进制
-    byte char2hex(char chr)
-    {
-        if(chr>='0'&&chr<='9')
-            return (byte)((chr-'0')&0x00ff);
-        if(chr>='A'&&chr<='F')
-            return (byte)((chr-'A'+10)&0x00ff);
-        if(chr>='a'&&chr<='f')
-            return (byte)((chr-'a'+10)&0x00ff);
-        return 0;
-    }
+
 
 
 }

@@ -5,7 +5,10 @@ $(function() {
 	initBarDiagram();
 	initBarDiagramTwo()
 	showRecord(1);
+
+
 });
+
 
 function showRecord(cp) {
 	getRecordByCriteria(cp);
@@ -84,7 +87,9 @@ function showPageDiv() {
 		"<button class='bt3' onclick=gotoPage()>跳转</button>" +
 		"<button class='bt4' onclick=showRecord(" + (pageInfo.pageNum + 1 > pageInfo.pages ? pageInfo.pages : pageInfo.pageNum + 1) + ")>下一页</button>" +
 		"<button class='bt5' onclick=showRecord(" + pageInfo.pages + ")>尾页</button>" +
-		"<span id='localtime'></span>";
+		"<button class='bt6' onclick=showRecord("+1+")>刷新数据</button>"+
+		"<span id='localtime'></span>"	
+		;
 
 	$("#pageInfoDiv").append(pageDiv);
 }
@@ -96,10 +101,10 @@ function showLeftTable() {
 		var tr1 = "<tr class='tr recordTr'  onclick=showRrightTable(" + index + ")>" +
 			"<td class='recordTd'>" + item.machineNo + "</td>" +
 			"<td class='recordTd'>" + item.pileNo + "</td>" +
+            "<td class='recordTd'>" + item.firstDepth + "</td>" +
 			"<td class='recordTd'>" + item.firstWeight + "</td>" +
-			"<td class='recordTd'>" + item.secondWeight + "</td>" +
-			"<td class='recordTd'>" + item.firstDepth + "</td>" +
 			"<td class='recordTd'>" + item.secondDepth + "</td>" +
+			"<td class='recordTd'>" + item.secondWeight + "</td>" +
 			"<td class='recordTd'>" + item.sumDepth + "</td>" +
 			"<td class='recordTd'>" + item.str_beginTime + "</td>" +
 			"<td class='recordTd'>" + item.str_endTime + "</td>" +
@@ -110,9 +115,86 @@ function showLeftTable() {
 	showPageDiv();
 }
 
+function printPDF(){
+	//alert("ok")
+    var iframe=document.getElementById("print-iframe");
+    if(!iframe){  
+            var el1 = document.getElementById("prinDiv1");
+            var el2 = document.getElementById("prinDiv2");
+            iframe = document.createElement('IFRAME');
+            var doc = null;
+            iframe.setAttribute("id", "print-iframe");
+            iframe.setAttribute('style', 'position:absolute;width:0px;height:0px;left:-500px;top:-500px;');
+           
+            document.body.appendChild(iframe);
+            doc = iframe.contentWindow.document;
+                       
+                       
+            //这里可以自定义样式
+           //  doc.write("<link rel='stylesheet' type='text/css' href='css/print.css'>");
+			  
+            doc.write("<div id = 'prinDIV1'>" + el1.innerHTML + '</div>');
+            doc.write("<div id = 'prinDIV2'>" + el2.innerHTML + '</div>');
+      
+      		var spans = doc.getElementsByTagName("span");
+      		
+            var prinDIV1 = doc.getElementById("prinDIV1");
+            var prinDIV2 = doc.getElementById("prinDIV2");
+            
+            prinDIV1.style.width="30%";
+            prinDIV2.style.width="30%";
+            
+            prinDIV1.style.lineHeight="5px";
+            prinDIV1.style.fontFamily="宋体";
+            
+            prinDIV2.style.lineHeight="5px";
+            prinDIV2.style.fontFamily="宋体";
+            
+            var title = doc.getElementById("Ptitle");
+            title.style.width="70%";
+            title.style.fontSize="20px";
+            title.style.fontWeight="300";
+            
+            var ptds = doc.getElementsByClassName("pileNoTd");
+    	
+            for(var i = 0 ; i < ptds.length; i++ ){
+            	ptds[i].style.textAlign="left";
+            	ptds[i].style.paddingRight="20px";
+            }
+
+            var mtds = doc.getElementsByClassName("MTd");
+            for(var i = 0 ; i < mtds.length; i++ ){
+            	mtds[i].style.textAlign="center";
+            	mtds[i].style.paddingRight="20px";
+            }
+            
+            var kgmtds = doc.getElementsByClassName("KGMTd");
+            for(var i = 0 ; i < kgmtds.length; i++ ){
+            	kgmtds[i].style.textAlign="right";
+            	kgmtds[i].style.paddingRight="20px";
+            }
+            doc.close();
+          
+            iframe.contentWindow.focus();   
+        
+
+            
+           // alert(iframe.contentWindow.document.getElementById("prinDIV1").style.fontSize);
+         //   alert(iframe.contentWindow.document.getElementsByTagName('html')[0].innerHTML);
+    }
+ 
+    iframe.contentWindow.print();
+    if (navigator.userAgent.indexOf("MSIE") > 0){
+        document.body.removeChild(iframe);
+    }
+}
+
 function showRrightTable(index) {
 
 	var record = getRecordByIndex(index);
+	
+	$("#exportTicketExcelBT").attr("onclick","exportTicketExcelById("+record.recordNo+")");
+	$("#printTicketPDFBT").attr("onclick","printPDF()");
 	$("#BH").html("");
 	$("#Z").html("");
 	$("#beginTimeRright").html("");
@@ -130,12 +212,14 @@ function showRrightTable(index) {
 	$("#beginTimeRright").append(record.str_beginTime);
 	$("#endTimeRright").append(record.str_endTime);
 	$("#NO_up").append(record.pileNo);
-	$("#TL").append((record.firstWeight + record.secondWeight));
-	$("#TH").append(record.sumDepth);
-	$("#S1").append(record.firstDepth);
-	$("#S2").append(record.secondDepth);
-	$("#W1").append(record.firstWeight);
-	$("#W2").append(record.secondWeight);
+	
+	$("#TL").append(saveIntForN(record.secondWeight,4)+"Kg");
+	$("#TH").append(formatDepth(record.sumDepth.toString())+"M");
+
+	$("#S1").append(formatDepth(record.firstDepth.toString()));
+	$("#S2").append(formatDepth(record.secondDepth.toString()));
+	$("#W1").append(saveIntForN(record.firstWeight,4));
+	$("#W2").append(saveIntForN(record.secondWeight,4));
 
 	var weightRecord = record.weightRecord.toString();
 
@@ -154,18 +238,56 @@ function showRrightTable(index) {
 	/*最后一个为空,不需要*/
 	for(var i = 0; i < str.length - 1; i++) {
 
-		var M = (i + 1 > 9 ? "0" + (i) : "0" + (i)) + ".0";
+		var M = (i  >= 10 ?  i : "0" + (i)) + ".0";
 
 		var tr1 = "<tr class = 'tr'>" +
-			"<td>" + record.pileNo + "#</td>" +
-			"<td>" + M + "</td>" +
-			"<td>" + str[i] + "</td>" +
+			"<td class='pileNoTd'>" + record.pileNo + "#</td>" +
+			"<td class='MTd'>" + M + "</td>" +
+			"<td class='KGMTd'>" + str[i] + "</td>" +
 			"</tr>";
 
 		$("#weight_record").append(tr1);
 
 	}
+	
+		if((record.sumDepth%1)!=0){
+		    var M2 = record.sumDepth.toFixed(1);
+		    M2 = (M2  >= 10 ?  M2 : "0" + (M2));
+			var tr2 = "<tr class = 'tr'>" +
+			"<td class='pileNoTd'>" + record.pileNo + "#</td>" +
+			"<td class='MTd'>" + M2 + "</td>" +
+			"<td class='KGMTd'>" + "000" + "</td>" +
+			"</tr>";
+			$("#weight_record").append(tr2);
+	}
+		
+		
+		
+		
 
+}
+
+function saveIntForN(target,n)
+{
+	target = target.toString();
+	var tempN = target.length;
+	if(tempN>=n){
+		return target;
+	}else{
+		for(var i = 0 ;i<n-tempN;i++){
+			target = "0" + target;
+		}
+		return target;
+	}
+}
+
+function formatDepth(depth){
+	if(depth==0){
+		return "00.0";
+	}
+	var str = depth.split('.');
+	var result = saveIntForN(str[0],2)+"."+str[1];	
+	return result;
 }
 
 function showBarDiagram(xValue, seriesData) {
@@ -196,7 +318,7 @@ function showBarDiagram(xValue, seriesData) {
 }
 
 function exportThisPage() {
-	if(confirm("确定导出所有数据？")) {
+	if(confirm("确定导出本页数据？")) {
 
 		var cp = pageInfo.pageNum;
 		var pileNo = $("#pileNo").val();
@@ -215,6 +337,34 @@ function exportThisPage() {
 
 	}
 }
+
+function exportTicketExcelById(id) {
+	if(confirm("确定导出票据？")) {
+		window.location.href = AJAXURL + "/downloadTicketExcelById?" +"id=" + id
+	}
+}
+
+function exportTicketPDFById(id) {
+		$.ajax({
+		url: AJAXURL + "/downloadTicketPDFById",
+		type: "GET",
+		data: {
+			"id": id
+		},
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8", //防止乱码
+		success: function() {
+			alert("打印成功");
+		},
+		error: function() {
+			alert("fail");
+		}
+	});
+/*	if(confirm("确定打印票据？")) {
+		window.location.href = AJAXURL + "/downloadTicketPDFById?" +"id=" + id
+	}*/
+}
+
+
 
 function exportAll() {
 	if(confirm("确定导出所有数据？")) {
@@ -744,3 +894,6 @@ function showBarDiagramTwo(seriesData) {
 
 	myChart.setOption(option);
 }
+
+
+

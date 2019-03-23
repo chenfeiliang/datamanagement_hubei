@@ -8,8 +8,15 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/*
+ * 功能描述: MD5 等 工具类
+ *
+ * @author : chenfeiliang
+ */
 public class Myutils {
     private static final Logger logger = LoggerFactory.getLogger(Myutils.class);
+
+    //获取页数中的前2个页号，和后两个页号
     public static int[] pageCount(Integer currentPage,int[] nums){
         if (nums.length < 5)
             return nums;
@@ -35,6 +42,7 @@ public class Myutils {
         return result;
     }
 
+    // 将字段key进行MD5加密
     public static String MD5(String key) {
         char hexDigits[] = {
                 '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'

@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<title>工地桩机数据展示平台</title>
+
 		<link rel="stylesheet" href="css/base.css" />
 		<link rel="stylesheet" href="css/GeneralUser.css" />
 		<link rel="shortcut icon" href="favicon.ico" />
+
+		
 		<script src="js/echarts.min.js"></script>
 		<script src="js/jquery-3.1.0.min.js"></script>
+		
 		<script type="text/javascript" src="js/config.js"></script>
-		<script type="text/javascript" src="js/index.js"></script>	
-		<script type="text/javascript" src="js/vue.min.js"></script>
-		<script type="text/javascript" src="js/online.js"></script>
+		<script type="text/javascript" src="js/index.js"></script>
+
 		<script type="text/javascript" src="js/index.js"></script>
 		<script type="text/javascript" src="js/GeneralUser.js"></script>
-		
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=hwQLSSEWuRivhLgMPF7CbqXFGLXPW6o1"></script>
+
+
 	</head>
+
 	<body>
 		<!--顶部 start-->
 		<header>
@@ -30,31 +37,32 @@
 			<!--nav 部分 start-->
 			<nav>
 				<ul>
-					<li><a href="#">数据展示</a></li>
-					<li><a href="#">电子地图</a></li>
-					<li><a href="#">视频监控</a></li>
-					<li><a href="#">联系我们</a></li>
+					<li>
+						<a href="index.html">数据展示</a>
+					</li>
+					<li>
+						<a href="Map.html">电子地图</a>
+					</li>
+					<li>
+						<a href="#">视频监控</a>
+					</li>
+					<li>
+						<a href="#">联系我们</a>
+					</li>
 				</ul>
 			</nav>
 			<!--nav 部分 end-->
 			<!--search 部分 start-->
 			<div class="search">
-				<input type="search" name="" id="" placeholder="请输入关键字"/><button></button>
+				<input type="search" name="" id="" placeholder="请输入关键字" /><button></button>
 			</div>
 			<!--search 部分 end-->
-			<!--个人中心部分 start-->
-			<div class="personal">
-				<dl>
-					<dt>个人中心
-						<dd>
-							<span>
-								<img src="img/people.png" alt="" />刘德华
-							</span>
-						</dd>
-					</dt>
-				</dl>
+			<!--票据操作部分 start-->
+			<div class="ticket">
+				<button style="background: #ff0000;" class="button-ticket1" id="printTicketPDFBT" >打印票据</button>
+				<button style="background: #ff0000;" class="button-ticket2" id="exportTicketExcelBT" onclick="exportTicketExcelById()">导出票据数据</button>
 			</div>
-			<!--个人中心部分 end-->
+			<!--票据操作部分 end-->
 		</header>
 		<!--顶部 end-->
 		<!--内容 start-->
@@ -64,274 +72,266 @@
 					<div class="top">
 						<form>
 							<label for="pileNo">桩机流水号:</label>
-							<input type="text" id="pileNo"/>
+							<input type="text" id="pileNo" />
 						</form>
 						<form>
 							<label for="machineNo">机台编号:</label>
-							<input type="text" id="machineNo"/>
+							<input type="text" id="machineNo" />
 						</form>
 						<form>
 							<label for="beginTime">开始时间:</label>
-							<input type="date" id="beginTime"/>
+							<input type="date" id="beginTime" />
 						</form>
 						<form>
 							<label for="endTime">结束时间:</label>
-							<input type="date" id="endTime"/>
+							<input type="date" id="endTime" />
 						</form>
 						<form>
 							<label for="team">部门队伍:</label>
-							<input type="text" id="team"/>
+							<input type="text" id="team" />
 						</form>
 						<button style="background: #ff0000;" class="button-one" onclick="showRecord(1)">查询</button>
-						<button style="background: #36791A;" class="button-two"  onclick="exportThisPage()">导出本页数据</button>
+						<button style="background: #36791A;" class="button-two" onclick="exportThisPage()">导出本页数据</button>
 						<button style="background: #36791A;" class="button-three" onclick="exportAll()">导出所有数据</button>
-						<form id="form1" style="display: none;" >
-							<input hidden="" value="" id = "dataJsonInput" name="dataJson" />
+						<form id="form1" style="display: none;">
+							<input hidden="" value="" id="dataJsonInput" name="dataJson" />
 						</form>
 						<img src="img/bj-1.png" alt="" class="bj-1">
-	                    <img src="img/bj-2.png" alt="" class="bj-2">
-	                    <img src="img/bj-3.png" alt="" class="bj-3">
-	                    <img src="img/bj-4.png" alt="" class="bj-4">
+						<img src="img/bj-2.png" alt="" class="bj-2">
+						<img src="img/bj-3.png" alt="" class="bj-3">
+						<img src="img/bj-4.png" alt="" class="bj-4">
 					</div>
 					<div class="middle">
-						
+
 						<script type="text/javascript">
 							//单击某一行时改变其背景，选取另一行时之前那行恢复，后来点击的那一行背景改变
 							var temptr = $();
-							$(function(){
-								$("#tbody1").on("click","tr",function(event){
+							$(function() {
+								$("#tbody1").on("click", "tr", function(event) {
 									temptr.removeClass("tr_active");
 									temptr = $(this);
 									temptr.addClass("tr_active")
 								});
 							});
-							
+
 							//鼠标在表单上滑动时选中当前行改变背景
-							var rows = document.getElementsByTagName('tr');//取得行
-					        for(var i=0 ;i<rows.length; i++)
-					        {
-					            rows[i].onmouseover = function(){//鼠标移上去,添加一个类'hilite'
-					                this.className += 'hilite';
-					            }
-					            rows[i].onmouseout = function(){//鼠标移开,改变该类的名称
-					                this.className = this.className.replace('hilite','');
-					            }
-					        }
-						</script>
-						        
-				        <style type="text/css">
-				            .tr_active {
-								background: rgba(0,139,139,0.5);
+							var rows = document.getElementsByTagName('tr'); //取得行
+							for(var i = 0; i < rows.length; i++) {
+								rows[i].onmouseover = function() { //鼠标移上去,添加一个类'hilite'
+									this.className += 'hilite';
 								}
-							.tbody1 tr:hover,.tbody1 tr.hilite{
-					            background: rgba(0,139,139,0.5);
-					            color:#0000CC;
-				            }
-					    </style>
-						
+								rows[i].onmouseout = function() { //鼠标移开,改变该类的名称
+									this.className = this.className.replace('hilite', '');
+								}
+							}
+						</script>
+
+						<style type="text/css">
+							.tr_active {
+								background: rgba(0, 139, 139, 0.5);
+							}
+							
+							.tbody1 tr:hover,
+							.tbody1 tr.hilite {
+								background: rgba(0, 139, 139, 0.5);
+								color: #0000CC;
+							}
+						</style>
+
 						<table cellpadding="0" cellspacing="0" id="recordTalbe">
 							<thead>
-							<tr class="tr">
-								<th>机台编号</th>
-								<th>桩机流水号</th>
-								<th>第一次下料重量</th>
-								<th>第二次下料重量</th>
-								<th>第一次下料深度</th>
-								<th>第二次下料深度</th>
-								<th>总深度</th>
-								<th>开始时间</th>
-								<th>结束时间</th>
-							</tr>
+								<tr class="tr">
+									<th>机台编号</th>
+									<th>桩机流水号</th>
+									<th>第一次下料深度</th>
+									<th>第一次下料重量</th>
+									<th>第二次下料深度</th>
+									<th>第二次补料后总重量</th>
+									<th>总深度</th>
+									<th>开始时间</th>
+									<th>结束时间</th>
+								</tr>
 							</thead>
 							<tbody id="tbody1" class="tbody1">
-							
+
 							</tbody>
 						</table>
 					</div>
 					<div class="bottom" id="pageInfoDiv">
-						<!-- <p>共<i id = "bian">1616</i>页记录，已加载<i>10</i>条</p>
-						<button class="bt1">首页</button>
-						<button class="bt2">上一页</button>
-						<input class="page-in" type="text" placeholder="页码">
-						<button class="bt3">跳转</button>
-						<button class="bt4">下一页</button>
-						<button class="bt5">尾页</button>
-						<span id="localtime"></span> -->
-						<p>查询到<i id = "record">XXXXX</i>条记录，共<i id = "sum-page">XXX</i>页，当前为第<i id = "current-page">X</i>页</p>
-						<button class="bt1">首页</button>
-						<button class="bt2">上一页</button>
-						<input class="page-in" type="text" placeholder="页码">
-						<button class="bt3">跳转</button>
-						<button class="bt4">下一页</button>
-						<button class="bt5">尾页</button>
+
 						<span id="localtime"></span>
 					</div>
 				</div>
-				
+
 				<div class="form-data-right">
 					<div class="tick-top">
 						<img src="img/bj-1.png" alt="" class="bj-1">
-	                    <img src="img/bj-2.png" alt="" class="bj-2">
-	                    <img src="img/bj-3.png" alt="" class="bj-3">
-	                    <img src="img/bj-4.png" alt="" class="bj-4">
-						<p>双向喷粉搅拌桩</p>
-						<p>BH:<span id="BH"></span> Z:<span id="Z"></span></p>
-						<p><span id="beginTimeRright"></span></p>
-						<p><span id="endTimeRright"></span></p>
-						<p>NO:<span id="NO_up"></span>#</p>
-						<p>TL:<span id="TL"></span>Kg</p>
-						<p>TH:<span id="TH"></span>M</p>
-						<p>S1:<span >00.0</span>M-><span id="S1"></span>M</p>
-						<p>&nbsp;&nbsp;&nbsp;<span  id="W1"></span>Kg</p>
-						<p>S2:<span>00.0</span>M-><span id="S2"></span>M</p>
-						<p>&nbsp;&nbsp;&nbsp;<span  id="W2"></span>Kg</p>
+						<img src="img/bj-2.png" alt="" class="bj-2">
+						<img src="img/bj-3.png" alt="" class="bj-3">
+						<img src="img/bj-4.png" alt="" class="bj-4">
+						<div id="prinDiv1">
+							<p style="text-align: center;letter-spacing:3px" id="Ptitle">双向喷粉搅拌</p>
+							<p id="PBH">BH:<span id="BH"></span> Z:<span id="Z"></span></p>
+							<p><span id="beginTimeRright"></span></p>
+							<p><span id="endTimeRright"></span></p>
+							<p>NO:<span id="NO_up"></span>#</p>
+							<p>
+								TL:
+								<span style="width: 85%;float: right;display: block;" id="PTL">
+								 <span id="TL" style="text-align: right;float:left;display: block;width: 36%;">						
+								 </span>
+								</span>
+							</p>
+							<p >
+								TH:
+								<span style="width: 85%;float: right;display: block;">
+								 <span id="TH" style="text-align: right;float:left;display: block;width: 36%;">						
+								 </span>
+								</span>
+							</p>
+							<p>S1:<span>00.0</span>M-><span id="S1"></span>M</p>
+							<p><span id="W1" style="margin-left: 11.23%;"></span>Kg</p>
+							<p>S2:<span>00.0</span>M-><span id="S2"></span>M</p>
+							<p><span id="W2" style="margin-left: 11.23%;"></span>Kg</p><!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+						</div>
 					</div>
 					<div class="tick-bottom">
-						<table cellpadding="0" cellspacing="0">
-							<thead>
-								<tr>
-									<th>NO:</th>
-									<th>m</th>
-									<th>Kg/m</th>
-								</tr>
-							</thead>
-							
-							<tbody id="weight_record" >
-
-							</tbody>
-
-
-							
-						</table>
-				</div>
+						<div id="prinDiv2">
+							<table cellpadding="0" cellspacing="0">
+								<thead>
+									<tr>
+										<th class='pileNoTd'>NO:</th>
+										<th class='MTd'>m</th>
+										<th  class='KGMTd'>kg/m</th>										
+									</tr>
+								</thead>
+	
+								<tbody id="weight_record">
+	
+								</tbody>
+	
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class="chart">
 				<div class="left">
 					<img src="img/bj-1.png" alt="" class="bj-1">
-                    <img src="img/bj-2.png" alt="" class="bj-2">
-                    <img src="img/bj-3.png" alt="" class="bj-3">
-                    <img src="img/bj-4.png" alt="" class="bj-4">
+					<img src="img/bj-2.png" alt="" class="bj-2">
+					<img src="img/bj-3.png" alt="" class="bj-3">
+					<img src="img/bj-4.png" alt="" class="bj-4">
 					<div class="left-chart" id="main"></div>
 				</div>
 				<div class="mid">
 					<img src="img/bj-1.png" alt="" class="bj-1">
-                    <img src="img/bj-2.png" alt="" class="bj-2">
-                    <img src="img/bj-3.png" alt="" class="bj-3">
-                    <img src="img/bj-4.png" alt="" class="bj-4">
+					<img src="img/bj-2.png" alt="" class="bj-2">
+					<img src="img/bj-3.png" alt="" class="bj-3">
+					<img src="img/bj-4.png" alt="" class="bj-4">
 					<div class="img" id="img-chart"></div>
 					<div class="team-data">
-						<p><span>机台编号:</span><input type="text" /><span>部门队伍:</span><input type="text" /></p>
-						<p><span>设计桩长:</span><input type="text" /><span>实际桩长:</span><input type="text" /></p>
+						<p><span>机台编号:</span><input type="text" placeholder="0000001" /><span>部门队伍:</span><input type="text" placeholder="综合一队" /></p>
+						<p><span>设计桩长:</span><input type="text" placeholder="13米" /><span>实际桩长:</span><input type="text" placeholder="13米" /></p>
 					</div>
 				</div>
 				<div class="right">
 					<img src="img/bj-1.png" alt="" class="bj-1">
-                    <img src="img/bj-2.png" alt="" class="bj-2">
-                    <img src="img/bj-3.png" alt="" class="bj-3">
-                    <img src="img/bj-4.png" alt="" class="bj-4">
+					<img src="img/bj-2.png" alt="" class="bj-2">
+					<img src="img/bj-3.png" alt="" class="bj-3">
+					<img src="img/bj-4.png" alt="" class="bj-4">
 					<div class="right-chart" id="main-two"></div>
 				</div>
 			</div>
 		</div>
+
+    <div class="box" id="PB" >
+    </div>
+
+    
+		<script>
+			$('#myModal').on('shown.bs.modal', function() {
+				$('#myInput').focus()
+			})
+		</script>
+
 		<!--内容 end-->
-	<script type="text/javascript">
-	    var myChart = echarts.init(document.getElementById('img-chart'));
-	    option = {
-	        legend: {
-	            x : 'center',
-	            y : 'bottom',
-	            itemWidth: 8,
-	            itemHeight: 8,
-	            textStyle:{//图例文字的样式
-	                color:'#fff',
-	                fontSize:12
-	            },
-	            data:['下限','下下限','正跳变','负跳变']
-	        },
-	        calculable : true,
-	        series : [
-	            {
-	                name:'面积模式',
-	                type:'pie',
-	                radius : [30, 80],
-	                center : ['50%', '50%'],
-	                roseType : 'area',
-	                data:[
-	                    {value:vm.online.v3, name:'下限',itemStyle:{normal:{color:'#7627cb'}}},
-	                    {value:vm.online.v4, name:'下下限',itemStyle:{normal:{color:'#fffc00'}}},
-	                    {value:vm.online.v5, name:'正跳变',itemStyle:{normal:{color:'#46afdb'}}},
-	                    {value:vm.online.v6, name:'负跳变',itemStyle:{normal:{color:'#ff0000'}}}
-	                ]
-	            }
-	        ]
-	    };
-	        myChart.setOption(option);
-	       var worldMapContainer = document.getElementById('img-chart');
-		//用于使chart自适应高度和宽度,通过窗体高宽计算容器高宽
-	     var resizeWorldMapContainer = function () {
-	          var owidth=window.innerWidth*0.7;
-	         worldMapContainer.style.width = window.innerWidth-owidth+'px';
-	     };
-	     //设置容器高宽
-	    resizeWorldMapContainer();
-		pieMyChart.setOption(pieOption);
-		//浏览器大小改变时重置大小
-	    window.addEventListener("resize",function(){
-	        //重置容器高宽
-	        resizeWorldMapContainer();
-	        pieMyChart.resize();
-	    });
-	</script>
-	
-	<script type="text/javascript">
-        
-	</script>
-	
-	
-	<script type="text/javascript">
+		<script type="text/javascript">
+			var map = new BMap.Map("img-chart"); //创建地图实例 
+			var point = new BMap.Point(114.3146420182, 30.4929688202); //创建点坐标 
+			map.centerAndZoom(point, 15); //初始化地图，设置中心点坐标和地图级别  
+			map.enableScrollWheelZoom(true); //开启鼠标滚轮缩放  
+			map.addControl(new BMap.NavigationControl()); //添加左侧缩放控件   
+			map.addControl(new BMap.ScaleControl()); //添加比例尺控件
+			map.addControl(new BMap.OverviewMapControl()); //添加个缩略图控件 
+			map.addControl(new BMap.MapTypeControl()); //添加地图类型转换控件
+			map.setCurrentCity("北京"); //仅当设置城市信息时，MapTypeControl的切换功能才能可用
 
-	</script>
+			var marker = new BMap.Marker(point); // 创建标注   
+			map.addOverlay(marker); // 将标注添加到地图
+			var opts = {
+				width: 250, // 信息窗口宽度   
+				height: 100, // 信息窗口高度    
+				title: "桩机001信息" // 信息窗口标题   
+			}
+			var infoWindow = new BMap.InfoWindow("经纬度:(114.3146420182,30.4929688202)", opts); // 创建信息窗口对象 
+			marker.addEventListener("click", function() {
+				//alert("您点击了标注"); 
+				map.openInfoWindow(infoWindow, point); // 打开信息窗口				
+			});
 
-	<script>
-		function showLocale(objD){
-			var str,colorhead,colorfoot;
-			var yy = objD.getYear();
-			if(yy<1900) yy = yy+1900;
-			var MM = objD.getMonth()+1;
-			if(MM<10) MM = '0' + MM;
-			var dd = objD.getDate();
-			if(dd<10) dd = '0' + dd;
-			var hh = objD.getHours();
-			if(hh<10) hh = '0' + hh;
-			var mm = objD.getMinutes();
-			if(mm<10) mm = '0' + mm;
-			var ss = objD.getSeconds();
-			if(ss<10) ss = '0' + ss;
-			var ww = objD.getDay();
-			if  ( ww==0 )  colorhead="<font color=\"#08FCF3\">";
-			if  ( ww > 0 && ww < 6 )  colorhead="<font color=\"#08FCF3\">";
-			if  ( ww==6 )  colorhead="<font color=\"#08FCF3\">";
-			if  (ww==0)  ww="星期日";
-			if  (ww==1)  ww="星期一";
-			if  (ww==2)  ww="星期二";
-			if  (ww==3)  ww="星期三";
-			if  (ww==4)  ww="星期四";
-			if  (ww==5)  ww="星期五";
-			if  (ww==6)  ww="星期六";
-			colorfoot="</font>"
-			str = colorhead + yy + "-" + MM + "-" + dd + " " + hh + ":" + mm + ":" + ss + "  " + ww + colorfoot;
-			return(str);
-		}
+			//画折线
+			/*
+			var polyline = new BMap.Polyline([      
+			new BMap.Point(116.399, 39.910),   
+			new BMap.Point(116.405, 39.920)],{
+			strokeColor:"blue", strokeWeight:6, strokeOpacity:0.5
+			});   
+			map.addOverlay(polyline); 
+			*/
+		</script>
 
-		function tick(){
-			var today;
-			today = new Date();
-			document.getElementById("localtime").innerHTML = showLocale(today);
-//			document.getElementById('bian').innerText = "150";
-			window.setTimeout("tick()", 1000);
-		}
-		tick();
-	</script>
+
+
+		<script>
+			function showLocale(objD) {
+				var str, colorhead, colorfoot;
+				var yy = objD.getYear();
+				if(yy < 1900) yy = yy + 1900;
+				var MM = objD.getMonth() + 1;
+				if(MM < 10) MM = '0' + MM;
+				var dd = objD.getDate();
+				if(dd < 10) dd = '0' + dd;
+				var hh = objD.getHours();
+				if(hh < 10) hh = '0' + hh;
+				var mm = objD.getMinutes();
+				if(mm < 10) mm = '0' + mm;
+				var ss = objD.getSeconds();
+				if(ss < 10) ss = '0' + ss;
+				var ww = objD.getDay();
+				if(ww == 0) colorhead = "<font color=\"#08FCF3\">";
+				if(ww > 0 && ww < 6) colorhead = "<font color=\"#08FCF3\">";
+				if(ww == 6) colorhead = "<font color=\"#08FCF3\">";
+				if(ww == 0) ww = "星期日";
+				if(ww == 1) ww = "星期一";
+				if(ww == 2) ww = "星期二";
+				if(ww == 3) ww = "星期三";
+				if(ww == 4) ww = "星期四";
+				if(ww == 5) ww = "星期五";
+				if(ww == 6) ww = "星期六";
+				colorfoot = "</font>"
+				str = colorhead + yy + "-" + MM + "-" + dd + " " + hh + ":" + mm + ":" + ss + "  " + ww + colorfoot;
+				return(str);
+			}
+
+			function tick() {
+				var today;
+				today = new Date();
+				document.getElementById("localtime").innerHTML = showLocale(today);
+				//			document.getElementById('bian').innerText = "150";
+				window.setTimeout("tick()", 1000);
+			}
+			tick();
+		</script>
 	</body>
 </html>
+

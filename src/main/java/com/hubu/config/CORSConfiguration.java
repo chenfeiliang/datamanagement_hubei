@@ -4,6 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.*;
 
+/*
+ * 功能描述: SpringMVC配置
+ *
+ *
+ * @param:
+ * @return :
+ * @author : chenfeiliang
+ */
 @Configuration
 public class CORSConfiguration extends WebMvcConfigurationSupport {
 

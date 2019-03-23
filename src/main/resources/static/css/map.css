@@ -31,13 +31,13 @@ header {
 }
 .logo a {
 	display: block;
-	width: 250px;
-	height: 50px;
-	background: url("../img/logo.png") no-repeat;
-	text-indent: -666px;  /*隐藏链接里面的文字*/
-	overflow: hidden;
-	margin-top: -4.4px;
-	margin-left: 5px;
+    width: 250px;
+    height: 75px;
+    background: url(../img/logo.png) no-repeat;
+    text-indent: -666px;
+    overflow: hidden;
+    margin-top: -21px;
+    margin-left: 50px;
 }
 /*logo 部分 end*/
 /*nav 部分 start*/
