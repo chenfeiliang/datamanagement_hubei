@@ -18,7 +18,7 @@ import java.util.List;
 
 
 /**
- * 功能描述:  创建记录表格
+ * 功能描述:  创建票据表格
  *
  *  Author:   chenfeiliang
  */

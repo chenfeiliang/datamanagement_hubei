@@ -128,7 +128,6 @@ public class RecordController
     ){
         try {
             PageInfo<Record> records = recorderService.findRecordWithPageByCriteria(currentPage,machine_no,pile_no,beginTime,endTime,team);
-         //   throw new NullPointerException();
             return new Msg().success().add(Msg.RESULT,records);
         }
         catch (Exception e){

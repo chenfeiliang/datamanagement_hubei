@@ -51,7 +51,9 @@ java.net.SocketException: Connection reset  异常
 1 问题的 解决方案  使用InputStream.available判定是否还有可读字节
 2 问题的 解决方案  
 
-
+三.
+thymeleaf 会把默认文件夹转到templates   需要设置 spring.thymeleaf.prefix=classpath:/static/
+使用thymeleaf  localhost:8080/index 和  localhost:8080/index.html    没有区别  （尽管页面在 localhost:8080/homepage/index.html ）
 
 
 

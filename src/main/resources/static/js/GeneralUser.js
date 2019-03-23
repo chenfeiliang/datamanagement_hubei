@@ -16,7 +16,7 @@ function showRecord(cp) {
 	showRrightTable(0);
 }
 
-function getRecord(cp) {
+/*function getRecord(cp) {
 	$.ajax({
 		url: AJAXURL + "/getRecordWithPage",
 		type: "GET",
@@ -31,10 +31,10 @@ function getRecord(cp) {
 			pageInfo = data.extend.result;
 		},
 		error: function() {
-			alert("fail");
+			//alert("fail");
 		}
 	});
-}
+}*/
 
 function getRecordByCriteria(cp) {
 	var pileNo = $("#pileNo").val();
@@ -61,8 +61,8 @@ function getRecordByCriteria(cp) {
 			recordList = data.extend.result.list;
 			pageInfo = data.extend.result;
 		},
-		error: function() {
-			alert("fail");
+		error: function(obj) {	
+			alert("fair");
 		}
 	});
 }
@@ -73,6 +73,9 @@ function getRecordByIndex(index) {
 
 function gotoPage() {
 	var cp = $("#gotoInput").val();
+	if(cp==""||cp==null){
+		cp = 1;
+	}
 	showRecord(cp);
 }
 

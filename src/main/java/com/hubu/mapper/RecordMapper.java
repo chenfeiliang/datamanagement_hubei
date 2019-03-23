@@ -5,7 +5,6 @@ import com.hubu.pojo.ProjectTeamFinishedCompletion;
 import com.hubu.pojo.Record;
 import com.hubu.pojo.RecordExample;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -33,15 +32,4 @@ public interface RecordMapper {
 
     Record selectByPrimaryKey(Integer recordNo);
 
-    int updateByExampleSelective(@Param("record") Record record, @Param("example") RecordExample example);
-
-    int updateByExampleWithBLOBs(@Param("record") Record record, @Param("example") RecordExample example);
-
-    int updateByExample(@Param("record") Record record, @Param("example") RecordExample example);
-
-    int updateByPrimaryKeySelective(Record record);
-
-    int updateByPrimaryKeyWithBLOBs(Record record);
-
-    int updateByPrimaryKey(Record record);
 }
