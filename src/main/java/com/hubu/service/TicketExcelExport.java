@@ -1,11 +1,13 @@
 package com.hubu.service;
 
 import com.hubu.pojo.Record;
+import javafx.scene.control.Cell;
 import org.apache.poi.hssf.usermodel.*;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.ss.util.CellUtil;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 
 import javax.servlet.http.HttpServletResponse;
@@ -14,7 +16,9 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URLEncoder;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -30,45 +34,51 @@ public class TicketExcelExport {
     }
     public HSSFWorkbook generateSheet(HSSFWorkbook wb, String sheetName, List<Record> list) {
 
-        //创建字体
-        HSSFFont font = wb.createFont();
-        font.setFontHeightInPoints((short) 16);
-        font.setFontName("宋体");
-
+        //获取数据
         Record record = list.get(0);
 
         // 第二步，在webbook中添加一个sheet,对应Excel文件中的sheet
         HSSFSheet sheet = wb.createSheet(sheetName);
 
-/*        //水平居中
-        sheet.setHorizontallyCenter(true);*/
+        //第三步，设置列宽
+        sheet.setColumnWidth(0,2000);
 
-        // 第三步，在sheet中添加表头第0行,注意老版本poi对Excel的行数列数有限制short
+        // 第四步，在sheet中添加表头第0行,注意老版本poi对Excel的行数列数有限制short
         HSSFRow row = sheet.createRow(0);
 
-        // 第四步，创建单元格，并设置值表头 设置表头居中
+        //第五步创建字体
+        HSSFFont font = (HSSFFont) wb.createFont();
+        font.setFontHeightInPoints((short) 16);
+        font.setFontName("宋体");
+
+        HSSFFont font2 = (HSSFFont) wb.createFont();
+        font2.setFontHeightInPoints((short) 12);
+        font2.setFontName("宋体");
+
+        // 第六步，创建样式
         HSSFCellStyle style = wb.createCellStyle();
-        style.setAlignment(HorizontalAlignment.CENTER); // 创建一个居中格式
+        style.setAlignment(HorizontalAlignment.LEFT );
+        style.setFont(font);
 
         //声明 列
         HSSFCell cell;
 
         //设置第0行属性
         cell = row.createCell(0); //生成第0列
-        cell.setCellValue("双向喷粉搅拌");
-        style.setFont(font);
         cell.setCellStyle(style);
-        sheet.setColumnWidth(0,20000);
+        cell.setCellValue("WHSKP:2019-1");
 
         //设置从1行开始每一行属性
-
         row = sheet.createRow(1);
         cell =  row.createCell(0);
-        cell.setCellValue("BH: " + record.getPileNo() +"     Z:15" );
+        cell.setCellValue("BH: " + record.getMachineNo() +"    Z:15" );
 
+        //设置从1行开始每一行字体
+        cell.getCellStyle().setFont(font2);
 
         row = sheet.createRow(2);
         cell =  row.createCell(0);
+
         cell.setCellValue(record.getStr_beginTime());
 
 
@@ -79,7 +89,7 @@ public class TicketExcelExport {
 
         row = sheet.createRow(4);
         cell =  row.createCell(0);
-        cell.setCellValue("NO:" + record.getMachineNo()+"#");
+        cell.setCellValue("NO:" + record.getPileNo()+"#");
 
 
         row = sheet.createRow(5);
@@ -96,7 +106,7 @@ public class TicketExcelExport {
 
         row = sheet.createRow(8);
         cell =  row.createCell(0);
-        cell.setCellValue("W1"+ record.getFirstWeight() +"Kg" );
+        cell.setCellValue( record.getFirstWeight() +"Kg" );
 
         row = sheet.createRow(9);
         cell =  row.createCell(0);
@@ -104,7 +114,7 @@ public class TicketExcelExport {
 
         row = sheet.createRow(10);
         cell =  row.createCell(0);
-        cell.setCellValue("W2"+ record.getSecondWeight()  +"Kg" );
+        cell.setCellValue( record.getSecondWeight()  +"Kg" );
 
         row = sheet.createRow(11);
         cell =  row.createCell(0);   //设置第11行第0列属性
@@ -127,7 +137,7 @@ public class TicketExcelExport {
 
             row = sheet.createRow(i+12);
             cell =  row.createCell(0);
-            cell.setCellValue(record.getMachineNo());
+            cell.setCellValue(record.getPileNo()+"#   ");
 
             cell =  row.createCell(1);
             cell.setCellValue(M);
@@ -135,6 +145,26 @@ public class TicketExcelExport {
             cell =  row.createCell(2);
             cell.setCellValue(str[i]);
         }
+
+
+        //如果非整数，再加一行
+        if((record.getSumDepth()%1)!=0){
+
+            String M  = (record.getSumDepth()  >= 10 ?  String.valueOf(record.getSumDepth()) : "0" + (String.valueOf(record.getSumDepth())));
+
+            row = sheet.createRow(str.length+12);
+
+            cell =  row.createCell(0);
+            cell.setCellValue(record.getPileNo()+"#   ");
+
+            cell =  row.createCell(1);
+            cell.setCellValue(M);
+
+            cell =  row.createCell(2);
+            cell.setCellValue("000");
+        }
+
+
 
         //合并 第 i 行 的 0到2列
         CellRangeAddress  region[] = new CellRangeAddress[11];

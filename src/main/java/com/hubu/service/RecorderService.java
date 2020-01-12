@@ -9,6 +9,7 @@ import com.hubu.pojo.Record;
 import com.hubu.pojo.RecordExample;
 import com.hubu.utils.DateUtil;
 import com.hubu.utils.PojoHelper;
+import com.hubu.utils.RecordUtil;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -158,6 +160,20 @@ public class RecorderService {
             //成功则返回true，异常则throws IOException （在方法名处）,在controller层捕捉
             return true;
 
+    }
+
+    /*
+     * 功能描述:
+     *    通过id查找记录
+     *
+     * @param:   [id]
+     * @return : com.hubu.pojo.Record
+     * @author : chenfeiliang
+     */
+    public Record findRecordById(int id){
+        Record record = recordMapper.selectByPrimaryKey(id);
+        List<Record> records = PojoHelper.setRecordDateString(Arrays.asList(record));
+        return records.get(0);
     }
 
     /*

@@ -1,41 +1,54 @@
-var recordList;
-var pageInfo;
+var recordList = new Array();  //保存分页数据中的list
+var grobalRecord ; //保存通过单个数据（通过id查询）
+var pageInfo;    //保存分页数据的其他数据如页数，记录数
 
+//页面加载时执行
 $(function() {
+
+	//初始化柱状图1
 	initBarDiagram();
+
+    //初始化柱状图2
 	initBarDiagramTwo()
+
+	//获取第1页数据
 	showRecord(1);
-
-
+	
+	showRrightTable(recordList[0].recordNo);//展示右表  初始化为第0行数据
+	
+	loadTableScroll();
+	
 });
+
+function loadTableScroll(){
+     $("#tableDIV").scroll(function(){
+         var $this =$(this),
+         viewH =$(this).height(),//可见高度
+         contentH =$(this).get(0).scrollHeight,//内容高度
+         scrollTop =$(this).scrollTop();//滚动高度
+        //if(contentH - viewH - scrollTop <= 100) { //到达底部100px时,加载新内容
+        if(pageInfo.pageNum<pageInfo.pages){
+        	if(scrollTop/(contentH -viewH)>=0.95){ //到达底部100px时,加载新内容
+	        // 这里加载数据..
+	        var nextPage = (pageInfo.pageNum + 1 > pageInfo.pages ? pageInfo.pages : pageInfo.pageNum + 1);
+			showRecord(nextPage);
+	        }
+        }    
+     });	
+}
+
+function findRecord(){
+	$("#tbody1").empty();
+	showRecord(1);
+}
 
 
 function showRecord(cp) {
-	getRecordByCriteria(cp);
-	showLeftTable();
-	showRrightTable(0);
+	getRecordByCriteria(cp);//发送ajax请求，获取第 cp 页数据
+	showLeftTable(); //展示左表
 }
 
-/*function getRecord(cp) {
-	$.ajax({
-		url: AJAXURL + "/getRecordWithPage",
-		type: "GET",
-		dataType: "json",
-		data: {
-			"cp": cp
-		},
-		async: false,
-		contentType: "application/x-www-form-urlencoded; charset=UTF-8", //防止乱码
-		success: function(data) {
-			recordList = data.extend.result.list;
-			pageInfo = data.extend.result;
-		},
-		error: function() {
-			//alert("fail");
-		}
-	});
-}*/
-
+//根据多条件查询数据
 function getRecordByCriteria(cp) {
 	var pileNo = $("#pileNo").val();
 	var machineNo = $("#machineNo").val();
@@ -67,10 +80,32 @@ function getRecordByCriteria(cp) {
 	});
 }
 
+//根据id查询数据
+function getRecordById(id) {
+	$.ajax({
+		url: AJAXURL + "/getRecordById",
+		type: "GET",
+		dataType: "json",
+		data: {
+			"id": id
+		},
+		async: false,
+		contentType: "application/x-www-form-urlencoded; charset=UTF-8", //防止乱码
+		success: function(data) {
+		   grobalRecord = data.extend.result;
+		},
+		error: function(obj) {	
+			alert("fair");
+		}
+	});
+}
+
+//通过下标查询数据 （数据已经保存下来）
 function getRecordByIndex(index) {
 	return recordList[index];
 }
 
+//跳转到某一页
 function gotoPage() {
 	var cp = $("#gotoInput").val();
 	if(cp==""||cp==null){
@@ -79,47 +114,54 @@ function gotoPage() {
 	showRecord(cp);
 }
 
+//动态加载分页信息
 function showPageDiv() {
 
 	$("#pageInfoDiv").empty();
 
-	var pageDiv = "<p>共有<i id = 'bian'>" + pageInfo.total + "</i>条记录，分<i>" + pageInfo.pages + "</i>页,当前页为第<i>" + pageInfo.pageNum + "</i>页</p>" +
-		"<button class='bt1' onclick=showRecord(" + 1 + ")>首页</button> " +
+	var pageDiv = "<p>共有<i>" + pageInfo.total + "</i>条记录，已经加载了<i>"+(pageInfo.pageNum==pageInfo.pages?pageInfo.total:(pageInfo.pageNum*pageInfo.size))+"</i>条记录"/*，分<i>" + pageInfo.pages + "</i>页,当前页为第<i>" + pageInfo.pageNum + "</i>页</p>" +*/
+/*		"<button class='bt1' onclick=showRecord(" + 1 + ")>首页</button> " +
 		"<button class='bt2' onclick=showRecord(" + (pageInfo.pageNum - 1 < 1 ? 1 : pageInfo.pageNum - 1) + ")>上一页</button>" +
 		"<input class='page-in' type='text' placeholder='页码' id='gotoInput'>" +
 		"<button class='bt3' onclick=gotoPage()>跳转</button>" +
 		"<button class='bt4' onclick=showRecord(" + (pageInfo.pageNum + 1 > pageInfo.pages ? pageInfo.pages : pageInfo.pageNum + 1) + ")>下一页</button>" +
 		"<button class='bt5' onclick=showRecord(" + pageInfo.pages + ")>尾页</button>" +
 		"<button class='bt6' onclick=showRecord("+1+")>刷新数据</button>"+
-		"<span id='localtime'></span>"	
+		"<span id='localtime'></span>"	*/
 		;
 
 	$("#pageInfoDiv").append(pageDiv);
 }
 
+//动态加载左表
 function showLeftTable() {
 
-	$("#tbody1").empty();
+	//$("#tbody1").empty();
+
+	//加载记录数据
 	$.each(recordList, function(index, item) {
-		var tr1 = "<tr class='tr recordTr'  onclick=showRrightTable(" + index + ")>" +
-			"<td class='recordTd'>" + item.machineNo + "</td>" +
-			"<td class='recordTd'>" + item.pileNo + "</td>" +
-            "<td class='recordTd'>" + item.firstDepth + "</td>" +
-			"<td class='recordTd'>" + item.firstWeight + "</td>" +
-			"<td class='recordTd'>" + item.secondDepth + "</td>" +
-			"<td class='recordTd'>" + item.secondWeight + "</td>" +
-			"<td class='recordTd'>" + item.sumDepth + "</td>" +
-			"<td class='recordTd'>" + item.str_beginTime + "</td>" +
-			"<td class='recordTd'>" + item.str_endTime + "</td>" +
+		var tr1 = "<tr class='tr recordTr'  onclick=showRrightTable(" + item.recordNo + ")>" +
+			"<td class='recordTd'width='10%'>" + item.machineNo + "</td>" +
+			"<td class='recordTd'width='10%'>" + item.pileNo + "</td>" +
+            "<td class='recordTd'width='10%'>" + item.firstDepth + "</td>" +
+			"<td class='recordTd'width='10%'>" + item.firstWeight + "</td>" +
+			"<td class='recordTd'width='10%'>" + item.secondDepth + "</td>" +
+			"<td class='recordTd'width='15%'>" + item.secondWeight + "</td>" +
+			"<td class='recordTd'width='5%'>" + item.sumDepth + "</td>" +
+			"<td class='recordTd'width='15%'>" + item.str_beginTime + "</td>" +
+			"<td class='recordTd'width='15%'>" + item.str_endTime + "</td>" +
 			"</tr>";
 		$("#tbody1").append(tr1);
 	});
 
+	//动态加载分页信息
 	showPageDiv();
 }
 
+//调用window打印机打印票据 --动态生成iframe，填充数据 ，打印iframe，清除iframe
 function printPDF(){
-	//alert("ok")
+
+	//动态生成iframe
     var iframe=document.getElementById("print-iframe");
     if(!iframe){  
             var el1 = document.getElementById("prinDiv1");
@@ -128,19 +170,16 @@ function printPDF(){
             var doc = null;
             iframe.setAttribute("id", "print-iframe");
             iframe.setAttribute('style', 'position:absolute;width:0px;height:0px;left:-500px;top:-500px;');
-           
+
+            //主页添加iframe
             document.body.appendChild(iframe);
             doc = iframe.contentWindow.document;
-                       
-                       
-            //这里可以自定义样式
-           //  doc.write("<link rel='stylesheet' type='text/css' href='css/print.css'>");
-			  
+
+            //往iframe中添加prinDIV1 prinDIV2
             doc.write("<div id = 'prinDIV1'>" + el1.innerHTML + '</div>');
             doc.write("<div id = 'prinDIV2'>" + el2.innerHTML + '</div>');
-      
-      		var spans = doc.getElementsByTagName("span");
-      		
+
+            //设置样式
             var prinDIV1 = doc.getElementById("prinDIV1");
             var prinDIV2 = doc.getElementById("prinDIV2");
             
@@ -154,6 +193,7 @@ function printPDF(){
             prinDIV2.style.fontFamily="宋体";
             
             var title = doc.getElementById("Ptitle");
+            title.style.textAlign="left";
             title.style.width="70%";
             title.style.fontSize="20px";
             title.style.fontWeight="300";
@@ -179,23 +219,27 @@ function printPDF(){
             doc.close();
           
             iframe.contentWindow.focus();   
-        
 
-            
-           // alert(iframe.contentWindow.document.getElementById("prinDIV1").style.fontSize);
-         //   alert(iframe.contentWindow.document.getElementsByTagName('html')[0].innerHTML);
+           //alert(iframe.contentWindow.document.getElementsByTagName('html')[0].innerHTML); //查看要打印的iframe的源代码
+           //iframe中元素样式设置完毕
     }
- 
     iframe.contentWindow.print();
+
+    //打印完毕后，移除iframe
     if (navigator.userAgent.indexOf("MSIE") > 0){
         document.body.removeChild(iframe);
     }
 }
 
-function showRrightTable(index) {
-
-	var record = getRecordByIndex(index);
+//动态加载右表的票据数据
+function showRrightTable(id) {
 	
+    //根据下标获取数据
+    getRecordById(id);
+    
+	var record =  grobalRecord;
+
+	//清空数据
 	$("#exportTicketExcelBT").attr("onclick","exportTicketExcelById("+record.recordNo+")");
 	$("#printTicketPDFBT").attr("onclick","printPDF()");
 	$("#BH").html("");
@@ -210,6 +254,7 @@ function showRrightTable(index) {
 	$("#W1").html("");
 	$("#W2").html("");
 
+	//填充数据
 	$("#BH").append(record.machineNo);
 	$("#Z").append(15);
 	$("#beginTimeRright").append(record.str_beginTime);
@@ -224,19 +269,13 @@ function showRrightTable(index) {
 	$("#W1").append(saveIntForN(record.firstWeight,4));
 	$("#W2").append(saveIntForN(record.secondWeight,4));
 
+	//填充每一米数据
 	var weightRecord = record.weightRecord.toString();
 
 	var str = weightRecord.split("#");
 
 	$("#weight_record").empty();
 
-	var xValue = [];
-
-	for(var i = 0; i < str.length - 1; i++) {
-		xValue.push((i) + "米");
-	}
-
-	showBarDiagram(xValue, str);
 
 	/*最后一个为空,不需要*/
 	for(var i = 0; i < str.length - 1; i++) {
@@ -252,8 +291,9 @@ function showRrightTable(index) {
 		$("#weight_record").append(tr1);
 
 	}
-	
-		if((record.sumDepth%1)!=0){
+
+	//如果非整数，再加一行
+	if((record.sumDepth%1)!=0){
 		    var M2 = record.sumDepth.toFixed(1);
 		    M2 = (M2  >= 10 ?  M2 : "0" + (M2));
 			var tr2 = "<tr class = 'tr'>" +
@@ -263,13 +303,26 @@ function showRrightTable(index) {
 			"</tr>";
 			$("#weight_record").append(tr2);
 	}
-		
-		
-		
-		
 
+    //展示柱状图1 横轴
+    var xValue = [];
+
+	var size = 8; // 为了图像美观，至少展示8列，其他列为0
+
+    for(var i = 0; i < str.length - 1; i++) {
+        xValue.push((i) + "米");
+    }
+
+    if(str.length-1<size){
+        for(var i = str.length - 1; i < size; i++) {
+            xValue.push((i) + "米");
+        }
+    }
+    //展示柱状图1
+    showBarDiagram(xValue, str);
 }
 
+//给整数target保留n位，补0
 function saveIntForN(target,n)
 {
 	target = target.toString();
@@ -284,6 +337,7 @@ function saveIntForN(target,n)
 	}
 }
 
+//给数据中的深度格式化。 （因为有小数点）
 function formatDepth(depth){
 	if(depth==0){
 		return "00.0";
@@ -293,6 +347,7 @@ function formatDepth(depth){
 	return result;
 }
 
+//展示柱状图1
 function showBarDiagram(xValue, seriesData) {
 	// 基于准备好的dom，初始化echarts实例
 	var myChart = echarts.init(document.getElementById('main'));
@@ -301,25 +356,32 @@ function showBarDiagram(xValue, seriesData) {
 	option = {
 		xAxis: [{
 			data: xValue
-				/*
-				function (){
-						var list = [];
-						for(var i = 0;i<10;i++){
-							list.push('0' +  '.' + i + '米');
-						}
-						return list;
-				}()
-				*/
 		}],
 		series: [{
 			//初始数据
-			data: seriesData
+			data: seriesData //每一列数据
 		}]
 	};
-
 	myChart.setOption(option);
 }
 
+//展示柱状图2
+function showBarDiagramTwo(seriesData) {
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main-two'));
+
+    // 指定图表的配置项和数据
+    option = {
+        series: [{
+            //初始数据
+            data: seriesData
+        }]
+    };
+    myChart.setOption(option);
+}
+
+
+//导出本页数据
 function exportThisPage() {
 	if(confirm("确定导出本页数据？")) {
 
@@ -337,38 +399,17 @@ function exportThisPage() {
 			"&beginTime=" + beginTime +
 			"&endTime=" + endTime +
 			"&team=" + team;
-
 	}
 }
 
+//导出票据
 function exportTicketExcelById(id) {
 	if(confirm("确定导出票据？")) {
 		window.location.href = AJAXURL + "/downloadTicketExcelById?" +"id=" + id
 	}
 }
 
-function exportTicketPDFById(id) {
-		$.ajax({
-		url: AJAXURL + "/downloadTicketPDFById",
-		type: "GET",
-		data: {
-			"id": id
-		},
-		contentType: "application/x-www-form-urlencoded; charset=UTF-8", //防止乱码
-		success: function() {
-			alert("打印成功");
-		},
-		error: function() {
-			alert("fail");
-		}
-	});
-/*	if(confirm("确定打印票据？")) {
-		window.location.href = AJAXURL + "/downloadTicketPDFById?" +"id=" + id
-	}*/
-}
-
-
-
+//导出经过筛选的所有数据
 function exportAll() {
 	if(confirm("确定导出所有数据？")) {
 		
@@ -388,6 +429,7 @@ function exportAll() {
 	}
 }
 
+//初始化柱状图1
 function initBarDiagram() {
 	// 基于准备好的dom，初始化echarts实例
 	var myChart = echarts.init(document.getElementById('main'));
@@ -658,7 +700,7 @@ function initBarDiagram() {
 	});
 
 }
-
+//初始化柱状图2
 function initBarDiagramTwo(){
 	        // 基于准备好的dom，初始化echarts实例
         var myChart = echarts.init(document.getElementById('main-two'));
@@ -882,21 +924,5 @@ function initBarDiagramTwo(){
 			dayGaugeMyChart.resize();
 		});
 }
-
-function showBarDiagramTwo(seriesData) {
-	// 基于准备好的dom，初始化echarts实例
-	var myChart = echarts.init(document.getElementById('main-two'));
-
-	// 指定图表的配置项和数据
-	option = {
-		series: [{
-			//初始数据
-			data: seriesData
-		}]
-	};
-
-	myChart.setOption(option);
-}
-
 
 

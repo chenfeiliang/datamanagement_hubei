@@ -109,6 +109,28 @@ public class RecordController
         }
     }
 
+/*
+ * 功能描述:
+ *    通过id查找记录
+ *
+ * @param:   [currentPage, machine_no, pile_no, beginTime, endTime, team]
+ * @return : com.hubu.pojo.Msg
+ * @author : chenfeiliang
+ */
+    @RequestMapping("/getRecordById")
+    @ResponseBody
+    public Msg  getRecordById(  @RequestParam(value = "id",required=true) int id
+    ){
+        try {
+            Record record = recorderService.findRecordById(id);
+            return new Msg().success().add(Msg.RESULT,record);
+        }
+        catch (Exception e){
+            logger.error(e.toString());
+            return new Msg().fail();
+        }
+    }
+
     /*
      * 功能描述:
      * 获取经过筛选的分页数据

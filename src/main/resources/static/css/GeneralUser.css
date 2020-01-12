@@ -351,7 +351,7 @@ nav li a:hover {
 	overflow: hidden;
 	border-top: 1px solid #0D48E0;
 	border-right: 1px solid #0D48E0;
-	margin: 20px auto 10px auto;
+	margin: 0px auto 0px auto;
 }
 .banner .form-data .form-data-left .middle table {
 	width: 100%;
@@ -870,5 +870,57 @@ nav li a:hover {
 	}
 }
 
+#tableDIV{
+	overflow-y: scroll;
+}
+/*
+#thead1{
+	display: block;
+	height: 30px;
+	width: 1700px;
+}
+
+#thead1 th{
+	display: block;
+	float: left;
+	width: 170px;
+}
+
+#tbody1 td{
+	display: block;
+	float: left;
+	width: 170px;
+}
+
+#tbody1{
+	display: block;
+	height: 300px;
+	width: 1700px;
+	overflow-y: auto;
+}
+*/
+
+
+#tableHeadDIV table thead th{
+	text-align: center;
+/*	border-bottom: 1px solid #0D48E0;
+	border-left: 1px solid #0D48E0;*/
+	height: 26px;
+	font-weight: bold;
+	font-size: 18px;
+	color: rgb(0, 252, 255);
+}
+
+/*.recordTd{
+	width: 10%;
+}*/
+
+#tableHeadDIV{
+	pointer-events: none;
+}
+
+#thead1 th{
+	padding-bottom: 5px;
+}
 
 

@@ -91,15 +91,15 @@ public class RecordExcelExport {
 
             cell =  row.createCell(5);
             cell.setCellStyle(style);
-            cell.setCellValue(data.getFirstDepth());
+            cell.setCellValue(String.valueOf(data.getFirstDepth()));
 
             cell =  row.createCell(6);
             cell.setCellStyle(style);
-            cell.setCellValue(data.getSecondDepth());
+            cell.setCellValue(String.valueOf(data.getSecondDepth()));
 
             cell =  row.createCell(7);
             cell.setCellStyle(style);
-            cell.setCellValue(data.getSumDepth());
+            cell.setCellValue(String.valueOf(data.getSumDepth()));
 
             cell =  row.createCell(8);
             cell.setCellStyle(style);

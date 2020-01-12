@@ -15,11 +15,13 @@ import org.springframework.web.servlet.config.annotation.*;
 @Configuration
 public class CORSConfiguration extends WebMvcConfigurationSupport {
 
+/*
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
        registry.addViewController("/").setViewName("/homepage/index");
         registry.addViewController("/index").setViewName("/homepage/index");
     }
+*/
 
      @Override
       public void addCorsMappings(CorsRegistry registry) {
